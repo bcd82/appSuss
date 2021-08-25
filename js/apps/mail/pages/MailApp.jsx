@@ -34,7 +34,7 @@ export class MailApp extends React.Component {
       return mails.filter((mail) => mail.isStarred === true);
     } else {
       return mails.filter(
-        (mail) => mail.status !== "trash" && mail.status !== "draft"
+        (mail) => mail.status === 'inbox'
       );
     }
   };
@@ -79,6 +79,14 @@ export class MailApp extends React.Component {
     });
   };
 
+  onSendNewMail = (ev, newMail) => {
+    ev.preventDefault();
+    mailService.createMail(newMail).then(() => {
+      this.loadMails();
+      this.props.history.push("/mail/");
+    });
+  };
+
   render() {
     const { mails, filterBy } = this.state;
     if (!mails) return <p>Loading...</p>;
@@ -93,7 +101,9 @@ export class MailApp extends React.Component {
         </section>
         <section className="mail-main">
           <Switch>
-            <Route path="/mail/compose" component={MailCompose} />
+            <Route path="/mail/compose">
+              <MailCompose onSendNewMail={this.onSendNewMail} />
+            </Route>
             <Route path="/mail/:mailId">
               <MailDetails
                 onToggleStar={this.onToggleStar}

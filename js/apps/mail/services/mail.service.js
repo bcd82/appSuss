@@ -8,7 +8,9 @@ export const mailService = {
     getMailById,
     toggleRead,
     deleteMail,
-    addToInbox
+    addToInbox,
+    getUser,
+    createMail
 }
 const DB_KEY = 'mailsDb'
 
@@ -104,6 +106,10 @@ function getMails() {
     return Promise.resolve(gMails)
 }
 
+function getUser() {
+    return Promise.resolve(loggedInUser)
+}
+
 function getMailById(mailId) {
     const mail = gMails.find(mail => mail.id === mailId)
     return Promise.resolve(mail)
@@ -130,7 +136,6 @@ function toggleRead(mailId, isOnOpen = false) {
         })
     return Promise.resolve()
 }
-
 
 function deleteMail(mailId) {
     getMailById(mailId)
@@ -159,4 +164,19 @@ function addToInbox(mailId) {
 
 function _saveMails() {
     storageService.saveToStorage(DB_KEY, gMails)
+}
+
+function createMail({subject,to,body,from}){
+    gMails.push({
+        id:utilService.makeId(),
+        from,
+        subject,
+        to,
+        body,
+        isRead:true,
+        isStarred:false,
+        sentAt: Date.now(),
+        status:'sent',
+    })
+    return Promise.resolve()
 }

@@ -29,10 +29,12 @@ class _MailDetails extends React.Component {
     if (!mail) return <p>Loading..</p>;
     return (
       <section className="mail-details">
-        <h1>{mail.subject} {mail.status === 'draft' && <span> ( draft )</span>}</h1>
+        <h1>
+          {mail.subject} {mail.status === "draft" && <span> ( draft )</span>}
+        </h1>
         <div className="top-row">
           <h2>
-            {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>
+            From: {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>
           </h2>
           {mail.status !== "inbox" && (
             <button title="add to inbox">
@@ -40,7 +42,7 @@ class _MailDetails extends React.Component {
                 src="./assets/imgs/mail/add-to-inbox.png"
                 alt="trash"
                 onClick={() => onAddToInbox(mail.id)}
-              />
+                />
             </button>
           )}
           <button title="delete">
@@ -48,7 +50,7 @@ class _MailDetails extends React.Component {
               src="./assets/imgs/mail/delete.png"
               alt="trash"
               onClick={() => onDeleteMail(mail.id)}
-            />
+              />
           </button>
           <button onClick={() => onToggleRead(mail.id)} title="mark as unread">
             mark as {mail.isRead ? "unread" : "read"}
@@ -58,8 +60,11 @@ class _MailDetails extends React.Component {
             src="./assets/imgs/mail/star.png"
             className={mail.isStarred ? "starred" : "not-starred"}
             onClick={(ev) => onToggleStar(ev, mail.id)}
-          />
+            />
         </div>
+            <h3>
+              To: {mail.to} 
+            </h3>
         <p>{mail.body}</p>
       </section>
     );
