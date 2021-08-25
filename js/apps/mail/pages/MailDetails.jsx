@@ -4,7 +4,7 @@ const { withRouter } = ReactRouterDOM;
 
 class _MailDetails extends React.Component {
   state = {
-    car: null,
+    mail: null,
   };
 
   componentDidMount() {
