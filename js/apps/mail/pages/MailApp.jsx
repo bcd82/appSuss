@@ -21,7 +21,7 @@ export class MailApp extends React.Component {
     mailService.getMails().then((mails) => this.setState({ mails }));
   }
   getUnreadCount = () => {
-    return this.state.mails.filter(mail => !mail.isRead).length;
+    return this.state.mails.filter((mail) => !mail.isRead).length;
   };
 
   onToggleStar = (ev, mailId) => {
@@ -42,13 +42,17 @@ export class MailApp extends React.Component {
     return Promise.resolve();
   };
 
+  onDeleteMail = (mailId) => {
+    mailService.deleteMail(mailId).then(() => this.loadMails());
+  };
+
   render() {
     const { mails, filterBy } = this.state;
-    if(!mails) return <p>Loading...</p>
+    if (!mails) return <p>Loading...</p>;
     return (
       <section className="mail-app main-layout">
         <div className="search-box">
-            <p>unread emails : {this.getUnreadCount()}</p>
+          <p>unread emails : {this.getUnreadCount()}</p>
           <MailSearch />
         </div>
         <section className="side-menu">
@@ -70,6 +74,7 @@ export class MailApp extends React.Component {
               <MailDetails
                 onToggleStar={this.onToggleStar}
                 onToggleRead={this.onToggleRead}
+                onDeleteMail={this.onDeleteMail}
               />
             </Route>
             <Route path="/mail/">
@@ -77,6 +82,7 @@ export class MailApp extends React.Component {
                 mails={mails}
                 onToggleStar={this.onToggleStar}
                 onClickMail={this.onGoToDetails}
+                onDeleteMail={this.onDeleteMail}
               />
             </Route>
           </Switch>

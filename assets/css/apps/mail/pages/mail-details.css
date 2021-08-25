@@ -17,6 +17,7 @@
     display:flex;
     width:100%;
     margin-bottom:50px;
+    align-items: center;
 }
 .mail-details h2{ 
     font-size: 1.5rem;
@@ -38,17 +39,21 @@
     transition:transform .2 ease-out;
 }
 .mail-details button:hover {
-    transform:scale(1.05)
-
-
+    transform:scale(1.05);
 }
-.mail-details img.not-starred:hover {
+.mail-details .not-starred {
+    filter: saturate(0);
+    transform:scale(1);
+    transition: filter .2s ease-out, transform .2s ease-out;
+}
+.mail-details .not-starred:hover {
     filter: saturate(.5)
 }
-
-.mail-details img.not-starred {
-    filter: saturate(0)
+.mail-details .not-starred:hover,.mail-details .starred:hover { 
+    transform:scale(1.1);
 }
+    
+
 .mail-details button { 
     display: flex;
     align-items: center;

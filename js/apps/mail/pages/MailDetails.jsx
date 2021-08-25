@@ -23,7 +23,7 @@ class _MailDetails extends React.Component {
   };
 
   render() {
-    const { onToggleStar, onToggleRead } = this.props;
+    const { onToggleStar, onToggleRead, onDeleteMail } = this.props;
     const { mail } = this.state;
     if (!mail) return <p>Loading..</p>;
     return (
@@ -31,10 +31,14 @@ class _MailDetails extends React.Component {
         <h1>{mail.subject}</h1>
         <div className="top-row">
           <h2>
-            {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>{" "}
+            {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>
           </h2>
           <button>
-            <img src="./assets/imgs/mail/delete.png" alt="trash" />{" "}
+            <img
+              src="./assets/imgs/mail/delete.png"
+              alt="trash"
+              onClick={() => onDeleteMail(mail.id)}
+            />
           </button>
           <button onClick={() => onToggleRead(mail.id)} title="mark as unread">
             mark as {mail.isRead ? "unread" : "read"}

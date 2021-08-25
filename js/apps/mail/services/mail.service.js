@@ -6,7 +6,8 @@ export const mailService = {
     getMails,
     toggleStar,
     getMailById,
-    toggleRead
+    toggleRead,
+    deleteMail
 }
 const DB_KEY = 'mailsDb'
 
@@ -106,6 +107,10 @@ function getMailById(mailId) {
     const mail = gMails.find(mail => mail.id === mailId)
     return Promise.resolve(mail)
 }
+function getMailIdxById(mailId) {
+    const mailIdx = gMails.findIndex(mail => mail.id === mailId)
+    return Promise.resolve(mailIdx)
+}
 
 function toggleStar(mailId) {
     getMailById(mailId)
@@ -127,4 +132,24 @@ function toggleRead(mailId, isOnOpen = false) {
 
 function _saveMails() {
     storageService.saveToStorage(DB_KEY, gMails)
+}
+
+function deleteMail(mailId) {
+    let mail
+    getMailById(mailId)
+        .then(mail => {
+            if (mail.status === 'trash') {
+                getMailIdxById(mailId)
+                    .then(mailIdx => {
+                        gMails.splice(mailIdx, 1)
+                        console.log('deleted?')
+                    })
+            } else {
+                mail.status = 'trash'
+            }
+        }
+        )
+
+    _saveMails()
+    return Promise.resolve()
 }
