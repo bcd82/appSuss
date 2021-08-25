@@ -1,62 +1,78 @@
+const { withRouter } = ReactRouterDOM;
+
 import { keepService } from '../services/keep.service.js';
 import { utilService } from '../../../services/util.service.js';
+import { ColorInput } from './ColorInput.jsx';
 
-export class AddNoteTxt extends React.Component {
+class _AddNoteImg extends React.Component {
   state = {
     note: {
-        url:null,
-         title:null,
-         backgroundColor:'blue'
+      url: null,
+      title: '',
+      backgroundColor: '',
     },
   };
 
   handleChange = ({ target }) => {
     const field = target.name;
-    let value = field === 'isPinned' ? target.checked : target.value;
+    let value = target.value;
+
     console.log(`value`, value);
     this.setState((prevState) => ({
       note: { ...prevState.note, [field]: value },
     }));
   };
+  onChangeStyle = (color) => {
+    this.setState((prevState) => ({
+      note: { ...prevState.note, ['backgroundColor']: color },
+    }));
+  };
 
-  onAddNote = (ev) => {
+  onAddNoteImg = (ev) => {
     ev.preventDefault();
-    const { url, title,backgroundColor } = this.state.note;
+    const { url, title, backgroundColor } = this.state.note;
     if (!url) return;
     const newNote = {
       id: utilService.makeId(),
       type: 'note-img',
       info: {
-        url,
-        title,
+        url: url,
+        title: title,
       },
       style: {
-        backgroundColor,
+        backgroundColor: backgroundColor,
       },
     };
-    keepService.createNote(newNote);
+    keepService.createNote(newNote).then(() => {
+      this.props.history.push('/keep');
+    });
   };
 
   render() {
-    const { txt } = this.state;
+    const { url, title } = this.state;
     return (
       <section>
-        <form className='note-txt-add' onSubmit={this.onAddNote}>
-          <label htmlFor='txt'>Text:</label>
+        <form className='note-txt-add' onSubmit={this.onAddNoteImg}>
+          <label htmlFor='title'>Image Title</label>
           <input
             type='text'
-            id='txt'
-            name='txt'
-            value={txt}
+            id='title'
+            name='title'
+            value={title}
             onChange={this.handleChange}
           />
-          <label htmlFor='isPinned'>Important ?</label>
+
+          <label htmlFor='url'>URL Image</label>
           <input
-            name='isPinned'
-            type='checkbox'
-            id='isPinned'
+            type='url'
+            id='url'
+            name='url'
+            value={url}
             onChange={this.handleChange}
           />
+          <div className='colors-picker'>
+            <ColorInput onChangeStyle={this.onChangeStyle} />
+          </div>
 
           <button>Add</button>
         </form>
@@ -64,3 +80,5 @@ export class AddNoteTxt extends React.Component {
     );
   }
 }
+
+export const AddNoteImg = withRouter(_AddNoteImg);

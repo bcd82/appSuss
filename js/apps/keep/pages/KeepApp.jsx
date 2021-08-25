@@ -1,9 +1,11 @@
+const { withRouter } = ReactRouterDOM;
+
 import { KeepList } from '../cmps/KeepList.jsx';
 import { keepService } from '../services/keep.service.js';
 // import { KeepAdd } from '../cmps/KeepAdd.jsx';
 import { KeepFilter } from '../cmps/KeepFilter.jsx';
 import { KeepHeader } from '../cmps/KeepHeader.jsx';
-export class KeepApp extends React.Component {
+class _KeepApp extends React.Component {
   state = {
     notes: [],
     filterBy: null,
@@ -39,3 +41,5 @@ export class KeepApp extends React.Component {
     );
   }
 }
+
+export const KeepApp = withRouter(_KeepApp);

@@ -1,11 +1,13 @@
+const { withRouter } = ReactRouterDOM;
+
 import { keepService } from '../services/keep.service.js';
 import { utilService } from '../../../services/util.service.js';
 
-export class AddNoteTxt extends React.Component {
+class _AddNoteTxt extends React.Component {
   state = {
     note: {
       isPinned: false,
-      txt: null,
+      txt: '',
     },
   };
 
@@ -21,7 +23,7 @@ export class AddNoteTxt extends React.Component {
   onAddNote = (ev) => {
     ev.preventDefault();
     const { isPinned, txt } = this.state.note;
-    if (!txt) return;
+    if (!txt.length) return;
     const newNote = {
       id: utilService.makeId(),
       type: 'note-txt',
@@ -30,7 +32,9 @@ export class AddNoteTxt extends React.Component {
         txt: txt,
       },
     };
-    keepService.createNote(newNote).then(() => window.location.reload());
+    keepService.createNote(newNote).then(() => {
+      this.props.history.push('/keep');
+    });
   };
 
   render() {
@@ -60,3 +64,5 @@ export class AddNoteTxt extends React.Component {
     );
   }
 }
+
+export const AddNoteTxt = withRouter(_AddNoteTxt);
