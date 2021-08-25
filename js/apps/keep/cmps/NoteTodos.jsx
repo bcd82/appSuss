@@ -1,21 +1,27 @@
-export function NoteTodos({ note }) {
+import { TodoList } from './TodoList.jsx';
+
+export class NoteTodos extends React.Component {
+  state = {
+    note: null,
+  };
+
+  componentDidMount() {
+    const { note } = this.props;
+    this.setState({ note });
+  }
+
+  render() {
+    const { note } = this.state;
+    if (!note) return <div>Loading</div>;
     return (
       <article className={note.type}>
-          <Link to={`/book/${book.id}`}>
-            <img src={book.thumbnail} />
-          </Link>
-          <h4>Title - {book.title}</h4>
-          <h4
-            className={
-              book.listPrice.amount > 150
-                ? 'red'
-                : book.listPrice.amount < 20
-                ? 'green'
-                : ''
-            }
-          >
-            Price - {book.listPrice.amount}
-          </h4>
+        <h3>{note.info.label}</h3>
+        <div className='todos-list'>
+          {note.info.todos.map((todo) => (
+            <TodoList todo={todo} />
+          ))}
+        </div>
       </article>
     );
   }
+}
