@@ -26,7 +26,7 @@ const staticMails = [
         subject: 'Hi there',
         body: 'What\'s up ? How Are you ? ',
         isRead: false,
-        sentAt: 1551133930594,
+        sentAt: 1629899150635,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: false,
@@ -47,7 +47,7 @@ const staticMails = [
          Game On!
         The Unity Team`,
         isRead: false,
-        sentAt: 1551123930594,
+        sentAt: 1629800000635,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: false,
@@ -60,7 +60,7 @@ const staticMails = [
 
         בשבועות האחרונים אנו עדים לעלייה בתחלואה, ומטרת מנת החיסון הנוספת היא חיזוק ההגנה החיסונית שלך נגד נגיף הקורונה.`,
         isRead: true,
-        sentAt: 1541133930594,
+        sentAt: 1625700000635,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: true,
