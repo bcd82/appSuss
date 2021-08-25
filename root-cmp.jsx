@@ -4,8 +4,7 @@ const { Route, Switch } = ReactRouterDOM;
 // import { KeepApp } from "./js/apps/keep/pages/KeepApp.jsx";
 // import { BookApp } from "./js/apps/book/pages/BookApp.jsx";
 import { MailApp } from "./js/apps/mail/pages/MailApp.jsx";
-import { MailAdd} from "./js/apps/mail/pages/MailAdd.jsx";
-import { MailDetails} from "./js/apps/mail/pages/MailDetails.jsx";
+
 // import { About } from "./js/pages/AppAbout.jsx";
 // import { AppFooter } from "./js/cmps/AppFooter.jsx";
 import { AppHeader } from "./js/cmps/AppHeader.jsx";
@@ -26,8 +25,7 @@ export function App() {
             {/* <Route path="/book/add" component={BookAdd} /> */}
             {/* <Route path="/book/:bookId" component={BookDetails} /> */}
             {/* <Route path="/book" component={BookApp} /> */}
-            <Route path="/mail/add" component={MailAdd} />
-            <Route path="/mail/:mailId" component={MailDetails} />
+
             <Route path="/mail" component={MailApp} />
             {/* <Route path="/about" component={About} /> */}
             <Route path="/" component={AppHome} />
