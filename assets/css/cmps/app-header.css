@@ -13,4 +13,5 @@ header {
 .app-header h1.logo {
     font-family: euro;
     font-size:2rem;
+    padding:20px 0;
 }

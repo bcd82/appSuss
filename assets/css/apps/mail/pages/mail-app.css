@@ -1,0 +1,21 @@
+.mail-app { 
+    display:grid;
+    grid-template-columns: 10% 80%;
+    grid-template-rows: 2;
+    width:100%;
+    margin:0 auto;
+}
+.search-box {
+    grid-column: 2;
+    grid-row: 2;
+}
+.side-menu {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+}
+.mail-main { 
+    grid-column: 2;
+    grid-row: 3;
+}

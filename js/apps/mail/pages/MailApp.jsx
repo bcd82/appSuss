@@ -20,8 +20,7 @@ export class MailApp extends React.Component {
     const { mails, filterBy } = this.state;
     return (
       <section className="mail-app main-layout">
-        <h1>Hey there from Mail</h1>
-        <div>Search box</div>
+        <div className="search-box">Search box</div>
         <section className="side-menu">
           <MailMenu />
           <NavLink to="/mail/add" exact>
