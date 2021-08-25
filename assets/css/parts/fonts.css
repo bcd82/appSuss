@@ -1,14 +1,14 @@
 @font-face {
     font-family: lato-regular;
-    src: url('/assets/fonts/Lato-Regular.ttf');
+    src: url('../../fonts/Lato-Regular.ttf');
 }
 
 @font-face {
     font-family: lato-bold;
-    src: url('/assets/fonts/Lato-Bold.ttf');
+    src: url('../../fonts/Lato-Bold.ttf');
 }
 
 @font-face {
     font-family: euro;
-    src: url('/assets/fonts/eurof55.ttf');
+    src: url('../../fontsfonts/eurof55.ttf');
 }
