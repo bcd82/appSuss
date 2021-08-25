@@ -1,5 +1,9 @@
 const { NavLink, withRouter } = ReactRouterDOM;
 
+state = { 
+    isMobileMenuOpen = false
+}
+
 class _AppHeader extends React.Component {
   render() {
     return (
