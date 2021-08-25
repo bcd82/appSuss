@@ -20,23 +20,35 @@ export class MailApp extends React.Component {
   loadMails() {
     mailService.getMails().then((mails) => this.setState({ mails }));
   }
+  getUnreadCount = () => {
+    return this.state.mails.filter(mail => !mail.isRead).length;
+  };
 
-  onToggleStar = (mailId) => {
-    console.log(mailId);
-    mailService.toggleStar(mailId)
-    .then(this.loadMails())
-  }
-  
-  onGoToDetails =(mailId) =>{
-      console.log(mailId)
-    //   this.props.history.push(`/mail/${mailId}`)
-  }
+  onToggleStar = (ev, mailId) => {
+    ev.stopPropagation();
+    mailService.toggleStar(mailId).then(this.loadMails());
+  };
+
+  onGoToDetails = (mailId) => {
+    this.onToggleRead(mailId, true).then(() => {
+      this.props.history.push(`/mail/${mailId}`);
+    });
+  };
+
+  onToggleRead = (mailId, isOnOpen) => {
+    mailService.toggleRead(mailId, isOnOpen).then(() => {
+      this.loadMails();
+    });
+    return Promise.resolve();
+  };
 
   render() {
     const { mails, filterBy } = this.state;
+    if(!mails) return <p>Loading...</p>
     return (
       <section className="mail-app main-layout">
         <div className="search-box">
+            <p>unread emails : {this.getUnreadCount()}</p>
           <MailSearch />
         </div>
         <section className="side-menu">
@@ -54,9 +66,18 @@ export class MailApp extends React.Component {
         <section className="mail-main">
           <Switch>
             <Route path="/mail/add" component={MailCompose} />
-            <Route path="/mail/:mailId" component={MailDetails} />
+            <Route path="/mail/:mailId">
+              <MailDetails
+                onToggleStar={this.onToggleStar}
+                onToggleRead={this.onToggleRead}
+              />
+            </Route>
             <Route path="/mail/">
-              <MailList mails={mails} onToggleStar={this.onToggleStar} onClickMail={this.onGoToDetails}/>
+              <MailList
+                mails={mails}
+                onToggleStar={this.onToggleStar}
+                onClickMail={this.onGoToDetails}
+              />
             </Route>
           </Switch>
         </section>

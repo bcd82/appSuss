@@ -13,7 +13,7 @@ export function MailPreview(props) {
       <img
         src="../../../../assets/imgs/mail/star.png"
         className={mail.isStarred ? "starred" : "not-starred"}
-        onClick={()=>onToggleStar(mail.id)}
+        onClick={(ev)=>onToggleStar(ev,mail.id)}
       />
       <p className="from">
         {mail.from}

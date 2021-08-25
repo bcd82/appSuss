@@ -1,10 +1,55 @@
+import { utilService } from "../../../services/util.service.js";
+import { mailService } from "../services/mail.service.js";
+const { withRouter } = ReactRouterDOM;
 
-export  class MailDetails extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Hi from  Mail Details Page</h1>
-            </div>
-        )
-    }
+class _MailDetails extends React.Component {
+  state = {
+    car: null,
+  };
+
+  componentDidMount() {
+    this.loadMail();
+  }
+
+  loadMail = () => {
+    const id = this.props.match.params.mailId;
+    mailService.getMailById(id).then((mail) => {
+      if (!mail) {
+        this.props.history.push("/mail");
+        return;
+      }
+      this.setState({ mail });
+    });
+  };
+
+  render() {
+    const { onToggleStar, onToggleRead } = this.props;
+    const { mail } = this.state;
+    if (!mail) return <p>Loading..</p>;
+    return (
+      <section className="mail-details">
+        <h1>{mail.subject}</h1>
+        <div className="top-row">
+          <h2>
+            {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>{" "}
+          </h2>
+          <button>
+            <img src="../../../../assets/imgs/mail/delete.png" alt="trash" />{" "}
+          </button>
+          <button onClick={() => onToggleRead(mail.id)} title="mark as unread">
+            mark as {mail.isRead ? "unread" : "read"}
+          </button>
+          <button> Reply</button>
+          <img
+            src="../../../../assets/imgs/mail/star.png"
+            className={mail.isStarred ? "starred" : "not-starred"}
+            onClick={(ev) => onToggleStar(ev, mail.id)}
+          />
+        </div>
+        <p>{mail.body}</p>
+      </section>
+    );
+  }
 }
+
+export const MailDetails = withRouter(_MailDetails);

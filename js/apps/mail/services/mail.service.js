@@ -5,6 +5,8 @@ import { utilService } from '../../../services/util.service.js'
 export const mailService = {
     getMails,
     toggleStar,
+    getMailById,
+    toggleRead
 }
 const DB_KEY = 'mailsDb'
 
@@ -100,20 +102,29 @@ function getMails() {
     return Promise.resolve(gMails)
 }
 
-function _getMailById(mailId) {
+function getMailById(mailId) {
     const mail = gMails.find(mail => mail.id === mailId)
     return Promise.resolve(mail)
 }
 
 function toggleStar(mailId) {
-    const mail = _getMailById(mailId)
+    getMailById(mailId)
         .then((mail) => {
             mail.isStarred = !mail.isStarred
             _saveMails()
         })
-    return Promise.resolve(mail)
+    return Promise.resolve()
 }
 
-function _saveMails() { 
-    storageService.saveToStorage(DB_KEY,gMails)
+function toggleRead(mailId, isOnOpen = false) {
+    getMailById(mailId)
+        .then((mail) => {
+            isOnOpen ? mail.isRead = true : mail.isRead = !mail.isRead
+            _saveMails()
+        })
+    return Promise.resolve()
+}
+
+function _saveMails() {
+    storageService.saveToStorage(DB_KEY, gMails)
 }

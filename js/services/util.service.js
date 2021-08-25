@@ -3,6 +3,7 @@ export const utilService = {
   makeLorem,
   getRandomIntInclusive,
   getTime,
+  getTimeToDisplay
 };
 
 function makeId(length = 6) {
@@ -83,3 +84,8 @@ function getTime(timestamp) {
     date.getSeconds();
   return Promise.resolve(time);
 }
+
+function getTimeToDisplay  (timestamp) {
+  let time = new Date(timestamp);
+  return (time.getHours() + ':' +(time.getMinutes() < 10 ? '0'+ time.getMinutes() :time.getMinutes() ) + ' ' + time.getFullYear())
+} 
