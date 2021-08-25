@@ -1,0 +1,30 @@
+.mail-preview { 
+    height:50px;
+    display:flex;
+    border:1px solid gray;
+    width:100%;
+    align-items: center;
+    
+}
+.mail-preview img { 
+    padding:10px 10px;
+    width:4%;
+}
+.mail-preview img.not-starred { 
+    filter:saturate(0)
+}
+.mail-preview .from{ 
+    font-size: 1rem;
+    width:30%;
+}
+.mail-preview .subject{ 
+    width:20%;
+}
+.mail-preview .body-snippet{ 
+    width:auto;
+    overflow: hidden;
+}
+.mail-preview .sent-time { 
+    align-self: flex-end;
+    width:10%;
+}

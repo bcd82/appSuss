@@ -81,5 +81,5 @@ function getTime(timestamp) {
     date.getMinutes() +
     ':' +
     date.getSeconds();
-  return Promise.resolve(time);
+  return time;
 }

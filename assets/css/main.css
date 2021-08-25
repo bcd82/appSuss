@@ -1,7 +1,8 @@
 @import './parts/base.css';
 @import './parts/fonts.css';
 @import './parts/helpers.css';
-@import './apps/book/book-main.css';
 @import './cmps/app-header.css';
 @import './cmps/app-home.css';
+@import './apps/book/book-main.css';
+@import './apps//mail/mail-main.css'
 

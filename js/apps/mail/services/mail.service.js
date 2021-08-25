@@ -1,7 +1,12 @@
 import { storageService } from '../../../services/storage.service.js'
 import { utilService } from '../../../services/util.service.js'
 
-DB_KEY = 'mailsDb'
+
+export const mailService = {
+    getMail,
+}
+
+const DB_KEY = 'mailsDb'
 
 const loggedInUser = {
     email: 'barak.sidi@gmail.com',
@@ -9,6 +14,7 @@ const loggedInUser = {
 }
 
 let gMails 
+
 
 function getMail() {
     gMails = storageService.loadFromStorage(DB_KEY) || staticMails;
@@ -22,7 +28,7 @@ const staticMails = [
         isRead: false,
         sentAt: 1551133930594,
         to: loggedInUser.email,
-        status: inbox,
+        status: 'inbox',
         isStarred: false,
         from: 'moshe@zmail.com'
     },
@@ -43,7 +49,7 @@ const staticMails = [
         isRead: false,
         sentAt: 1551123930594,
         to: loggedInUser.email,
-        status: inbox,
+        status: 'inbox',
         isStarred: false,
         from: 'unity@unity.com'
     },
@@ -56,7 +62,7 @@ const staticMails = [
         isRead: true,
         sentAt: 1541133930594,
         to: loggedInUser.email,
-        status: inbox,
+        status: 'inbox',
         isStarred: true,
         from: 'do-not-reply@info.maccabi4u.co.il'
     },
@@ -67,7 +73,7 @@ const staticMails = [
         isRead: true,
         sentAt: 1541133290194,
         to: 'someone@else.il',
-        status: sent,
+        status: 'sent',
         isStarred: false,
         from: loggedInUser.email,
     },
@@ -78,7 +84,7 @@ const staticMails = [
         isRead: true,
         sentAt: 1341133290194,
         to: loggedInUser.email,
-        status: trash,
+        status: 'trash',
         isStarred: false,
         from: 'spam@spamsters.spm',
     },
@@ -89,7 +95,7 @@ const staticMails = [
         isRead: false,
         sentAt: null,
         to: 'Whomever It May Be',
-        status: trash,
+        status: 'draft',
         isStarred: false,
         from: loggedInUser.email,
     },
