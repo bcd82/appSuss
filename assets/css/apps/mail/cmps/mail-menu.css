@@ -1,0 +1,24 @@
+.mail-menu { 
+    display: flex;
+    flex-direction: column;
+    
+}
+.mail-menu a{ 
+    text-decoration: none ;
+    color:rgb(26, 26, 26);
+
+}
+
+.mail-menu a.active{ 
+    color:rgb(26, 26, 26);
+}
+.mail-menu h1.compose-btn { 
+    font-size:1.5rem;
+    padding: 20px 0;
+    background-color:gold;
+    text-align: center;
+    border-radius: 2em;
+    text-decoration: none ;
+    width:80%;
+}
+
