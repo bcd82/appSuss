@@ -8,7 +8,10 @@ body {
 h1,h2,h3,h4,h5,p,a,ul,li {
     font-family: lato-regular;
 }
-
+img { 
+    max-width:100%;
+}
 .main-layout { 
     width:95%;
+    margin:0 auto;
 }
