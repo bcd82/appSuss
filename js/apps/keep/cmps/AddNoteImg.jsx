@@ -4,8 +4,9 @@ import { utilService } from '../../../services/util.service.js';
 export class AddNoteTxt extends React.Component {
   state = {
     note: {
-      isPinned: false,
-      txt: null,
+        url:null,
+         title:null,
+         backgroundColor:'blue'
     },
   };
 
@@ -20,17 +21,20 @@ export class AddNoteTxt extends React.Component {
 
   onAddNote = (ev) => {
     ev.preventDefault();
-    const { isPinned, txt } = this.state.note;
-    if (!txt) return;
+    const { url, title,backgroundColor } = this.state.note;
+    if (!url) return;
     const newNote = {
       id: utilService.makeId(),
-      type: 'note-txt',
-      isPinned: isPinned,
+      type: 'note-img',
       info: {
-        txt: txt,
+        url,
+        title,
+      },
+      style: {
+        backgroundColor,
       },
     };
-    keepService.createNote(newNote).then(() => window.location.reload());
+    keepService.createNote(newNote);
   };
 
   render() {
