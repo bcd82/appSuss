@@ -12,17 +12,23 @@ export class TodoList extends React.Component {
   }
 
   handleChange = ({ target }) => {
-    const value = target.value;
-    console.log(`target`, target);
+    const checked = target.checked;
+    if (checked) this.setState({ doneAt: checked });
+    else this.setState({ doneAt: checked });
   };
 
   render() {
     const { todo, doneAt } = this.state;
     if (!todo) return <div>Loading</div>;
     return (
-      <div className={doneAt ? 'done' : 'not-done'}>
+      <div className={doneAt ? 'done' : ''}>
         <label htmlFor='myCheck'>{todo.txt}</label>
-        <input type='checkbox' id='myCheck' onChange={this.handleChange} />
+        <input
+          checked={doneAt ? true : false}
+          type='checkbox'
+          id='myCheck'
+          onChange={this.handleChange}
+        />
       </div>
     );
   }

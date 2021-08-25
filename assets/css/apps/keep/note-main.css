@@ -1,0 +1,10 @@
+.note {
+  width: 20rem;
+  background-color: #fff;
+  box-shadow: 0 0.875rem 5rem rgb(0 0 0 / 20%);
+  border-radius: 0.5rem;
+  padding: 1.562rem;
+  position: relative;
+}
+
+

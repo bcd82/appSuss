@@ -1,0 +1,10 @@
+.notes-app {
+  margin-top: 50px;
+}
+
+.keep-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+}

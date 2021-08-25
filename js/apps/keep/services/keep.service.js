@@ -18,8 +18,8 @@ const notes = [
     id: 'n102',
     type: 'note-img',
     info: {
-      url: 'http://some-img/me',
-      title: 'Bobi and Me',
+      url: 'https://mascotas100.com/wp-content/uploads/2020/03/329004501_1.jpg',
+      title: 'I Love Bobi',
     },
     style: {
       backgroundColor: '#00d',

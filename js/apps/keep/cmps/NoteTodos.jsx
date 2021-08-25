@@ -14,11 +14,11 @@ export class NoteTodos extends React.Component {
     const { note } = this.state;
     if (!note) return <div>Loading</div>;
     return (
-      <article className={note.type}>
+      <article className={`note ${note.type}`}>
         <h3>{note.info.label}</h3>
         <div className='todos-list'>
-          {note.info.todos.map((todo) => (
-            <TodoList todo={todo} />
+          {note.info.todos.map((todo,idx) => (
+            <TodoList key={idx} todo={todo} />
           ))}
         </div>
       </article>
