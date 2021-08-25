@@ -33,7 +33,9 @@ export class MailApp extends React.Component {
     } else if (this.state.filterBy === "starred") {
       return mails.filter((mail) => mail.isStarred === true);
     } else {
-      return mails.filter((mail) => mail.status !== "trash");
+      return mails.filter(
+        (mail) => mail.status !== "trash" && mail.status !== "draft"
+      );
     }
   };
 
@@ -71,12 +73,11 @@ export class MailApp extends React.Component {
     this.props.history.push("/mail/");
   };
 
-  onAddToInbox = (mailId) =>{
-      mailService.addToInbox(mailId)
-      .then(()=>{
-          this.loadMails()
-      })
-  }
+  onAddToInbox = (mailId) => {
+    mailService.addToInbox(mailId).then(() => {
+      this.loadMails();
+    });
+  };
 
   render() {
     const { mails, filterBy } = this.state;
