@@ -23,7 +23,7 @@ class _MailDetails extends React.Component {
   };
 
   render() {
-    const { onToggleStar, onToggleRead, onDeleteMail, onA } = this.props;
+    const { onToggleStar, onToggleRead, onDeleteMail, onAddToInbox } = this.props;
     const { mail } = this.state;
     if (!mail) return <p>Loading..</p>;
     return (
