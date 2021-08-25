@@ -4,42 +4,44 @@ import { utilService } from '../../../services/util.service.js';
 export const keepService = {
   query,
   createNote,
-  getNoteById
+  getNoteById,
 };
 
 const KEY = 'notesDB';
-const notes = [
-  {
-    id: 'n101',
-    type: 'note-txt',
-    isPinned: true,
-    info: {
-      txt: 'Fullstack Me Baby!',
-    },
-  },
-  {
-    id: 'n102',
-    type: 'note-img',
-    info: {
-      url: 'https://mascotas100.com/wp-content/uploads/2020/03/329004501_1.jpg',
-      title: 'I Love Bobi',
-    },
-    style: {
-      backgroundColor: '#00d',
-    },
-  },
-  {
-    id: 'n103',
-    type: 'note-todos',
-    info: {
-      label: 'Get my stuff together',
-      todos: [
-        { txt: 'Driving liscence', doneAt: null },
-        { txt: 'Coding power', doneAt: 187111111 },
-      ],
-    },
-  },
-];
+const notes = storageService.loadFromStorage(KEY)
+  ? storageService.loadFromStorage(KEY)
+  : [
+      {
+        id: 'n101',
+        type: 'note-txt',
+        isPinned: true,
+        info: {
+          txt: 'Fullstack Me Baby!',
+        },
+      },
+      {
+        id: 'n102',
+        type: 'note-img',
+        info: {
+          url: 'https://mascotas100.com/wp-content/uploads/2020/03/329004501_1.jpg',
+          title: 'I Love Bobi',
+        },
+        style: {
+          backgroundColor: '#00d',
+        },
+      },
+      {
+        id: 'n103',
+        type: 'note-todos',
+        info: {
+          label: 'Get my stuff together',
+          todos: [
+            { txt: 'Driving liscence', doneAt: null },
+            { txt: 'Coding power', doneAt: 187111111 },
+          ],
+        },
+      },
+    ];
 
 function query(filterBy) {
   if (filterBy) {
@@ -50,50 +52,21 @@ function query(filterBy) {
   return Promise.resolve(notes);
 }
 
-function createNote(
-  category,
-  isPinned,
-  txt,
-  url,
-  title,
-  backgroundColor,
-  label,
-  todos
-) {
-  let note = null;
-  if (category === 'note-txt') {
-    note = {
-      id: utilService.makeId(),
-      type: 'note-txt',
-      isPinned,
-      info: {
-        txt,
-      },
-    };
-  } else if (category === 'note-img') {
-    note = {
-      id: utilService.makeId(),
-      type: 'note-img',
-      info: {
-        url,
-        title,
-      },
-      style: {
-        backgroundColor,
-      },
-    };
-  } else if (category === 'note-todos') {
-    note = {
-      id: utilService.makeId(),
-      type: 'note-todos',
-      info: {
-        label,
-        todos,
-      },
-    };
-  }
-  notes.unshift(note);
+function createNote(newNote) {
+
+  //   } else if (type === 'note-todos') {
+  //     note = {
+  //       id: utilService.makeId(),
+  //       type: 'note-todos',
+  //       info: {
+  //         label,
+  //         todos,
+  //       },
+  //     };
+  //   }
+  notes.unshift(newNote);
   _saveNotesToStorage();
+  return Promise.resolve()
 }
 
 // function saveReview(noteId, name, rate, txt, writeAt) {
