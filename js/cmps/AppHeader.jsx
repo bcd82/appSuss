@@ -1,11 +1,11 @@
 const { NavLink, withRouter } = ReactRouterDOM;
 
-state = { 
-    isMobileMenuOpen : false
-}
-
 class _AppHeader extends React.Component {
-  render() {
+   
+    state = { 
+        isMobileMenuOpen : false
+    }
+    render() {
     return (
       <section className='app-header main-layout'>
         <h1 onClick={() => this.props.history.goBack()} className='logo'>
