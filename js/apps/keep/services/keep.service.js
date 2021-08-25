@@ -3,8 +3,11 @@ import { utilService } from '../../../services/util.service.js';
 
 export const keepService = {
   query,
+  createNote,
+  getNoteById
 };
 
+const KEY = 'notesDB';
 const notes = [
   {
     id: 'n101',
@@ -38,6 +41,102 @@ const notes = [
   },
 ];
 
-function query() {
+function query(filterBy) {
+  if (filterBy) {
+    let { category } = filterBy;
+    const notesToShow = notes.filter((note) => note.type.includes(category));
+    return Promise.resolve(notesToShow);
+  }
   return Promise.resolve(notes);
+}
+
+function createNote(
+  category,
+  isPinned,
+  txt,
+  url,
+  title,
+  backgroundColor,
+  label,
+  todos
+) {
+  let note = null;
+  if (category === 'note-txt') {
+    note = {
+      id: utilService.makeId(),
+      type: 'note-txt',
+      isPinned,
+      info: {
+        txt,
+      },
+    };
+  } else if (category === 'note-img') {
+    note = {
+      id: utilService.makeId(),
+      type: 'note-img',
+      info: {
+        url,
+        title,
+      },
+      style: {
+        backgroundColor,
+      },
+    };
+  } else if (category === 'note-todos') {
+    note = {
+      id: utilService.makeId(),
+      type: 'note-todos',
+      info: {
+        label,
+        todos,
+      },
+    };
+  }
+  notes.unshift(note);
+  _saveNotesToStorage();
+}
+
+// function saveReview(noteId, name, rate, txt, writeAt) {
+//   let newReview = {
+//     name,
+//     rate,
+//     txt,
+//     writeAt,
+//   };
+//   const noteIdx = gNotes.findIndex((note) => {
+//     return note.id === noteId;
+//   });
+//   gNotes[noteIdx].reviews.push(newReview);
+//   _saveNotesToStorage();
+//   return Promise.resolve();
+// }
+
+function getNoteById(noteId) {
+  var note = gNotes.find(function (note) {
+    return noteId === note.id;
+  });
+  return Promise.resolve(note);
+}
+
+// function addNote(name) {
+//   const newNote = {
+//     id: utilService.makeId(),
+//     name,
+//     img: `/assets/img/${pickColor()}-note.png`,
+//   };
+//   gNotes.push(newNote);
+// }
+
+function deleteNote(noteId, idx) {
+  console.log('noteId,idx :>> ', noteId, idx);
+  const noteIdx = gNotes.findIndex((note) => {
+    return note.id === noteId;
+  });
+  gNotes[noteIdx].reviews.splice(idx, 1);
+  _saveNotesToStorage();
+  return Promise.resolve();
+}
+
+function _saveNotesToStorage() {
+  storageService.saveToStorage(KEY, notes);
 }
