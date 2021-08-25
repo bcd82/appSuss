@@ -9,6 +9,11 @@
     font-size: 2rem;
     margin-bottom: 20px;
 }
+.mail-details h1 span {
+    font-size: 1.5rem;
+    color:rgba(131, 124, 100, 0.815);
+    margin-bottom: 20px;
+}
 
 .mail-details .top-row {
     display: flex;

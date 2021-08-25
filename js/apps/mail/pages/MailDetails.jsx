@@ -23,12 +23,13 @@ class _MailDetails extends React.Component {
   };
 
   render() {
-    const { onToggleStar, onToggleRead, onDeleteMail, onAddToInbox } = this.props;
+    const { onToggleStar, onToggleRead, onDeleteMail, onAddToInbox } =
+      this.props;
     const { mail } = this.state;
     if (!mail) return <p>Loading..</p>;
     return (
       <section className="mail-details">
-        <h1>{mail.subject}</h1>
+        <h1>{mail.subject} {mail.status === 'draft' && <span> ( draft )</span>}</h1>
         <div className="top-row">
           <h2>
             {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>
