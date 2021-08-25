@@ -65,7 +65,7 @@ class _MailDetails extends React.Component {
             <h3>
               To: {mail.to} 
             </h3>
-        <p>{mail.body}</p>
+        <p className="mail-body">{mail.body}</p>
       </section>
     );
   }

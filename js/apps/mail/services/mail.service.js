@@ -167,7 +167,7 @@ function _saveMails() {
 }
 
 function createMail({subject,to,body,from}){
-    gMails.push({
+    gMails.unshift({
         id:utilService.makeId(),
         from,
         subject,
