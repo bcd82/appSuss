@@ -1,8 +1,17 @@
+const { Link, NavLink, Route, Switch } = ReactRouterDOM;
 
 export function MailMenu() {
-    return (
-        <div>
-            <h1>Im the menu</h1>
-        </div>
-    )
+  return (
+    <div>
+      <NavLink to="/mail/compose" exact>
+        <h1>Compose</h1>
+      </NavLink>
+      <NavLink to="/mail/" exact>
+        List{" "}
+      </NavLink>
+      <NavLink to="/mail/234234" exact>
+        Details{" "}
+      </NavLink>{" "}
+    </div>
+  );
 }

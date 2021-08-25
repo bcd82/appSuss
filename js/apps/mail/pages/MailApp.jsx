@@ -57,19 +57,10 @@ export class MailApp extends React.Component {
         </div>
         <section className="side-menu">
           <MailMenu />
-          <NavLink to="/mail/add" exact>
-            add{" "}
-          </NavLink>
-          <NavLink to="/mail/" exact>
-            List{" "}
-          </NavLink>
-          <NavLink to="/mail/234234" exact>
-            Details{" "}
-          </NavLink>
         </section>
         <section className="mail-main">
           <Switch>
-            <Route path="/mail/add" component={MailCompose} />
+            <Route path="/mail/compose" component={MailCompose} />
             <Route path="/mail/:mailId">
               <MailDetails
                 onToggleStar={this.onToggleStar}
