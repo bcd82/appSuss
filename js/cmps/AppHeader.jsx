@@ -3,7 +3,7 @@ const { NavLink, withRouter } = ReactRouterDOM;
 class _AppHeader extends React.Component {
   render() {
     return (
-      <section className='app-header'>
+      <section className='app-header main-layout'>
         <h1 onClick={() => this.props.history.goBack()} className='logo'>
           <span>A</span>ppsus
         </h1>

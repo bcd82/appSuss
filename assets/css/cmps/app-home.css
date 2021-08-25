@@ -1,0 +1,17 @@
+.app-home {
+    margin:0 auto;
+    align-items:   center;
+    display: flex;
+    flex-direction: column;
+}
+.app-home .app-row { 
+    display: flex;
+    gap:20px;
+}
+.app-home .app-row .app-preview { 
+    width:300px;
+    height:300px;
+    border:1px solid gray;
+    display:flex;
+    justify-content: center;
+}

@@ -1,0 +1,16 @@
+header {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    background-color: gold;
+}
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-header h1.logo {
+    font-family: euro;
+    font-size:2rem;
+}

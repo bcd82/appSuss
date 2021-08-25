@@ -7,7 +7,7 @@ const { Route, Switch } = ReactRouterDOM;
 // import { About } from "./js/pages/AppAbout.jsx";
 // import { AppFooter } from "./js/cmps/AppFooter.jsx";
 import { AppHeader } from "./js/cmps/AppHeader.jsx";
-// import { Home } from "./js/pages/AppHome.jsx";
+import { AppHome } from "./js/pages/AppHome.jsx";
 
 export function App() {
   return (
@@ -28,7 +28,7 @@ export function App() {
             {/* <Route path="/mail/:mailId" component={MailDetails} /> */}
             {/* <Route path="/mail" component={MailApp} /> */}
             {/* <Route path="/about" component={About} /> */}
-            {/* <Route path="/" component={Home} /> */}
+            <Route path="/" component={AppHome} />
           </Switch>
         </main>
         {/* <UserMsg /> */}
