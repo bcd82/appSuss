@@ -10,6 +10,7 @@
 .mail-preview img { 
     padding:10px 10px;
     width:4%;
+    cursor: pointer;
 }
 .mail-preview img.not-starred { 
     filter:saturate(0)

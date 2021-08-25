@@ -3,6 +3,7 @@ import { MailMenu } from "../cmps/MailMenu.jsx";
 import { MailAdd } from "./MailAdd.jsx";
 import { MailDetails } from "./MailDetails.jsx";
 import { MailList } from "../cmps/MailList.jsx";
+import { MailSearch } from "../cmps/MailSearch.jsx";
 
 const { Link, NavLink, Route, Switch } = ReactRouterDOM;
 
@@ -13,14 +14,26 @@ export class MailApp extends React.Component {
   };
 
   componentDidMount() {
-    mailService.getMail().then((mails) => this.setState({ mails }));
+    this.loadMails();
+  }
+
+  loadMails() {
+    mailService.getMails().then((mails) => this.setState({ mails }));
+  }
+
+  onToggleStar = (mailId) => {
+    console.log(mailId);
+    mailService.toggleStar(mailId)
+    .then(this.loadMails())
   }
 
   render() {
     const { mails, filterBy } = this.state;
     return (
       <section className="mail-app main-layout">
-        <div className="search-box">Search box</div>
+        <div className="search-box">
+          <MailSearch />
+        </div>
         <section className="side-menu">
           <MailMenu />
           <NavLink to="/mail/add" exact>
@@ -38,7 +51,7 @@ export class MailApp extends React.Component {
             <Route path="/mail/add" component={MailAdd} />
             <Route path="/mail/:mailId" component={MailDetails} />
             <Route path="/mail/">
-                <MailList mails={mails}/>
+              <MailList mails={mails} onToggleStar={this.onToggleStar} />
             </Route>
           </Switch>
         </section>

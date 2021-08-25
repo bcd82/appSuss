@@ -3,22 +3,14 @@ import { utilService } from '../../../services/util.service.js'
 
 
 export const mailService = {
-    getMail,
+    getMails,
+    toggleStar,
 }
-
 const DB_KEY = 'mailsDb'
 
 const loggedInUser = {
     email: 'barak.sidi@gmail.com',
     fullName: 'Barak Sidi'
-}
-
-let gMails 
-
-
-function getMail() {
-    gMails = storageService.loadFromStorage(DB_KEY) || staticMails;
-    return Promise.resolve(gMails)
 }
 const staticMails = [
     {
@@ -100,3 +92,26 @@ const staticMails = [
         from: loggedInUser.email,
     },
 ]
+
+
+
+let gMails = storageService.loadFromStorage(DB_KEY) || staticMails;
+
+
+function getMails() {
+    return Promise.resolve(gMails)
+}
+
+function _getMailById(mailId) {
+    const mail = gMails.find(mail => mail.id === mailId)
+    return Promise.resolve(mail)
+}
+
+function toggleStar(mailId) {
+    const mail = _getMailById(mailId)
+        .then((mail) => {
+            mail.isStarred = !mail.isStarred
+            return mail
+        })
+        return Promise.resolve(mail)
+}

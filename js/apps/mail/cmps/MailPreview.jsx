@@ -1,7 +1,7 @@
 import { utilService } from "../../../services/util.service.js";
 
 export function MailPreview(props) {
-  const { mail } = props;
+  const { mail , onToggleStar } = props;
   
   const getTimeToDisplay = ()=> {
       let time = new Date(mail.sentAt);
@@ -13,6 +13,7 @@ export function MailPreview(props) {
       <img
         src="../../../../assets/imgs/mail/star.png"
         className={mail.isStarred ? "starred" : "not-starred"}
+        onClick={()=>onToggleStar(mail.id)}
       />
       <p className="from">
         <strong>{mail.from}</strong>
