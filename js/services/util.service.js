@@ -2,7 +2,6 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
-    getPriceCurrency
 }
 
 function makeId(length = 6) {
@@ -32,20 +31,5 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
 
-function getPriceCurrency (book) {
-    let formattedPrice;
-    switch (book.listPrice.currencyCode) {
-        case "ILS":
-          formattedPrice = ` ${book.listPrice.amount}₪`;
-          break;
-        case "EUR":
-          formattedPrice = `€${book.listPrice.amount}`;
-          break;
-        default:
-          formattedPrice = `$${book.listPrice.amount}`;
-          break;
-      }
-      return formattedPrice
 
-}
 
