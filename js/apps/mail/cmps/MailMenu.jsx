@@ -29,7 +29,7 @@ export function MailMenu(props) {
           <p>Starred</p>
         </li>
         <li
-          onClick={() => props.setFilterBy("drafts")}
+          onClick={() => props.setFilterBy("draft")}
           className={props.filter === "drafts" ? "active" : ""}
         >
           <img src="./assets/imgs/mail/draft.png" className="menu-img" />{" "}

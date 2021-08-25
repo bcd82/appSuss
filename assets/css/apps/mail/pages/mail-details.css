@@ -1,13 +1,8 @@
-.mail-details {
-    display: flex;
-    flex-direction: column;
-    padding-top: 40px;
-}
 
 .mail-details {
     display: flex;
     flex-direction: column;
-    padding: 40px 20px;
+    padding: 0px 20px;
 }
 
 .mail-details h1 {

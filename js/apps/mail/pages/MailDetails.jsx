@@ -23,7 +23,7 @@ class _MailDetails extends React.Component {
   };
 
   render() {
-    const { onToggleStar, onToggleRead, onDeleteMail } = this.props;
+    const { onToggleStar, onToggleRead, onDeleteMail ,onAddToInbox} = this.props;
     const { mail } = this.state;
     if (!mail) return <p>Loading..</p>;
     return (
@@ -33,7 +33,14 @@ class _MailDetails extends React.Component {
           <h2>
             {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>
           </h2>
-          <button>
+          <button title="add to inbox">
+            <img
+              src="./assets/imgs/mail/add-to-inbox.png"
+              alt="trash"
+              onClick={() => onAddToInbox(mail.id)}
+            />
+          </button>
+          <button title="delete">
             <img
               src="./assets/imgs/mail/delete.png"
               alt="trash"

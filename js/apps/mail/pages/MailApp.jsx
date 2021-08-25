@@ -71,6 +71,13 @@ export class MailApp extends React.Component {
     this.props.history.push("/mail/");
   };
 
+  onAddToInbox = (mailId) =>{
+      mailService.addToInbox(mailId)
+      .then(()=>{
+          this.loadMails()
+      })
+  }
+
   render() {
     const { mails, filterBy } = this.state;
     if (!mails) return <p>Loading...</p>;
@@ -91,6 +98,7 @@ export class MailApp extends React.Component {
                 onToggleStar={this.onToggleStar}
                 onToggleRead={this.onToggleRead}
                 onDeleteMail={this.onDeleteMail}
+                onAddToInbox={this.onAddToInbox}
               />
             </Route>
             <Route path="/mail/">
