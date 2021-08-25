@@ -13,15 +13,21 @@ export class MailApp extends React.Component {
         <div>Search box</div>
         <section className="side-menu">
           <MailMenu />
-          <NavLink to="/mail/add" exact>add </NavLink>
-          <NavLink to="/mail/" exact>List </NavLink>
-          <NavLink to="/mail/234234" exact>Details </NavLink>
+          <NavLink to="/mail/add" exact>
+            add{" "}
+          </NavLink>
+          <NavLink to="/mail/" exact>
+            List{" "}
+          </NavLink>
+          <NavLink to="/mail/234234" exact>
+            Details{" "}
+          </NavLink>
         </section>
         <section className="mail-main">
-            <Switch>
-          <Route path="/mail/add"  component={MailAdd} />
-          <Route path="/mail/:mailId"  component={MailDetails} />
-          <Route path="/mail/"  component={MailList} />
+          <Switch>
+            <Route path="/mail/add" component={MailAdd} />
+            <Route path="/mail/:mailId" component={MailDetails} />
+            <Route path="/mail/" component={MailList} />
           </Switch>
         </section>
       </section>
