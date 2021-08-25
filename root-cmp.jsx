@@ -18,15 +18,16 @@ export function App() {
         </header>
         <main>
           <Switch>
-            <Route path="/keep/add" component={KeepApp} />
-            <Route path="/keep/:keepId" component={KeepApp} />
+            <Route path="/keep/add" component={KeepAdd} />
+            <Route path="/keep/:keepId" component={KeepDetails} />
             <Route path="/keep" component={KeepApp} />
             <Route path="/book/add" component={BookAdd} />
             <Route path="/book/:bookId" component={BookDetails} />
             <Route path="/book" component={BookApp} />
-            <Route path="/mail/compose" component={MailApp} />
-            <Route path="/mail/:mailId" component={MailApp} />
+            <Route path="/mail/compose" component={MailAdd} />
+            <Route path="/mail/:mailId" component={MailDetails} />
             <Route path="/mail" component={MailApp} />
+            <Route path="/about" component={About} />
             <Route path="/" component={Home} />
           </Switch>
         </main>
