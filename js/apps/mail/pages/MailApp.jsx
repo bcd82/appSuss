@@ -5,7 +5,7 @@ import { MailDetails } from "./MailDetails.jsx";
 import { MailList } from "../cmps/MailList.jsx";
 import { MailSearch } from "../cmps/MailSearch.jsx";
 
-const { Link, NavLink, Route, Switch } = ReactRouterDOM;
+const { Route, Switch } = ReactRouterDOM;
 
 export class MailApp extends React.Component {
   state = {
@@ -18,8 +18,25 @@ export class MailApp extends React.Component {
   }
 
   loadMails() {
-    mailService.getMails().then((mails) => this.setState({ mails }));
+    mailService
+      .getMails()
+      .then((mails) => {
+        let filteredMails = this.getFilteredMails(mails);
+        return filteredMails;
+      })
+      .then((mails) => this.setState({ mails }));
   }
+
+  getFilteredMails = (mails) => {
+    if (this.state.filterBy && this.state.filterBy !== "starred") {
+      return mails.filter((mail) => mail.status === this.state.filterBy);
+    } else if (this.state.filterBy === "starred") {
+      return mails.filter((mail) => mail.isStarred === true);
+    } else {
+      return mails.filter((mail) => mail.status !== "trash");
+    }
+  };
+
   getUnreadCount = () => {
     return this.state.mails.filter((mail) => !mail.isRead).length;
   };
@@ -43,7 +60,15 @@ export class MailApp extends React.Component {
   };
 
   onDeleteMail = (mailId) => {
-    mailService.deleteMail(mailId).then(() => this.loadMails());
+    mailService.deleteMail(mailId).then(() => {
+      this.loadMails();
+      this.props.history.push("/mail/");
+    });
+  };
+
+  onSetFilter = (filterBy) => {
+    this.setState({ filterBy }, this.loadMails());
+    this.props.history.push("/mail/");
   };
 
   render() {
@@ -56,7 +81,7 @@ export class MailApp extends React.Component {
           <MailSearch />
         </div>
         <section className="side-menu">
-          <MailMenu />
+          <MailMenu filter={filterBy} setFilterBy={this.onSetFilter} />
         </section>
         <section className="mail-main">
           <Switch>

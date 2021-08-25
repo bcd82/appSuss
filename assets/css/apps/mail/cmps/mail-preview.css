@@ -1,21 +1,25 @@
 .mail-preview {
     height: 50px;
     display: flex;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(255, 235, 181);
     width: 100%;
     align-items: center;
     gap: 5px;
     font-family: lato-regular;
     cursor: pointer;
     transform: scale(1);
-    transition:transform .2s;
+    background-color: transparent;
+    transition:transform .2s background-color .2s;
 }
+
 .mail-preview:hover {
-    transform: scale(1.007)
+    transform: scale(1.007);
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.209);
+    background-color:rgba(255, 249, 212, 0.664);
 }
 
 .mail-preview:first-of-type {
-    border-top: 1px solid gray;
+    border-top: 1px solid rgb(255, 235, 181);
 }
 
 .mail-preview img {
@@ -51,13 +55,13 @@
     width: 10%;
 }
 .mail-preview.read p{ 
-    font-family: lato-regular;
-    font-weight:100;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight:400;
     color:rgb(99, 99, 99);
 
 }
 .mail-preview p{ 
-    font-family: lato-bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight:800;
     color:rgb(31, 31, 31);
 
