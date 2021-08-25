@@ -11,7 +11,7 @@ export function MailPreview(props) {
   return (
     <article className={`mail-preview ${ mail.isRead && 'read' }`} onClick={()=>onClickMail(mail.id)}>
       <img
-        src="../../../../assets/imgs/mail/star.png"
+        src="./../../../assets/imgs/mail/star.png"
         className={mail.isStarred ? "starred" : "not-starred"}
         onClick={(ev)=>onToggleStar(ev,mail.id)}
       />
