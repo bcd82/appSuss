@@ -34,14 +34,14 @@ class _MailDetails extends React.Component {
             {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>{" "}
           </h2>
           <button>
-            <img src="./../../../assets/imgs/mail/delete.png" alt="trash" />{" "}
+            <img src="./assets/imgs/mail/delete.png" alt="trash" />{" "}
           </button>
           <button onClick={() => onToggleRead(mail.id)} title="mark as unread">
             mark as {mail.isRead ? "unread" : "read"}
           </button>
           <button> Reply</button>
           <img
-            src="./../../../assets/imgs/mail/star.png"
+            src="./assets/imgs/mail/star.png"
             className={mail.isStarred ? "starred" : "not-starred"}
             onClick={(ev) => onToggleStar(ev, mail.id)}
           />
