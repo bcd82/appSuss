@@ -1,0 +1,27 @@
+import { KeepList } from '../cmps/KeepList.jsx';
+import {keepService} from '../services/keep.service.js'
+export class KeepApp extends React.Component {
+  state = {
+    notes: [],
+  };
+
+  componentDidMount() {
+    this.loadNotes();
+  }
+
+  loadNotes = () => {
+    keepService.query().then((notes) => {
+      this.setState({ notes });
+    });
+  };
+
+  render() {
+    const { notes } = this.state;
+    if (!notes) return <div>Loading</div>;
+    return (
+      <section className='notes-app'>
+        <KeepList notes={notes} />
+      </section>
+    );
+  }
+}
