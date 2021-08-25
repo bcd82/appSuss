@@ -5,8 +5,9 @@ class _AppHeader extends React.Component {
     state = { 
         isMobileMenuOpen : false
     }
+    
     render() {
-    return (
+        return (
       <section className='app-header main-layout'>
         <h1 onClick={() => this.props.history.goBack()} className='logo'>
           <span>A</span>ppsus
