@@ -1,0 +1,33 @@
+.book-filter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-weight: 500;
+    gap: 10px;
+    padding: 20px 10px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.753);
+    margin-bottom: 10px;
+    box-shadow: 0 .2em 0.25em rgba(0, 0, 0, 0.329);
+}
+
+.book-filter p {
+    font-weight: 600;
+}
+
+.book-filter input {
+    width: 100%;
+    border-radius: .3em;
+    border: 1px solid rgba(128, 128, 128, 0.541);
+    padding: 10px;
+}
+
+@media screen and (min-width:800px) {
+    .book-filter {
+        flex-direction: row;
+    }
+    .book-filter input {
+        width: 20%;
+    }
+}

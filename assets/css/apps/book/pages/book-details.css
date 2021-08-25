@@ -1,0 +1,134 @@
+.book-details {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    padding: 40px;
+    border-radius: .5em;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, 0.959);
+    box-shadow: 0 .2em 1em rgba(0, 0, 0, 0.637);
+    margin-bottom: 50px;
+}
+
+.book-details .details-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.book-details .reading-type {
+    position: absolute;
+    top: 5%;
+    margin-inline-start: 5%;
+    color: white;
+    background-color: rgb(71, 74, 255);
+    padding: 5px;
+    border-radius: .25em;
+    box-shadow: 0 .1em .2em rgba(0, 0, 0, 0.637);
+}
+
+.book-details .reading-type.sale {
+    bottom: 15%;
+    top: unset;
+    color: black;
+    font-size: 2rem;
+    font-weight: lighter;
+    background-color: gold;
+}
+
+.book-details .more-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    font-size: 1rem;
+    justify-content: stretch;
+    height: 100%;
+}
+
+.book-details .title {
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.book-details .sub-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: rgb(117, 117, 117);
+}
+
+.book-details b {
+    font-weight: inherit;
+}
+
+.book-details .sub-title::first-letter {
+    text-transform: capitalize;
+}
+
+.book-details .price span.sale {
+    color: rgb(49, 39, 39);
+    padding: 2px 5px;
+    background-color: gold;
+}
+
+.book-details .categories {
+    display: flex;
+    gap: 10px;
+}
+
+.book-details .categories .category {
+    background-color: rgb(158, 158, 158);
+    color: white;
+    padding: 2px 5px;
+    border-radius: .25em;
+}
+
+.book-details .top-btns {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.book-details .top-btns a {
+    color: white;
+    text-decoration: none;
+}
+
+.green {
+    color: green;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
+
+.reviews-container {
+    border-top: 2px solid rgb(17, 107, 143);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 10px;
+}
+
+@media screen and (min-width:800px) {
+    .book-details {
+        padding: 40px;
+        gap: 30px 80px;
+    }
+    .book-details .more-details {
+        width: 30%;
+        font-size: 1.2rem;
+    }
+    .book-details .title {
+        font-size: 2.5rem;
+    }
+    .book-details .sub-title {
+        font-size: 1.5rem;
+    }
+}

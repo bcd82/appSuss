@@ -1,0 +1,64 @@
+.book-add { 
+    background-color: rgba(0, 0, 0, 0.753);
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    display:flex;
+    flex-wrap: wrap;
+    gap:10px;
+    width:95%;
+}
+.book-add h1{ 
+    font-size:1.5rem;
+}
+.book-add form {
+    width:100%;
+    display: flex;
+    gap:10px;
+}
+.book-add form input{
+    padding:10px 10px;
+
+}
+
+.book-add .search-list { 
+    width:100%;
+}
+
+.book-add .search-list ul { 
+    list-style-type: square;
+    list-style-image: url(/assets/img/book-icon.png);
+    
+}
+.book-add .search-list li { 
+    font-size:1rem;
+    margin-top:10px;
+    position:relative;
+    margin-inline-start:10px ;
+}
+.book-add .search-list li button{ 
+    background-color: rgba(255, 255, 255, 0.13);
+    border:1px solid white;
+    color:white;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size:1rem;
+    padding:2px 6px;
+    margin-inline-start: 20px;
+    cursor:pointer
+}
+
+@media screen and (min-width:800px) {
+    .book-add { 
+        padding:40px;
+        width:100%;
+
+    }
+    .book-add .search-list li { 
+        font-size:1.5rem;
+        margin-top:10px;
+    }
+    .book-add .search-list li button{ 
+        font-size:1rem;
+    }
+}

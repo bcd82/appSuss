@@ -1,0 +1,14 @@
+
+.text-box {
+    max-width: 350px;
+}
+
+.text-box::first-letter {
+    text-transform: capitalize;
+}
+
+.text-box .more-less {
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}

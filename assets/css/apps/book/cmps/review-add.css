@@ -1,0 +1,35 @@
+.add-review-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-review-box .add-review {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.add-review-box .add-review form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.add-review-box .selection {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+textarea {
+    resize: none;
+}
+
+@media screen and (min-width:800px) {
+    .add-review-box {
+        width: 20%;
+    }
+}
