@@ -1,9 +1,12 @@
 import { KeepList } from '../cmps/KeepList.jsx';
 import { keepService } from '../services/keep.service.js';
+// import { KeepAdd } from '../cmps/KeepAdd.jsx';
+import { KeepFilter } from '../cmps/KeepFilter.jsx';
 import { KeepHeader } from '../cmps/KeepHeader.jsx';
 export class KeepApp extends React.Component {
   state = {
     notes: [],
+    filterBy: null,
   };
 
   componentDidMount() {
@@ -11,9 +14,13 @@ export class KeepApp extends React.Component {
   }
 
   loadNotes = () => {
-    keepService.query().then((notes) => {
+    keepService.query(this.state.filterBy).then((notes) => {
       this.setState({ notes });
     });
+  };
+
+  onSetFilter = (filterBy) => {
+    this.setState({ filterBy }, this.loadNotes);
   };
 
   render() {
@@ -22,8 +29,11 @@ export class KeepApp extends React.Component {
     return (
       <section className='notes-header'>
         <KeepHeader />
-        <section className='notes-app'>
-          <KeepList notes={notes} />
+        <section>
+          <KeepFilter onSetFilter={this.onSetFilter} />
+          <section className='notes-app'>
+            <KeepList notes={notes} />
+          </section>
         </section>
       </section>
     );
