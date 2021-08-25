@@ -1,12 +1,12 @@
 import { MailPreview } from "../cmps/MailPreview.jsx";
 
-export function MailList({ mails,onToggleStar }) {
+export function MailList({ mails,onToggleStar, onClickMail }) {
   return (
     <div>
       {console.log(mails)}
 
       {mails && mails.map((mail, idx) => 
-      <MailPreview mail={mail} key={idx} onToggleStar={onToggleStar}/>
+      <MailPreview mail={mail} key={idx} onToggleStar={onToggleStar} onClickMail={onClickMail}/>
       )}
     </div>
   );

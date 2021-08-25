@@ -1,5 +1,5 @@
 
-export  class MailAdd extends React.Component {
+export  class MailCompose extends React.Component {
     render() {
         return (
             <div>

@@ -93,12 +93,10 @@ const staticMails = [
     },
 ]
 
-
-
 let gMails = storageService.loadFromStorage(DB_KEY) || staticMails;
 
-
 function getMails() {
+    _saveMails()
     return Promise.resolve(gMails)
 }
 
@@ -111,7 +109,11 @@ function toggleStar(mailId) {
     const mail = _getMailById(mailId)
         .then((mail) => {
             mail.isStarred = !mail.isStarred
-            return mail
+            _saveMails()
         })
-        return Promise.resolve(mail)
+    return Promise.resolve(mail)
+}
+
+function _saveMails() { 
+    storageService.saveToStorage(DB_KEY,gMails)
 }

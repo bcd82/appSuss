@@ -1,6 +1,6 @@
 import { mailService } from "../services/mail.service.js";
 import { MailMenu } from "../cmps/MailMenu.jsx";
-import { MailAdd } from "./MailAdd.jsx";
+import { MailCompose } from "./MailCompose.jsx";
 import { MailDetails } from "./MailDetails.jsx";
 import { MailList } from "../cmps/MailList.jsx";
 import { MailSearch } from "../cmps/MailSearch.jsx";
@@ -26,6 +26,11 @@ export class MailApp extends React.Component {
     mailService.toggleStar(mailId)
     .then(this.loadMails())
   }
+  
+  onGoToDetails =(mailId) =>{
+      console.log(mailId)
+    //   this.props.history.push(`/mail/${mailId}`)
+  }
 
   render() {
     const { mails, filterBy } = this.state;
@@ -48,10 +53,10 @@ export class MailApp extends React.Component {
         </section>
         <section className="mail-main">
           <Switch>
-            <Route path="/mail/add" component={MailAdd} />
+            <Route path="/mail/add" component={MailCompose} />
             <Route path="/mail/:mailId" component={MailDetails} />
             <Route path="/mail/">
-              <MailList mails={mails} onToggleStar={this.onToggleStar} />
+              <MailList mails={mails} onToggleStar={this.onToggleStar} onClickMail={this.onGoToDetails}/>
             </Route>
           </Switch>
         </section>
