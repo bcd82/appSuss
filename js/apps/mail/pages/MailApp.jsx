@@ -1,4 +1,5 @@
 import { mailService } from "../services/mail.service.js";
+import { eventBusService } from "../../../services/event.bus.service.js";
 import { MailMenu } from "../cmps/MailMenu.jsx";
 import { MailCompose } from "./MailCompose.jsx";
 import { MailDetails } from "./MailDetails.jsx";
@@ -77,6 +78,8 @@ export class MailApp extends React.Component {
     mailService.addToInbox(mailId).then(() => {
       this.loadMails();
     });
+    
+    eventBusService.emit('user-msg',{txt:'Message moved to inbox ',type:'success'})
   };
 
   onSendNewMail = (ev, newMail) => {
