@@ -53,17 +53,6 @@ function query(filterBy) {
 }
 
 function createNote(newNote) {
-
-  //   } else if (type === 'note-todos') {
-  //     note = {
-  //       id: utilService.makeId(),
-  //       type: 'note-todos',
-  //       info: {
-  //         label,
-  //         todos,
-  //       },
-  //     };
-  //   }
   notes.unshift(newNote);
   _saveNotesToStorage();
   return Promise.resolve()
