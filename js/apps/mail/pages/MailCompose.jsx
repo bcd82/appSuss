@@ -9,8 +9,16 @@ class _MailCompose extends React.Component {
     from: "",
   };
 
+  id = "";
+
   componentDidMount = () => {
     mailService.getUser().then((user) => this.setState({ from: user.email }));
+    const urlSrcPrm = new URLSearchParams(this.props.location.search);
+    if (urlSrcPrm.has("subject"))
+      this.setState({ subject: urlSrcPrm.get("subject") });
+    if (urlSrcPrm.has("body")) this.setState({ body: urlSrcPrm.get("body") });
+    if (urlSrcPrm.has("to")) this.setState({ to: urlSrcPrm.get("to") });
+    if (urlSrcPrm.has("id")) this.id = urlSrcPrm.get("id");
   };
 
   handleChange = (ev) => {
@@ -18,17 +26,16 @@ class _MailCompose extends React.Component {
     const value =
       ev.target.type === "number" ? +ev.target.value : ev.target.value;
     this.setState({ [field]: value });
-    console.log(this.state.from);
   };
 
   render() {
-    const { onSendNewMail } = this.props;
+    const { onSendNewMail, onSaveDraft } = this.props;
     const { subject, to, body, from } = this.state;
     return (
       <section className="mail-compose">
         <form
           className="compose-form"
-          onSubmit={(ev) => onSendNewMail(ev, this.state)}
+        
         >
           <input disabled placeholder={`From: ${from}`}></input>
           <input
@@ -36,7 +43,7 @@ class _MailCompose extends React.Component {
             type="text"
             value={subject}
             onChange={this.handleChange}
-            placeholder='Subject'
+            placeholder="Subject"
             required
             autoFocus
           />
@@ -56,7 +63,10 @@ class _MailCompose extends React.Component {
             onChange={this.handleChange}
             required
           />
-          <button>Send</button>
+          <div className="">
+            <button   onClick={(ev) => onSendNewMail(ev, this.state, this.id)}>Send</button>
+            <button onClick={(ev)=>onSaveDraft(ev,this.state,this.id)}>Save Draft</button>
+          </div>
         </form>
       </section>
     );

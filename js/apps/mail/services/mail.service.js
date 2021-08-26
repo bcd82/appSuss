@@ -11,7 +11,9 @@ export const mailService = {
     deleteMail,
     addToInbox,
     getUser,
-    createMail
+    createMail,
+    moveDraftToSent,
+    saveDraft
 }
 const DB_KEY = 'mailsDb'
 
@@ -93,7 +95,7 @@ const staticMails = [
         body: utilService.makeLorem(22),
         isRead: false,
         sentAt: null,
-        to: 'Whomever It May Be',
+        to: 'someone@something.smt',
         status: 'draft',
         isStarred: false,
         from: loggedInUser.email,
@@ -182,5 +184,40 @@ function createMail({ subject, to, body, from }) {
         sentAt: Date.now(),
         status: 'sent',
     })
+    return Promise.resolve()
+}
+
+function moveDraftToSent(mailId) { 
+    getMailById(mailId)
+    .then(mail => mail.status ='sent')
+    return Promise.resolve()
+}
+
+function saveDraft(draft,mailId) { 
+    if(mailId){
+        getMailById(mailId)
+        .then(mail => {
+            mail.subject = draft.subject
+            mail.body = draft.body
+            mail.to = draft.to
+            mail.sentAt = Date.now()
+            eventBusService.emit('user-msg',{ txt: 'Draft Updated', type: 'success' })
+        })
+
+    } else {
+        gMails.unshift({
+            id: utilService.makeId(),
+            from:loggedInUser.email,
+            subject:draft.subject,
+            to:draft.to,
+            body:draft.body,
+            isRead: false,
+            isStarred: false,
+            sentAt: Date.now(),
+            status: 'draft',
+        })
+        eventBusService.emit('user-msg', { txt: 'Draft Saved', type: 'success' })
+
+    }
     return Promise.resolve()
 }

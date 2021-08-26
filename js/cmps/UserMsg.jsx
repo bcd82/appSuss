@@ -33,7 +33,6 @@ export class UserMsg extends React.Component {
   render() {
     const { msg } = this.state;
     if (!msg) return <React.Fragment></React.Fragment>;
-    console.log(msg);
     return (
       <section className="user-msg" className={`user-msg ${msg.type}`}>
         <img src={this.getDisplayImg()} />

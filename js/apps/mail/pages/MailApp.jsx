@@ -13,6 +13,7 @@ export class MailApp extends React.Component {
     mails: null,
     filterBy: null,
     searchBy: "",
+    sortBy: "",
   };
 
   componentDidMount() {
@@ -56,7 +57,6 @@ export class MailApp extends React.Component {
 
   handleSearch = (searchBy) => {
     this.setState({ searchBy }, this.loadMails());
-    console.log(searchBy);
   };
 
   filterSearch = (mails) => {
@@ -86,8 +86,8 @@ export class MailApp extends React.Component {
     });
   };
 
-  onToggleRead = (mailId, isOnOpen,ev) => {
-    if(ev) ev.stopPropagation()
+  onToggleRead = (mailId, isOnOpen, ev) => {
+    if (ev) ev.stopPropagation();
     mailService.toggleRead(mailId, isOnOpen).then(() => {
       this.loadMails();
     });
@@ -117,17 +117,36 @@ export class MailApp extends React.Component {
     });
   };
 
-  onSendNewMail = (ev, newMail) => {
+  onSendNewMail = (ev, newMail, mailId) => {
     ev.preventDefault();
-    mailService.createMail(newMail).then(() => {
-      this.loadMails();
-      eventBusService.emit("user-msg", { txt: "Mail Sent", type: "success" });
-      this.props.history.push("/mail/");
-    });
+    if (mailId) {
+      mailService.moveDraftToSent(mailId).then(()=>this.loadMails());
+    } else {
+      mailService.createMail(newMail).then(() => {
+        this.loadMails();
+      });
+    }
+    eventBusService.emit("user-msg", { txt: "Mail Sent", type: "success" });
+    this.props.history.push("/mail/");
   };
 
+  onEditDraft = (mail, ev) => {
+    if (ev) ev.stopPropagation();
+    this.props.history.push(
+      `/mail/compose?subject=${mail.subject}&body=${mail.body}&id=${mail.id}&to=${mail.to}`
+    );
+  };
+
+  onSaveDraft = (ev,draft,id) => {
+    ev.preventDefault()
+    mailService.saveDraft(draft,id)
+    .then(()=> this.loadMails())
+  };
+
+  onSortMail = (sortBy) => {};
+
   render() {
-    const { mails, filterBy } = this.state;
+    const { mails, filterBy, sortBy } = this.state;
     if (!mails) return <p>Loading...</p>;
     return (
       <section className="mail-app main-layout">
@@ -144,10 +163,11 @@ export class MailApp extends React.Component {
         <section className="mail-main">
           <Switch>
             <Route path="/mail/compose">
-              <MailCompose onSendNewMail={this.onSendNewMail} />
+              <MailCompose onSendNewMail={this.onSendNewMail} onSaveDraft={this.onSaveDraft}/>
             </Route>
             <Route path="/mail/:mailId">
               <MailDetails
+                onEditDraft={this.onEditDraft}
                 onToggleStar={this.onToggleStar}
                 onToggleRead={this.onToggleRead}
                 onDeleteMail={this.onDeleteMail}
@@ -157,10 +177,11 @@ export class MailApp extends React.Component {
             <Route path="/mail/">
               <MailList
                 mails={mails}
+                onEditDraft={this.onEditDraft}
                 onToggleStar={this.onToggleStar}
                 onClickMail={this.onGoToDetails}
                 onDeleteMail={this.onDeleteMail}
-                onToggleRead ={this.onToggleRead}
+                onToggleRead={this.onToggleRead}
               />
             </Route>
           </Switch>

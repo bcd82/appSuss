@@ -6,6 +6,7 @@ export function MailList({
   onClickMail,
   onDeleteMail,
   onToggleRead,
+  onEditDraft
 }) {
   return (
     <div>
@@ -18,6 +19,7 @@ export function MailList({
             onClickMail={onClickMail}
             onDeleteMail={onDeleteMail}
             onToggleRead={onToggleRead}
+            onEditDraft={onEditDraft}
           />
         ))}
     </div>
