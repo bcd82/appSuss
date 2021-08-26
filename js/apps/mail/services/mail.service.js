@@ -147,7 +147,6 @@ function deleteMail(mailId) {
                 getMailIdxById(mailId)
                     .then(mailIdx => {
                         gMails.splice(mailIdx, 1)
-                        console.log('deleted?')
                         eventBusService.emit('user-msg', { txt: 'Mail Permenantly Deleted', type: 'delete' })
                     })
             } else {

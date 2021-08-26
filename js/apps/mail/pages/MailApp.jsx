@@ -4,7 +4,7 @@ import { MailMenu } from "../cmps/MailMenu.jsx";
 import { MailCompose } from "./MailCompose.jsx";
 import { MailDetails } from "./MailDetails.jsx";
 import { MailList } from "../cmps/MailList.jsx";
-import { MailSearch } from "../cmps/MailSearch.jsx";
+import { MailTopFilters } from "../cmps/MailTopFilters.jsx";
 
 const { Route, Switch } = ReactRouterDOM;
 
@@ -13,7 +13,7 @@ export class MailApp extends React.Component {
     mails: null,
     filterBy: null,
     searchBy: "",
-    sortBy: "",
+    sortBy: "date",
   };
 
   componentDidMount() {
@@ -23,12 +23,9 @@ export class MailApp extends React.Component {
   loadMails() {
     mailService
       .getMails()
-      .then((mails) => {
-        return this.getFilteredMails(mails);
-      })
-      .then((mails) => {
-        return this.filterSearch(mails);
-      })
+      .then((mails) => this.getFilteredMails(mails))
+      .then((mails) => this.filterSearch(mails))
+      .then((mails) => this.sortMail(mails))
       .then((mails) => this.setState({ mails }));
   }
 
@@ -55,9 +52,8 @@ export class MailApp extends React.Component {
     }
   };
 
-  handleSearch = (searchBy) => {
-    this.setState({ searchBy }, this.loadMails());
-  };
+  handleSearch = (searchBy) => this.setState({ searchBy }, this.loadMails());
+  
 
   filterSearch = (mails) => {
     const searchBy = this.state.searchBy;
@@ -71,9 +67,8 @@ export class MailApp extends React.Component {
     } else return mails;
   };
 
-  getUnreadCount = () => {
-    return this.state.mails.filter((mail) => !mail.isRead).length;
-  };
+  getUnreadCount = () =>  this.state.mails.filter((mail) => !mail.isRead).length;
+;
 
   onToggleStar = (ev, mailId) => {
     ev.stopPropagation();
@@ -120,7 +115,7 @@ export class MailApp extends React.Component {
   onSendNewMail = (ev, newMail, mailId) => {
     ev.preventDefault();
     if (mailId) {
-      mailService.moveDraftToSent(mailId).then(()=>this.loadMails());
+      mailService.moveDraftToSent(mailId).then(() => this.loadMails());
     } else {
       mailService.createMail(newMail).then(() => {
         this.loadMails();
@@ -137,13 +132,30 @@ export class MailApp extends React.Component {
     );
   };
 
-  onSaveDraft = (ev,draft,id) => {
-    ev.preventDefault()
-    mailService.saveDraft(draft,id)
-    .then(()=> this.loadMails())
+  onSaveDraft = (ev, draft, id) => {
+    ev.preventDefault();
+    mailService.saveDraft(draft, id).then(() => this.loadMails());
   };
 
-  onSortMail = (sortBy) => {};
+  onSortMail = (ev) => this.setState({ sortBy: ev.target.value }, this.loadMails());
+  
+  sortMail = (mails) => {
+    if (this.state.sortBy == "date")
+      return mails.sort((a, b) => b.sentAt - a.sentAt);
+    if (this.state.sortBy == "subject")
+      return mails.sort((a, b) => {
+        if (a.subject < b.subject) return -1;
+        if (a.subject > b.subject) return 1;
+        return 0;
+      });
+    if (this.state.sortBy == "mail")
+      return mails.sort((a, b) => {
+        if (a.from < b.from) return -1;
+        if (a.from > b.from) return 1;
+        return 0;
+      });
+    return mails;
+  };
 
   render() {
     const { mails, filterBy, sortBy } = this.state;
@@ -151,7 +163,11 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app main-layout">
         <div className="search-box">
-          <MailSearch handleSearch={this.handleSearch} />
+          <MailTopFilters
+            handleSearch={this.handleSearch}
+            sortVal={sortBy}
+            onSortMail={this.onSortMail}
+          />
           <p className="unread-count">
             {this.getUnreadCount()} unread emails in{" "}
             {filterBy ? filterBy : "inbox"}
@@ -163,7 +179,10 @@ export class MailApp extends React.Component {
         <section className="mail-main">
           <Switch>
             <Route path="/mail/compose">
-              <MailCompose onSendNewMail={this.onSendNewMail} onSaveDraft={this.onSaveDraft}/>
+              <MailCompose
+                onSendNewMail={this.onSendNewMail}
+                onSaveDraft={this.onSaveDraft}
+              />
             </Route>
             <Route path="/mail/:mailId">
               <MailDetails
