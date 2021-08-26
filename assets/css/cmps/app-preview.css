@@ -1,17 +1,28 @@
+
 .app-preview { 
     width:340px;
-    border:1px solid rgba(128, 128, 128, 0.342);
+    /* border:1px solid rgba(128, 128, 128, 0.212); */
     display:flex;
     justify-content: center;
     align-items: center;
     position:relative;
     flex-direction: column;
-    padding:20px 10px
+    padding:20px 10px;
+    box-shadow: 0 0 7px 0px rgba(0, 0, 0, 0.171);
+    background-color:rgba(255, 193, 21, 0.055);
 }
+
 .app-preview h2{    
-    font-size:2rem
+    font-size:2rem;
+    margin-bottom:10px;
+}
+.app-preview p{    
+    margin-bottom:40px;
 }
 
 .app-preview img {
     width:75%;
+    margin-bottom:40px;
+    mix-blend-mode:multiply;
+
 }

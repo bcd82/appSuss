@@ -5,10 +5,17 @@
     flex-direction: column;
 }
 .app-home h1{
-    padding:40px 0;
+    margin-top:40px;
     font-size:3rem;
+}
+
+.app-home > h2{
+    margin-bottom:40px;
+    color:rgb(129, 129, 129);
+    font-weight:200;
 }
 .app-home .app-row { 
     display: flex;
     gap:20px;
+    
 }

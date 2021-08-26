@@ -9,7 +9,7 @@ export  function AppHome() {
             <div className="app-row">
                 <AppPreview title='Keep' txt="Keep Notes of All of Your Favourite Stuff" imgUrl="./assets/imgs/cmps/sticky-notes.jpg"/>
                 <AppPreview title='Mail' txt="Keep in Touch With Friends and Enemies" imgUrl="./assets/imgs/cmps/mailbox.jpg"/>
-                <AppPreview title='Book' txt="" imgUrl="./assets/icons/home.png"/>
+                <AppPreview title='Book' txt="Need a Book? We've Got You Covered!" imgUrl="./assets/imgs/cmps/books.png"/>
             </div>
         </section>
     )
