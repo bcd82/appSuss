@@ -4,7 +4,7 @@ export function MailMenu(props) {
   return (
     <nav className="mail-menu">
       <NavLink to="/mail/compose" exact>
-        <h1 className="compose-btn">Compose</h1>
+        <button className="compose-btn">Compose</button>
       </NavLink>
       <ul>
         <li
