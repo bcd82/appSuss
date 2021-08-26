@@ -25,6 +25,9 @@ export class MailApp extends React.Component {
       .then((mails) => {
         return this.getFilteredMails(mails);
       })
+      .then((mails) => {
+        return this.filterSearch(mails);
+      })
       .then((mails) => this.setState({ mails }));
   }
 
@@ -47,18 +50,15 @@ export class MailApp extends React.Component {
   };
 
   handleSearch = (searchBy) => {
-    if (searchBy) {
-      this.setState({ searchBy }, this.loadMails());
-      console.log(searchBy);
-    }
+    this.setState({ searchBy }, this.loadMails());
+    console.log(searchBy);
   };
 
   filterSearch = (mails) => {
     const searchBy = this.state.searchBy;
     if (searchBy) {
       return mails.filter(
-        (mail) =>
-          mail.subject.search(searchBy) > 0 || mail.body.search(searchBy) > 0
+        (mail) => mail.subject.toLowerCase().includes(searchBy.toLowerCase())  || mail.body.toLowerCase().includes(searchBy.toLowerCase())
       );
     } else return mails;
   };

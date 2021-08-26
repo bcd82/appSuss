@@ -140,28 +140,28 @@ function toggleRead(mailId, isOnOpen = false) {
 
 function deleteMail(mailId) {
     getMailById(mailId)
-    .then(mail => {
-        if (mail.status === 'trash') {
-            getMailIdxById(mailId)
-            .then(mailIdx => {
-                gMails.splice(mailIdx, 1)
-                console.log('deleted?')
-                eventBusService.emit('user-msg',{txt:'Mail Permenantly Deleted',type:'delete'})
-            })
-        } else {
-            mail.status = 'trash'
-            eventBusService.emit('user-msg',{txt:'Mail Moved To Trash',type:'delete'})
+        .then(mail => {
+            if (mail.status === 'trash') {
+                getMailIdxById(mailId)
+                    .then(mailIdx => {
+                        gMails.splice(mailIdx, 1)
+                        console.log('deleted?')
+                        eventBusService.emit('user-msg', { txt: 'Mail Permenantly Deleted', type: 'delete' })
+                    })
+            } else {
+                mail.status = 'trash'
+                eventBusService.emit('user-msg', { txt: 'Mail Moved To Trash', type: 'delete' })
 
+            }
         }
-    }
-    )
+        )
     _saveMails()
     return Promise.resolve()
 }
 
-function addToInbox(mailId) { 
+function addToInbox(mailId) {
     getMailById(mailId)
-    .then(mail => mail.status='inbox')
+        .then(mail => mail.status = 'inbox')
     _saveMails()
     return Promise.resolve()
 }
@@ -170,17 +170,17 @@ function _saveMails() {
     storageService.saveToStorage(DB_KEY, gMails)
 }
 
-function createMail({subject,to,body,from}){
+function createMail({ subject, to, body, from }) {
     gMails.unshift({
-        id:utilService.makeId(),
+        id: utilService.makeId(),
         from,
         subject,
         to,
         body,
-        isRead:true,
-        isStarred:false,
+        isRead: true,
+        isStarred: false,
         sentAt: Date.now(),
-        status:'sent',
+        status: 'sent',
     })
     return Promise.resolve()
 }

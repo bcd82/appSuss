@@ -4,7 +4,6 @@ export  class MailSearch extends React.Component {
     state = {
         query:''
     }
-
     handleInput = ({target}) =>{
         this.setState({query:target.value},()=>this.props.handleSearch(target.value))
     }
