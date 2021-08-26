@@ -106,7 +106,7 @@ export class MailApp extends React.Component {
     mailService.addToInbox(mailId).then(() => {
       this.loadMails();
       eventBusService.emit("user-msg", {
-        txt: "Message moved to inbox ",
+        txt: "Mail moved to inbox ",
         type: "success",
       });
     });

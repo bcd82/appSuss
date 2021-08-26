@@ -1,9 +1,15 @@
+const { Link } = ReactRouterDOM;
 
 export function AppPreview(props) {
-    return (
-        <div className="app-preview">
-           <h2>{props.txt}</h2>
-           <img src={props.imgUrl} />
-        </div>
-    )
+  const { title, txt, imgUrl } = props;
+  return (
+    <Link to={`/${title.toLowerCase()}/`}>
+      <div className="app-preview">
+        <h2>{title}</h2>
+        <p>{txt}</p>
+        <img src={imgUrl} className="preview-img" />
+        To {title} App
+      </div>
+    </Link>
+  );
 }

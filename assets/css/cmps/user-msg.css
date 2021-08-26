@@ -1,64 +1,89 @@
-.user-msg { 
-    position:fixed;
-    bottom:20px;
-    left:20px;
-    background-color:rgb(50, 50, 190);
-    color:white;
+.user-msg {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgb(50, 50, 190);
     display: flex;
-    padding:20px;
-    gap:5px;
+    padding: 20px;
+    gap: 5px;
     justify-content: space-between;
     align-items: center;
     border-radius: .5em;
-    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863),
-     0 0 0px 10px rgba(50, 50, 190, 0.705);
-     font-size:.9rem;
-     max-width:90%;
-     z-index:5;
+    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863), 0 0 0px 10px rgba(50, 50, 190, 0.705);
+    font-size: .9rem;
+    max-width: 90%;
+    z-index: 5;
 }
-.user-msg.success,.user-msg.delete { 
+
+.user-msg h1 {
+    color: white !important;
+}
+
+.user-msg.success, .user-msg.delete {
     background-color: rgb(44, 167, 44);
-    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863),
-     0 0 0px 10px rgba(44, 167, 44, 0.705);
-} 
-.user-msg.danger { 
+    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863), 0 0 0px 10px rgba(44, 167, 44, 0.705);
+}
+
+.user-msg.danger {
     background-color: rgb(182, 42, 42);
-    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863),
-     0 0 0px 10px rgba(182, 42, 42, 0.705);
-} 
-
-.user-msg a { 
-    color :white;
+    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863), 0 0 0px 10px rgba(182, 42, 42, 0.705);
 }
-.user-msg img { 
-    height:50px;
-    filter:invert();
+
+.user-msg img {
+    height: 50px;
+    filter: invert();
     mix-blend-mode: color-dodge;
-
 }
-.user-msg button{ 
+
+.user-msg button {
     background-color: rgba(255, 255, 255, 0.329);
-    color:white;
-    border:1px solid rgba(0, 0, 0, 0.603);
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.603);
     border-radius: .5em;
-    padding:5px 8px;
+    padding: 5px 8px;
     align-self: flex-start;
 }
+
+.swing-in-top-fwd {
+    animation: swing-in-top-fwd 4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+@keyframes swing-in-top-fwd {
+    0% {
+        transform: rotateX(-100deg);
+        transform-origin: top;
+        opacity: 0;
+    }
+    20% {
+        transform: rotateX(0deg);
+        transform-origin: top;
+        opacity: 1;
+    }
+    80% {
+        transform: rotateX(0deg);
+        transform-origin: top;
+        opacity: 1;
+    }
+    100% {
+        transform: rotateX(-100deg);
+        transform-origin: top;
+        opacity: 0;
+    }
+}
+
 @media screen and (min-width:800px) {
-    .user-msg { 
-        position:fixed;
-        bottom:20px;
-        left:20px;
-        background-color:rgb(50, 50, 190);
-        color:white;
+    .user-msg {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background-color: rgb(50, 50, 190);
+        color: white;
         display: flex;
-        padding:20px;
-        gap:20px;
+        padding: 20px;
+        gap: 20px;
         justify-content: space-between;
         border-radius: .5em;
-        box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863),
-         0 0 0px 10px rgba(50, 50, 190, 0.705);
-         max-width:100%;
-
+        box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863), 0 0 0px 10px rgba(50, 50, 190, 0.705);
+        max-width: 100%;
     }
 }

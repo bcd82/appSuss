@@ -34,7 +34,7 @@ export class UserMsg extends React.Component {
     const { msg } = this.state;
     if (!msg) return <React.Fragment></React.Fragment>;
     return (
-      <section className="user-msg" className={`user-msg ${msg.type}`}>
+      <section className="user-msg" className={`user-msg ${msg.type} swing-in-top-fwd`}>
         <img src={this.getDisplayImg()} />
         <h1>{msg.txt}</h1>
         <button onClick={this.onCloseMsg}>X</button>
