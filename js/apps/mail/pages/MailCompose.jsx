@@ -6,36 +6,37 @@ class _MailCompose extends React.Component {
     subject: "",
     to: "",
     body: "",
-    from: ''
- 
+    from: "",
   };
 
-  componentDidMount = ()=>{
-    mailService.getUser()
-    .then(user => this.setState({from:user.email}))
-  }
+  componentDidMount = () => {
+    mailService.getUser().then((user) => this.setState({ from: user.email }));
+  };
 
   handleChange = (ev) => {
     const field = ev.target.name;
     const value =
       ev.target.type === "number" ? +ev.target.value : ev.target.value;
-    this.setState({[field]: value })
-    console.log(this.state.from)
+    this.setState({ [field]: value });
+    console.log(this.state.from);
   };
 
   render() {
     const { onSendNewMail } = this.props;
-    const { subject,to,body,from } = this.state;
+    const { subject, to, body, from } = this.state;
     return (
       <section className="mail-compose">
-        <h1>Hi from Add Mail Page</h1>
-        <form className="compose-form" onSubmit={(ev) => onSendNewMail(ev,this.state)}>
-            <input disabled placeholder={`from: ${from}`}></input>
+        <form
+          className="compose-form"
+          onSubmit={(ev) => onSendNewMail(ev, this.state)}
+        >
+          <input disabled placeholder={`From: ${from}`}></input>
           <input
             name="subject"
             type="text"
             value={subject}
             onChange={this.handleChange}
+            placeholder='To:'
             required
           />
           <input
@@ -43,16 +44,18 @@ class _MailCompose extends React.Component {
             type="email"
             value={to}
             onChange={this.handleChange}
+            placeholder="email@email.com"
             required
           />
           <textarea
             name="body"
             type="text"
             value={body}
+            placeholder="Your message..."
             onChange={this.handleChange}
             required
           />
-          <button >Send</button>
+          <button>Send</button>
         </form>
       </section>
     );
