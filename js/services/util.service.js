@@ -85,7 +85,11 @@ function getTime(timestamp) {
   return Promise.resolve(time);
 }
 
-function getTimeToDisplay  (timestamp) {
+function getTimeToDisplay(timestamp) {
   let time = new Date(timestamp);
-  return (time.getHours() + ':' +(time.getMinutes() < 10 ? '0'+ time.getMinutes() :time.getMinutes() ) + ' ' + time.getFullYear())
-} 
+  let timeNow = new Date(Date.now());
+  if (timeNow.getDate === time.getDate()) {
+    return (`today at${time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())} `)
+  }
+  return (time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()) + ' ' + time.getFullYear())
+}
