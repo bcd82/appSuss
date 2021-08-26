@@ -22,6 +22,13 @@ export function MailMenu(props) {
           <p>Sent</p>
         </li>
         <li
+          onClick={() => props.setFilterBy("unread")}
+          className={props.filter === "unread" ? "active" : ""}
+        >
+          <img src="./assets/imgs/mail/unread.png" className="menu-img" />
+          <p>Unread</p>
+        </li>
+        <li
           onClick={() => props.setFilterBy("starred")}
           className={props.filter === "starred" ? "active" : ""}
         >
