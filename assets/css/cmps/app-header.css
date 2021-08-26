@@ -35,13 +35,13 @@ header {
         transform-origin: 50% 50%;
     }
     15% {
-        transform: translateX(-10px) rotate(-6deg);
+        transform: translateX(-5px) rotate(-6deg);
     }
     30% {
-        transform: translateX(10px) rotate(6deg);
+        transform: translateX(5px) rotate(6deg);
     }
     45% {
-        transform: translateX(-10px) rotate(-3.6deg);
+        transform: translateX(-5px) rotate(-3.6deg);
     }
     60% {
         transform: translateX(5px) rotate(2.4deg);
