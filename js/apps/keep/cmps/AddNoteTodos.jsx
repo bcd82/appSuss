@@ -2,12 +2,13 @@ const { withRouter } = ReactRouterDOM;
 
 import { keepService } from '../services/keep.service.js';
 import { utilService } from '../../../services/util.service.js';
-
+import { ColorInput } from './ColorInput.jsx';
 class _AddNoteTodos extends React.Component {
   state = {
     note: {
       label: '',
       txt: '',
+      backgroundColor: '',
     },
     todos: [],
   };
@@ -20,14 +21,21 @@ class _AddNoteTodos extends React.Component {
     }));
   };
 
+  colorPicker = (color) => {
+    this.setState((prevState) => ({
+      note: { ...prevState.note, ['backgroundColor']: color },
+    }));
+  };
+
   onAddNoteTodos = (ev) => {
     ev.preventDefault();
     const { todos } = this.state;
-    const { label } = this.state.note;
+    const { label, backgroundColor } = this.state.note;
     if (!todos.length) return;
     const newNote = {
       id: utilService.makeId(),
       type: 'note-todos',
+      backgroundColor: backgroundColor,
       info: {
         label: label,
         todos: todos,
@@ -81,6 +89,9 @@ class _AddNoteTodos extends React.Component {
             />
             <button>√</button>
           </form>
+        </div>
+        <div className='colors-picker'>
+          <ColorInput onChangeStyle={this.colorPicker} />
         </div>
       </section>
     );

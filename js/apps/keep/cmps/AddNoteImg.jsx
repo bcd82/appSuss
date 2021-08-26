@@ -16,13 +16,12 @@ class _AddNoteImg extends React.Component {
   handleChange = ({ target }) => {
     const field = target.name;
     let value = target.value;
-
-    console.log(`value`, value);
     this.setState((prevState) => ({
       note: { ...prevState.note, [field]: value },
     }));
   };
-  onChangeStyle = (color) => {
+  
+  colorPicker = (color) => {
     this.setState((prevState) => ({
       note: { ...prevState.note, ['backgroundColor']: color },
     }));
@@ -71,7 +70,7 @@ class _AddNoteImg extends React.Component {
             onChange={this.handleChange}
           />
           <div className='colors-picker'>
-            <ColorInput onChangeStyle={this.onChangeStyle} />
+            <ColorInput onChangeStyle={this.colorPicker} />
           </div>
 
           <button>Add</button>

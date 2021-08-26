@@ -2,12 +2,13 @@ const { withRouter } = ReactRouterDOM;
 
 import { keepService } from '../services/keep.service.js';
 import { utilService } from '../../../services/util.service.js';
-
+import { ColorInput } from './ColorInput.jsx';
 class _AddNoteTxt extends React.Component {
   state = {
     note: {
       isPinned: false,
       txt: '',
+      backgroundColor:''
     },
   };
 
@@ -22,12 +23,13 @@ class _AddNoteTxt extends React.Component {
 
   onAddNote = (ev) => {
     ev.preventDefault();
-    const { isPinned, txt } = this.state.note;
+    const { isPinned, txt,backgroundColor } = this.state.note;
     if (!txt.length) return;
     const newNote = {
       id: utilService.makeId(),
       type: 'note-txt',
       isPinned: isPinned,
+      backgroundColor:backgroundColor,
       info: {
         txt: txt,
       },
@@ -35,6 +37,12 @@ class _AddNoteTxt extends React.Component {
     keepService.createNote(newNote).then(() => {
       this.props.history.push('/keep');
     });
+  };
+
+  colorPicker = (color) => {
+    this.setState((prevState) => ({
+      note: { ...prevState.note, ['backgroundColor']: color },
+    }));
   };
 
   render() {
@@ -60,6 +68,9 @@ class _AddNoteTxt extends React.Component {
 
           <button>Add</button>
         </form>
+        <div className='colors-picker'>
+            <ColorInput onChangeStyle={this.colorPicker} />
+          </div>
       </section>
     );
   }

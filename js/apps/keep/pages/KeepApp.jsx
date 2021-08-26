@@ -25,6 +25,23 @@ class _KeepApp extends React.Component {
     this.setState({ filterBy }, this.loadNotes);
   };
 
+  onDeleteNote = (note) => {
+    console.log(`note`, note);
+    keepService
+      .deleteNote(note.id)
+      .then(() => this.props.history.push(`/keep`));
+  };
+  onTogglePin = (note) => {
+    keepService.togglePin(note).then((notes) => {
+      this.setState({ notes }, this.loadNotes);
+    });
+  };
+  onChangeStyleNote=(note,color)=>{
+    keepService.changeStyleNote(note,color).then((notes) => {
+      this.setState({ notes }, this.loadNotes);
+    });
+  }
+
   render() {
     const { notes } = this.state;
     if (!notes) return <div>Loading</div>;
@@ -34,7 +51,12 @@ class _KeepApp extends React.Component {
         <section>
           <KeepFilter onSetFilter={this.onSetFilter} />
           <section className='notes-app'>
-            <KeepList notes={notes} />
+            <KeepList
+              onTogglePin={this.onTogglePin}
+              onDeleteNote={this.onDeleteNote}
+              onChangeStyleNote={this.onChangeStyleNote}
+              notes={notes}
+            />
           </section>
         </section>
       </section>

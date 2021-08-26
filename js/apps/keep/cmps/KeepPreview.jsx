@@ -16,15 +16,18 @@ export class KeepPreview extends React.Component {
     this.setState({ type });
   }
 
+
+
   render() {
+    const {onDeleteNote,onTogglePin,onChangeStyleNote} = this.props
     const { note, type } = this.state;
     if (!note) return <div>Loading</div>;
     return (
       <article className='note-preview'>
-        {type ==='note-txt' && <NoteTxt key={note.id} note={note} />}
-        {type ==='note-img' && <NoteImg note={note}/>}
+        {type ==='note-txt' && <NoteTxt onChangeStyleNote={onChangeStyleNote} onTogglePin={onTogglePin} onDeleteNote={onDeleteNote} key={note.id} note={note} />}
+        {type ==='note-img' && <NoteImg onChangeStyleNote={onChangeStyleNote} onTogglePin={onTogglePin} onDeleteNote={onDeleteNote} note={note}/>}
         {/* {type ==='note-video' && <NoteVideo note={note}/>} */}
-        {type === 'note-todos' && <NoteTodos key={note.id} note={note} />}
+        {type === 'note-todos' && <NoteTodos onChangeStyleNote={onChangeStyleNote} onTogglePin={onTogglePin} onDeleteNote={onDeleteNote} key={note.id} note={note} />}
       </article>
     );
   }

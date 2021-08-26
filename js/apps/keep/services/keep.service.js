@@ -5,6 +5,9 @@ export const keepService = {
   query,
   createNote,
   getNoteById,
+  deleteNote,
+  togglePin,
+  changeStyleNote,
 };
 
 const KEY = 'notesDB';
@@ -22,6 +25,7 @@ const notes = storageService.loadFromStorage(KEY)
       {
         id: 'n102',
         type: 'note-img',
+        isPinned: false,
         info: {
           url: 'https://mascotas100.com/wp-content/uploads/2020/03/329004501_1.jpg',
           title: 'I Love Bobi',
@@ -33,6 +37,7 @@ const notes = storageService.loadFromStorage(KEY)
       {
         id: 'n103',
         type: 'note-todos',
+        isPinned: true,
         info: {
           label: 'Get my stuff together',
           todos: [
@@ -55,7 +60,7 @@ function query(filterBy) {
 function createNote(newNote) {
   notes.unshift(newNote);
   _saveNotesToStorage();
-  return Promise.resolve()
+  return Promise.resolve();
 }
 
 // function saveReview(noteId, name, rate, txt, writeAt) {
@@ -89,14 +94,33 @@ function getNoteById(noteId) {
 //   gNotes.push(newNote);
 // }
 
-function deleteNote(noteId, idx) {
-  console.log('noteId,idx :>> ', noteId, idx);
-  const noteIdx = gNotes.findIndex((note) => {
+function getNoteIdx(noteId) {
+  const noteIdx = notes.findIndex((note) => {
     return note.id === noteId;
   });
-  gNotes[noteIdx].reviews.splice(idx, 1);
+  console.log(`noteIdx`, noteIdx);
+  return noteIdx;
+}
+
+function deleteNote(noteId) {
+  console.log('noteId,idx :>> ', noteId);
+  const noteIdx = getNoteIdx(noteId);
+  notes.splice(noteIdx, 1);
   _saveNotesToStorage();
   return Promise.resolve();
+}
+
+function togglePin(note) {
+  const bool = !note.isPinned;
+  note.isPinned = bool;
+  _saveNotesToStorage();
+  return Promise.resolve(notes);
+}
+function changeStyleNote(note, color) {
+  console.log(`color`, color);
+  note.backgroundColor = color;
+  _saveNotesToStorage();
+  return Promise.resolve(notes);
 }
 
 function _saveNotesToStorage() {

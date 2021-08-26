@@ -1,23 +1,50 @@
+import { ColorInput } from './ColorInput.jsx';
 export class NoteImg extends React.Component {
   state = {
     note: null,
-    color: null,
+    isPlatteOpen: false,
   };
 
   componentDidMount() {
     const { note } = this.props;
-    const color = note.style.backgroundColor;
     this.setState({ note });
-    this.setState({ color });
   }
 
   render() {
-    const { note, color } = this.state;
+    const { onDeleteNote, onTogglePin, onChangeStyleNote } = this.props;
+    const { note, isPlatteOpen } = this.state;
     if (!note) return <div>Loading</div>;
     return (
-      <article className={`note ${note.type}`} style={{ backgroundColor: color }}>
+      <article
+        className={`note ${note.type}`}
+        style={{ backgroundColor: note.backgroundColor }}
+      >
         <h3>{note.info.title}</h3>
         <img src={note.info.url} />
+        <div className='note-features'>
+          <img
+            className={note.isPinned ? 'pin-pushed' : 'pin'}
+            src='../../../../assets/icons/push-pin.png'
+            onClick={() => onTogglePin(note)}
+          />
+          <img
+            className='delete-note'
+            src='../../../../assets/icons/delete.png'
+            onClick={() => onDeleteNote(note)}
+          />
+          <img
+            className='color-note'
+            src='../../../../assets/icons/palette.png'
+            onClick={() => {
+              this.setState({ isPlatteOpen: !isPlatteOpen });
+            }}
+          />
+          <div className='palette'>
+            {isPlatteOpen && (
+              <ColorInput onChangeStyleNote={onChangeStyleNote} note={note} />
+            )}
+          </div>
+        </div>
       </article>
     );
   }

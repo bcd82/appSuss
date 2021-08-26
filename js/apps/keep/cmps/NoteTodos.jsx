@@ -1,8 +1,9 @@
 import { TodoList } from './TodoList.jsx';
-
+import { ColorInput } from './ColorInput.jsx';
 export class NoteTodos extends React.Component {
   state = {
     note: null,
+    isPlatteOpen: false,
   };
 
   componentDidMount() {
@@ -11,17 +12,48 @@ export class NoteTodos extends React.Component {
   }
 
   render() {
-    const { note } = this.state;
+    const { onDeleteNote, onTogglePin, onChangeStyleNote } = this.props;
+    const { note, isPlatteOpen } = this.state;
     if (!note) return <div>Loading</div>;
     return (
-      <article className={`note ${note.type}`}>
+      <article
+        className={`note ${note.type}`}
+        style={{ backgroundColor: note.backgroundColor }}
+      >
         <h3>{note.info.label}</h3>
         <div className='todos-list'>
-          {note.info.todos.map((todo,idx) => (
+          {note.info.todos.map((todo, idx) => (
             <TodoList key={idx} todo={todo} />
           ))}
+        </div>
+        <div className='note-features'>
+          <img
+            className={note.isPinned ? 'pin-pushed' : 'pin'}
+            src='../../../../assets/icons/push-pin.png'
+            onClick={() => onTogglePin(note)}
+          />
+          <img
+            className='delete-note'
+            src='../../../../assets/icons/delete.png'
+            onClick={() => onDeleteNote(note)}
+          />
+
+          <img
+            className='color-note'
+            src='../../../../assets/icons/palette.png'
+            onClick={() => {
+              this.setState({ isPlatteOpen: !isPlatteOpen });
+            }}
+          />
+          <div className='palette'>
+            {isPlatteOpen && (
+              <ColorInput onChangeStyleNote={onChangeStyleNote} note={note} />
+            )}
+          </div>
         </div>
       </article>
     );
   }
 }
+
+// () => onChangeStyleNote(note)
