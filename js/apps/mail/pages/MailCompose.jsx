@@ -38,6 +38,7 @@ class _MailCompose extends React.Component {
             onChange={this.handleChange}
             placeholder='To:'
             required
+            autoFocus
           />
           <input
             name="to"
