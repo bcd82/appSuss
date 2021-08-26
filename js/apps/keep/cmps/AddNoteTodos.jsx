@@ -9,9 +9,10 @@ class _AddNoteTodos extends React.Component {
     note: {
       label: null,
       todo: null,
-      todos: [],
     },
   };
+
+  todos = [];
 
   handleChange = ({ target }) => {
     const field = target.name;
@@ -23,15 +24,15 @@ class _AddNoteTodos extends React.Component {
     }));
   };
 
-  handleChangeTodo = ({ target }) => {
-    const field = target.name;
-    let value = target.value;
+  //   handleChangeTodo = ({ target }) => {
+  //     const field = target.name;
+  //     let value = target.value;
 
-    console.log(`value`, value);
-    this.setState((prevState) => ({
-      note: { ...prevState.note, [field]: value },
-    }));
-  };
+  //     console.log(`value`, value);
+  //     this.setState((prevState) => ({
+  //       note: { ...prevState.note, [field]: value },
+  //     }));
+  //   };
 
   //   onChangeStyle = (color) => {
   //     this.setState((prevState) => ({
@@ -42,6 +43,7 @@ class _AddNoteTodos extends React.Component {
   onAddNoteTodos = (ev) => {
     ev.preventDefault();
     const { label, todos } = this.state.note;
+    if (!todos.length) return;
     const newNote = {
       id: utilService.makeId(),
       type: 'note-todos',
@@ -55,7 +57,16 @@ class _AddNoteTodos extends React.Component {
     });
   };
 
-  onAddTodos = () => {};
+  //   onAddTodos = (ev) => {
+  //     ev.preventDefault();
+  //     const { todo, todos } = this.state.note;
+  //     const newTodo = {
+  //       txt: todo,
+  //       doneAt: null,
+  //     };
+  //     this.todos.push(newTodo);
+  //     console.log(`todos`, todos);
+  //   };
 
   render() {
     const { label, todo } = this.state;
@@ -68,18 +79,17 @@ class _AddNoteTodos extends React.Component {
             id='label'
             name='label'
             value={label}
-            onChange={this.handleChangeTodo}
+            onChange={this.handleChange}
           />
 
           {/* <div className='colors-picker'>
             <ColorInput onChangeStyle={this.onChangeStyle} />
           </div> */}
-          <div className='todos-adder'>
-            <TodoAdder todo={todo} onAddTodos={this.onAddTodos} />
-          </div>
-
           <button>Add</button>
         </form>
+        <div className='todos-adder'>
+          <TodoAdder  />
+        </div>
       </section>
     );
   }
