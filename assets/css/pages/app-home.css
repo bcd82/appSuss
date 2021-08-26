@@ -21,7 +21,11 @@
 .app-home .app-row { 
     display: flex;
     gap:20px;
-    
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.app-home a{
+    text-decoration: none;
 }
 
 @keyframes tracking-in-expand {

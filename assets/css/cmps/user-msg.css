@@ -3,7 +3,6 @@
     bottom: 20px;
     left: 20px;
     background-color: rgb(50, 50, 190);
-    color: white;
     display: flex;
     padding: 20px;
     gap: 5px;
@@ -16,6 +15,10 @@
     z-index: 5;
 }
 
+.user-msg h1 {
+    color: white !important;
+}
+
 .user-msg.success, .user-msg.delete {
     background-color: rgb(44, 167, 44);
     box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863), 0 0 0px 10px rgba(44, 167, 44, 0.705);
@@ -24,10 +27,6 @@
 .user-msg.danger {
     background-color: rgb(182, 42, 42);
     box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863), 0 0 0px 10px rgba(182, 42, 42, 0.705);
-}
-
-.user-msg a {
-    color: white;
 }
 
 .user-msg img {
@@ -46,7 +45,7 @@
 }
 
 .swing-in-top-fwd {
-	animation: swing-in-top-fwd 4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    animation: swing-in-top-fwd 4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 
 @keyframes swing-in-top-fwd {

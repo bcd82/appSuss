@@ -32,6 +32,7 @@
 
 .app-preview p {
     margin-bottom: 40px;
+    font-size:1.1rem
 }
 .app-preview a {
     font-size: 1.5rem;
@@ -43,9 +44,7 @@
     margin-bottom: 20px;
     mix-blend-mode: multiply;
 }
-.app-preview a img.arrow {
-    width:20px;
-}
+
 
 @keyframes flip-in-hor-bottom {
     0% {

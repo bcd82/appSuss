@@ -36,14 +36,20 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'How Unity can help keep your game development on track',
-        body: `Hi Barak , 
+        body: `
+        Hi Barak , 
+        
         Unity’s Integrated Success Services (ISS) team helps developers avoid obstacles and 
         resolve issues before they negatively impact productivity (and ultimately players!) 
-        Each client is assigned a Developer Relations Manager (DRM) who works closely with the team to help them isolate any bugs and responds to questions or problems. Unity Developer Relations Engineers (DREs) also perform in-depth Project Reviews that dig into every aspect of a project’s build to ensure that each phase, from planning to post-launch, is executed smoothly.
+        Each client is assigned a Developer Relations Manager (DRM) who works closely with the team to 
+        help them isolate any bugs and responds to questions or problems. 
+        Unity Developer Relations Engineers (DREs) also perform in-depth Project Reviews that dig 
+        into every aspect of a project’s build to ensure that each 
+        phase, from planning to post-launch, is executed smoothly.
         Hound13 engaged with Unity’s Integrated Success Services (ISS) for animation help while 
         building Hundred Soul, a stunning mobile ARPG that became an international hit. 
         We’d love to help your team save time and resources while ensuring your games ship on time,
-         so click here to learn more about Unity ISS.
+        so click here to learn more about Unity ISS.
         
          Game On!
         The Unity Team`,
@@ -57,7 +63,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'אנחנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף קורונה!',
-        body: `התאם להנחיות משרד הבריאות, אנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף הקורונה.
+        body: `
+        התאם להנחיות משרד הבריאות, אנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף הקורונה.
 
         בשבועות האחרונים אנו עדים לעלייה בתחלואה, ומטרת מנת החיסון הנוספת היא חיזוק ההגנה החיסונית שלך נגד נגיף הקורונה.`,
         isRead: true,
@@ -103,18 +110,28 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'Changes to YouTube’s Terms of Service',
-        body: `You’re receiving this email because we’re updating the YouTube Terms of Service (“Terms”) to clarify our terms and provide transparency to our users. The Terms were similarly updated in the United States in November 2020. These changes shouldn't significantly alter your access or use of the YouTube service.
-
- 
+        body: `
+        You’re receiving this email because we’re updating the YouTube Terms of Service (“Terms”) 
+        to clarify our terms and provide transparency to our users. 
+        The Terms were similarly updated in the United States in November 2020. 
+        These changes shouldn't significantly alter your access or use of the YouTube service.
         A summary of the changes:
         
-        Facial recognition restrictions: The Terms of Service already state that you cannot collect any information that might identify a person without their permission. While this has always included facial recognition information, the new Terms make that explicitly clear.
-        YouTube’s right to monetize: YouTube has the right to monetize all content on the platform and ads may appear on videos from channels not in the YouTube Partner Program.
-        Royalty payments and tax withholding: For creators entitled to revenue payments, such payments will be treated as royalties from a U.S. tax perspective and Google will withhold taxes where required by law.
+        Facial recognition restrictions: The Terms of Service already state that you cannot collect 
+        any information that might identify a person without their permission.
+        While this has always included facial recognition information,
+        the new Terms make that explicitly clear.
+        YouTube’s right to monetize: 
+        YouTube has the right to monetize all content on the platform and ads may appear on videos from
+         channels not in the YouTube Partner Program.
+        Royalty payments and tax withholding: 
+        For creators entitled to revenue payments, such payments will be treated as royalties from a 
+        U.S. tax perspective and Google will withhold taxes where required by law.
          
-        Please make sure you read the updates to the Terms carefully. The new Terms will take effect on June 1, 2021 for users outside the U.S. By continuing to use YouTube after this date, you are agreeing to the new Terms. Please note, if you allow your child to use YouTube Kids, then you are agreeing to the new Terms on behalf of your child as well.
+        Please make sure you read the updates to the Terms carefully.
+        if you allow your child to use YouTube Kids, then you are agreeing to the new Terms on 
+        behalf of your child as well.
         
-         
         If you would like more information, visit our Help Center.`,
         isRead: false,
         sentAt: Date.now() -220000,
@@ -126,7 +143,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'You received a new comment on Superstition - animated short',
-        body: `Hi Superstition Animation, 
+        body: `
+        Hi Superstition Animation, 
         Silas Syhler 6U Katrinedalskolen commented on your video Superstition - animated short:
         "this man is ugly AF"
         `,
@@ -151,7 +169,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'what is the hardest part of game development?',
-        body:`Hey,
+        body:`
+        Hey,
 
         I'm compiling a list of what people think is the hardest part of game development! Shoot me a reply and let me know!
         Thx,
@@ -168,7 +187,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'היי :)',
-        body:`היי, מה שלומך?
+        body:`
+        היי, מה שלומך?
 
         נעים מאוד 😊 דנית מחברת TechJob.
         כחלק ממאמצי החיפוש שלי אחר טאלנטים מובילים עבור חברה מדהימה שאני עובדת איתה, חשבתי שאולי אוכל לעניין אותך :)
@@ -193,10 +213,11 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'Your notifications are now mobile',
-        body:`Your notifications are now mobile!
+        body:`
+        Your notifications are now mobile!
         You’ve enabled push notifications on your mobile device for the Coding Academy - Jul 21 workspace, 
         so we’ve disabled email notifications for you.
-         That way you won’t get notified twice. It’s easy to re-enable email notifications, if you’d prefer.`,
+        That way you won’t get notified twice. It’s easy to re-enable email notifications, if you’d prefer.`,
         isRead: true,
         sentAt: Date.now() -1121209550,
         to: loggedInUser.email,
