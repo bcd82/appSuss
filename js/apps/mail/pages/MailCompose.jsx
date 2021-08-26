@@ -33,10 +33,7 @@ class _MailCompose extends React.Component {
     const { subject, to, body, from } = this.state;
     return (
       <section className="mail-compose">
-        <form
-          className="compose-form"
-        
-        >
+        <form className="compose-form">
           <input disabled placeholder={`From: ${from}`}></input>
           <input
             name="subject"
@@ -63,9 +60,13 @@ class _MailCompose extends React.Component {
             onChange={this.handleChange}
             required
           />
-          <div className="">
-            <button   onClick={(ev) => onSendNewMail(ev, this.state, this.id)}>Send</button>
-            <button onClick={(ev)=>onSaveDraft(ev,this.state,this.id)}>Save Draft</button>
+          <div className="bottom-btns">
+            <button onClick={(ev) => onSendNewMail(ev, this.state, this.id)}>
+              Send
+            </button>
+            <button onClick={(ev) => onSaveDraft(ev, this.state, this.id)}>
+              Save Draft
+            </button>
           </div>
         </form>
       </section>

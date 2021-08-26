@@ -29,6 +29,9 @@ export class MailApp extends React.Component {
       .then((mails) => {
         return this.filterSearch(mails);
       })
+      .then((mails) => {
+        return this.sortMail(mails);
+      })
       .then((mails) => this.setState({ mails }));
   }
 
@@ -120,7 +123,7 @@ export class MailApp extends React.Component {
   onSendNewMail = (ev, newMail, mailId) => {
     ev.preventDefault();
     if (mailId) {
-      mailService.moveDraftToSent(mailId).then(()=>this.loadMails());
+      mailService.moveDraftToSent(mailId).then(() => this.loadMails());
     } else {
       mailService.createMail(newMail).then(() => {
         this.loadMails();
@@ -137,13 +140,23 @@ export class MailApp extends React.Component {
     );
   };
 
-  onSaveDraft = (ev,draft,id) => {
-    ev.preventDefault()
-    mailService.saveDraft(draft,id)
-    .then(()=> this.loadMails())
+  onSaveDraft = (ev, draft, id) => {
+    ev.preventDefault();
+    mailService.saveDraft(draft, id).then(() => this.loadMails());
   };
 
-  onSortMail = (sortBy) => {};
+  onSortMail = (ev) => {
+    this.setState({ sortBy: ev.target.value }, this.loadMails());
+  };
+
+  sortMail = (mails) => {
+    console.log(this.state.sortBy);
+    if (this.state.sortBy == "date") return mails.sort((a, b) => b.sentAt - a.sentAt);
+    if (this.state.sortBy == "subject") return mails.sort((a, b) => a.subject < b.subject);
+    if (this.state.sortBy == "mail") return mails.sort((a, b) => a.from <  b.from );
+    console.log(mails);
+    return mails;
+  };
 
   render() {
     const { mails, filterBy, sortBy } = this.state;
@@ -151,7 +164,11 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app main-layout">
         <div className="search-box">
-          <MailSearch handleSearch={this.handleSearch} />
+          <MailSearch
+            handleSearch={this.handleSearch}
+            sortVal={sortBy}
+            onSortMail={this.onSortMail}
+          />
           <p className="unread-count">
             {this.getUnreadCount()} unread emails in{" "}
             {filterBy ? filterBy : "inbox"}
@@ -163,7 +180,10 @@ export class MailApp extends React.Component {
         <section className="mail-main">
           <Switch>
             <Route path="/mail/compose">
-              <MailCompose onSendNewMail={this.onSendNewMail} onSaveDraft={this.onSaveDraft}/>
+              <MailCompose
+                onSendNewMail={this.onSendNewMail}
+                onSaveDraft={this.onSaveDraft}
+              />
             </Route>
             <Route path="/mail/:mailId">
               <MailDetails
