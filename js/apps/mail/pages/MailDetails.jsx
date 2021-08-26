@@ -9,7 +9,6 @@ class _MailDetails extends React.Component {
 
   componentDidMount() {
     const urlSrcPrm = new URLSearchParams(this.props.location.search);
-    console.log(urlSrcPrm);
     this.loadMail();
   }
 

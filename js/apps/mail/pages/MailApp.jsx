@@ -57,7 +57,6 @@ export class MailApp extends React.Component {
 
   handleSearch = (searchBy) => {
     this.setState({ searchBy }, this.loadMails());
-    console.log(searchBy);
   };
 
   filterSearch = (mails) => {
@@ -121,7 +120,7 @@ export class MailApp extends React.Component {
   onSendNewMail = (ev, newMail, mailId) => {
     ev.preventDefault();
     if (mailId) {
-      mailService.moveDraftToSent(mailId).then(this.loadMails);
+      mailService.moveDraftToSent(mailId).then(()=>this.loadMails());
     } else {
       mailService.createMail(newMail).then(() => {
         this.loadMails();
@@ -136,6 +135,12 @@ export class MailApp extends React.Component {
     this.props.history.push(
       `/mail/compose?subject=${mail.subject}&body=${mail.body}&id=${mail.id}&to=${mail.to}`
     );
+  };
+
+  onSaveDraft = (ev,draft,id) => {
+    ev.preventDefault()
+    mailService.saveDraft(draft,id)
+    .then(()=> this.loadMails())
   };
 
   onSortMail = (sortBy) => {};
@@ -158,7 +163,7 @@ export class MailApp extends React.Component {
         <section className="mail-main">
           <Switch>
             <Route path="/mail/compose">
-              <MailCompose onSendNewMail={this.onSendNewMail} />
+              <MailCompose onSendNewMail={this.onSendNewMail} onSaveDraft={this.onSaveDraft}/>
             </Route>
             <Route path="/mail/:mailId">
               <MailDetails
