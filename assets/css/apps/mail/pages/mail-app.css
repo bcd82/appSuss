@@ -10,6 +10,19 @@
 .search-box {
     grid-column: 2;
     grid-row: 1;
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+}
+.search-box p{
+    color:gray;
+    width:200px;
+    height: auto;
+    align-self: flex-start;
+
 }
 .side-menu {
     grid-column: 1;

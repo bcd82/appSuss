@@ -43,7 +43,12 @@ export class MailApp extends React.Component {
         (mail) => mail.isStarred === true && mail.status !== "trash"
       );
     } else if (this.state.filterBy === "unread") {
-      return mails.filter((mail) => mail.isRead === false);
+      return mails.filter(
+        (mail) =>
+          mail.isRead === false &&
+          mail.status !== "trash" &&
+          mail.status !== "draft"
+      );
     } else {
       return mails.filter((mail) => mail.status === "inbox");
     }
@@ -58,7 +63,10 @@ export class MailApp extends React.Component {
     const searchBy = this.state.searchBy;
     if (searchBy) {
       return mails.filter(
-        (mail) => mail.subject.toLowerCase().includes(searchBy.toLowerCase())  || mail.body.toLowerCase().includes(searchBy.toLowerCase())
+        (mail) =>
+          mail.subject.toLowerCase().includes(searchBy.toLowerCase()) ||
+          mail.body.toLowerCase().includes(searchBy.toLowerCase()) ||
+          mail.from.toLowerCase().includes(searchBy.toLowerCase()) 
       );
     } else return mails;
   };
@@ -122,8 +130,8 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app main-layout">
         <div className="search-box">
-          <p>unread emails : {this.getUnreadCount()}</p>
           <MailSearch handleSearch={this.handleSearch} />
+          <p className="unread-count">{this.getUnreadCount()} unread emails in {filterBy ? filterBy : 'inbox'}</p>
         </div>
         <section className="side-menu">
           <MailMenu filter={filterBy} setFilterBy={this.onSetFilter} />
