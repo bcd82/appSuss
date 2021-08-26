@@ -36,7 +36,7 @@ class _MailCompose extends React.Component {
             type="text"
             value={subject}
             onChange={this.handleChange}
-            placeholder='To:'
+            placeholder='Subject'
             required
             autoFocus
           />

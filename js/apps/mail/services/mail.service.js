@@ -1,5 +1,6 @@
 import { storageService } from '../../../services/storage.service.js'
 import { utilService } from '../../../services/util.service.js'
+import { eventBusService } from '../../../services/event.bus.service.js'
 
 
 export const mailService = {
@@ -145,9 +146,12 @@ function deleteMail(mailId) {
             .then(mailIdx => {
                 gMails.splice(mailIdx, 1)
                 console.log('deleted?')
+                eventBusService.emit('user-msg',{txt:'Mail Permenantly Deleted',type:'success'})
             })
         } else {
             mail.status = 'trash'
+            eventBusService.emit('user-msg',{txt:'Mail Moved To Trash',type:'success'})
+
         }
     }
     )

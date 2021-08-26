@@ -58,8 +58,10 @@ export class MailApp extends React.Component {
   onToggleRead = (mailId, isOnOpen) => {
     mailService.toggleRead(mailId, isOnOpen).then(() => {
       this.loadMails();
+
     });
     return Promise.resolve();
+    
   };
 
   onDeleteMail = (mailId) => {
@@ -77,15 +79,15 @@ export class MailApp extends React.Component {
   onAddToInbox = (mailId) => {
     mailService.addToInbox(mailId).then(() => {
       this.loadMails();
+      eventBusService.emit('user-msg',{txt:'Message moved to inbox ',type:'success'})
     });
-    
-    eventBusService.emit('user-msg',{txt:'Message moved to inbox ',type:'success'})
   };
 
   onSendNewMail = (ev, newMail) => {
     ev.preventDefault();
     mailService.createMail(newMail).then(() => {
       this.loadMails();
+      eventBusService.emit('user-msg',{txt:'Mail Sent',type:'success'})
       this.props.history.push("/mail/");
     });
   };
