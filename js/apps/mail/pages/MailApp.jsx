@@ -13,7 +13,7 @@ export class MailApp extends React.Component {
     mails: null,
     filterBy: null,
     searchBy: "",
-    sortBy: "",
+    sortBy: "date",
   };
 
   componentDidMount() {
@@ -152,8 +152,16 @@ export class MailApp extends React.Component {
   sortMail = (mails) => {
     console.log(this.state.sortBy);
     if (this.state.sortBy == "date") return mails.sort((a, b) => b.sentAt - a.sentAt);
-    if (this.state.sortBy == "subject") return mails.sort((a, b) => a.subject < b.subject);
-    if (this.state.sortBy == "mail") return mails.sort((a, b) => a.from <  b.from );
+    if (this.state.sortBy == "subject") return mails.sort((a, b) => {
+      if (a.subject < b.subject) return -1;
+      if(a.subject > b.subject) return 1;
+      return 0
+    })
+    if (this.state.sortBy == "mail") return mails.sort((a, b) => {
+      if (a.from < b.from) return -1;
+      if(a.from > b.from) return 1;
+      return 0
+    })
     console.log(mails);
     return mails;
   };

@@ -21,10 +21,10 @@ export  class MailSearch extends React.Component {
                         Date
                     </option>
                     <option value="mail">
-                        Email Name
+                        from
                     </option>
                     <option value="subject">
-                        Alphabetical
+                        subject
                     </option>
                 </select>
             </div>
