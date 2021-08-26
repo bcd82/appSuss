@@ -15,18 +15,18 @@ export function MailMenu(props) {
           <p>Inbox</p>
         </li>
         <li
-          onClick={() => props.setFilterBy("sent")}
-          className={props.filter === "sent" ? "active" : ""}
-        >
-          <img src="./assets/imgs/mail/sent.png" className="menu-img" />
-          <p>Sent</p>
-        </li>
-        <li
           onClick={() => props.setFilterBy("unread")}
           className={props.filter === "unread" ? "active" : ""}
         >
           <img src="./assets/imgs/mail/unread.png" className="menu-img" />
           <p>Unread</p>
+        </li>
+        <li
+          onClick={() => props.setFilterBy("sent")}
+          className={props.filter === "sent" ? "active" : ""}
+        >
+          <img src="./assets/imgs/mail/sent.png" className="menu-img" />
+          <p>Sent</p>
         </li>
         <li
           onClick={() => props.setFilterBy("starred")}

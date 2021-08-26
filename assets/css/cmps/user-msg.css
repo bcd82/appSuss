@@ -16,7 +16,7 @@
      max-width:90%;
      z-index:5;
 }
-.user-msg.success { 
+.user-msg.success,.user-msg.delete { 
     background-color: rgb(44, 167, 44);
     box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.863),
      0 0 0px 10px rgba(44, 167, 44, 0.705);

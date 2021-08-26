@@ -146,11 +146,11 @@ function deleteMail(mailId) {
             .then(mailIdx => {
                 gMails.splice(mailIdx, 1)
                 console.log('deleted?')
-                eventBusService.emit('user-msg',{txt:'Mail Permenantly Deleted',type:'success'})
+                eventBusService.emit('user-msg',{txt:'Mail Permenantly Deleted',type:'delete'})
             })
         } else {
             mail.status = 'trash'
-            eventBusService.emit('user-msg',{txt:'Mail Moved To Trash',type:'success'})
+            eventBusService.emit('user-msg',{txt:'Mail Moved To Trash',type:'delete'})
 
         }
     }

@@ -81,6 +81,9 @@
     background-color: rgb(192, 192, 192);
     transition: background-color .2s ease-out;
 }
+.mail-details button img{
+    object-fit: contain;
+}
 
 .mail-details button:hover {
     background-color: gold
