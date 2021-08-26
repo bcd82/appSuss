@@ -1,7 +1,14 @@
 import { utilService } from "../../../services/util.service.js";
 
 export function MailPreview(props) {
-  const { mail, onToggleStar, onClickMail, onDeleteMail, onToggleRead } = props;
+  const {
+    mail,
+    onToggleStar,
+    onClickMail,
+    onDeleteMail,
+    onToggleRead,
+    onEditDraft,
+  } = props;
 
   return (
     <article
@@ -9,6 +16,11 @@ export function MailPreview(props) {
       onClick={() => onClickMail(mail.id)}
     >
       <div className="hover-actions">
+        {mail.status === "draft" && (
+          <button onClick={(ev) => onEditDraft(mail, ev)}>
+            <img src="./assets/imgs/mail/edit.png" />
+          </button>
+        )}
         <button onClick={(ev) => onDeleteMail(mail.id, ev)}>
           <img src="./assets/imgs/mail/delete.png" />
         </button>

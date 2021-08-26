@@ -9,11 +9,15 @@ class _MailCompose extends React.Component {
     from: "",
   };
 
+  id ='' 
+
   componentDidMount = () => {
     mailService.getUser().then((user) => this.setState({ from: user.email }));
     const urlSrcPrm = new URLSearchParams(this.props.location.search);
     if (urlSrcPrm.has('subject'))this.setState({subject:urlSrcPrm.get('subject')})
     if (urlSrcPrm.has('body'))this.setState({body:urlSrcPrm.get('body')})
+    if (urlSrcPrm.has('to'))this.setState({to:urlSrcPrm.get('to')})
+    if (urlSrcPrm.has('id')) this.id = urlSrcPrm.get('id')
   };
 
   handleChange = (ev) => {
@@ -21,7 +25,6 @@ class _MailCompose extends React.Component {
     const value =
       ev.target.type === "number" ? +ev.target.value : ev.target.value;
     this.setState({ [field]: value });
-    console.log(this.state.from);
   };
 
   render() {
@@ -31,7 +34,7 @@ class _MailCompose extends React.Component {
       <section className="mail-compose">
         <form
           className="compose-form"
-          onSubmit={(ev) => onSendNewMail(ev, this.state)}
+          onSubmit={(ev) => onSendNewMail(ev, this.state,id)}
         >
           <input disabled placeholder={`From: ${from}`}></input>
           <input

@@ -118,19 +118,30 @@ export class MailApp extends React.Component {
     });
   };
 
-  onSendNewMail = (ev, newMail) => {
+  onSendNewMail = (ev, newMail, mailId) => {
     ev.preventDefault();
-    mailService.createMail(newMail).then(() => {
-      this.loadMails();
-      eventBusService.emit("user-msg", { txt: "Mail Sent", type: "success" });
-      this.props.history.push("/mail/");
-    });
+    if (mailId) {
+      mailService.moveDraftToSent(mailId).then(this.loadMails);
+    } else {
+      mailService.createMail(newMail).then(() => {
+        this.loadMails();
+      });
+    }
+    eventBusService.emit("user-msg", { txt: "Mail Sent", type: "success" });
+    this.props.history.push("/mail/");
+  };
+
+  onEditDraft = (mail, ev) => {
+    if (ev) ev.stopPropagation();
+    this.props.history.push(
+      `/mail/compose?subject=${mail.subject}&body=${mail.body}&id=${mail.id}&to=${mail.to}`
+    );
   };
 
   onSortMail = (sortBy) => {};
 
   render() {
-    const { mails, filterBy ,sortBy} = this.state;
+    const { mails, filterBy, sortBy } = this.state;
     if (!mails) return <p>Loading...</p>;
     return (
       <section className="mail-app main-layout">
@@ -151,6 +162,7 @@ export class MailApp extends React.Component {
             </Route>
             <Route path="/mail/:mailId">
               <MailDetails
+                onEditDraft={this.onEditDraft}
                 onToggleStar={this.onToggleStar}
                 onToggleRead={this.onToggleRead}
                 onDeleteMail={this.onDeleteMail}
@@ -160,6 +172,7 @@ export class MailApp extends React.Component {
             <Route path="/mail/">
               <MailList
                 mails={mails}
+                onEditDraft={this.onEditDraft}
                 onToggleStar={this.onToggleStar}
                 onClickMail={this.onGoToDetails}
                 onDeleteMail={this.onDeleteMail}

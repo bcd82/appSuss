@@ -45,6 +45,14 @@
     transition: filter .2s;
 }
 
+.mail-details img {
+    padding: 10px 10px;
+    height: 50px;
+    cursor: pointer;
+    filter: saturate(1);
+    transition: filter .2s;
+}
+
 .mail-details button {
     justify-self: flex-end;
     margin-inline-end: 10px;
@@ -96,4 +104,10 @@
 
 .mail-details button:hover img {
     opacity: 1;
+}
+.mail-details button img.read {
+    opacity:.2;
+}
+.mail-details button img.unread {
+    opacity:1
 }
