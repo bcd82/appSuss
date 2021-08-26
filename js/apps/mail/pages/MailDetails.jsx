@@ -77,7 +77,7 @@ class _MailDetails extends React.Component {
               className={mail.isRead ? "unread" : "read"}
             />
           </button>
-          <button> Reply</button>
+          {/* <button> Reply</button> */}
           <img
             src="./assets/imgs/mail/star.png"
             className={mail.isStarred ? "starred" : "not-starred"}

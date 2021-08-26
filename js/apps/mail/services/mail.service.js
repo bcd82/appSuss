@@ -147,6 +147,7 @@ function deleteMail(mailId) {
                 getMailIdxById(mailId)
                     .then(mailIdx => {
                         gMails.splice(mailIdx, 1)
+                        console.log('deleted?')
                         eventBusService.emit('user-msg', { txt: 'Mail Permenantly Deleted', type: 'delete' })
                     })
             } else {
@@ -206,7 +207,7 @@ function saveDraft(draft,mailId) {
     } else {
         gMails.unshift({
             id: utilService.makeId(),
-            from:loggedInUser,
+            from:loggedInUser.email,
             subject:draft.subject,
             to:draft.to,
             body:draft.body,
