@@ -78,8 +78,9 @@
     transform: scale(1.1);
 }
 .mail-details p { 
-    white-space: pre-wrap    
-
+    white-space: pre-wrap;
+    width:80%;
+    
 }
 .mail-details button {
     display: flex;
