@@ -8,6 +8,7 @@ export const keepService = {
   deleteNote,
   togglePin,
   changeStyleNote,
+  duplicateNote,
 };
 
 const KEY = 'notesDB';
@@ -63,21 +64,6 @@ function createNote(newNote) {
   return Promise.resolve();
 }
 
-// function saveReview(noteId, name, rate, txt, writeAt) {
-//   let newReview = {
-//     name,
-//     rate,
-//     txt,
-//     writeAt,
-//   };
-//   const noteIdx = gNotes.findIndex((note) => {
-//     return note.id === noteId;
-//   });
-//   gNotes[noteIdx].reviews.push(newReview);
-//   _saveNotesToStorage();
-//   return Promise.resolve();
-// }
-
 function getNoteById(noteId) {
   var note = gNotes.find(function (note) {
     return noteId === note.id;
@@ -85,25 +71,14 @@ function getNoteById(noteId) {
   return Promise.resolve(note);
 }
 
-// function addNote(name) {
-//   const newNote = {
-//     id: utilService.makeId(),
-//     name,
-//     img: `/assets/img/${pickColor()}-note.png`,
-//   };
-//   gNotes.push(newNote);
-// }
-
 function getNoteIdx(noteId) {
   const noteIdx = notes.findIndex((note) => {
     return note.id === noteId;
   });
-  console.log(`noteIdx`, noteIdx);
   return noteIdx;
 }
 
 function deleteNote(noteId) {
-  console.log('noteId,idx :>> ', noteId);
   const noteIdx = getNoteIdx(noteId);
   notes.splice(noteIdx, 1);
   _saveNotesToStorage();
@@ -111,14 +86,32 @@ function deleteNote(noteId) {
 }
 
 function togglePin(note) {
+  const noteIdx = getNoteIdx(note.id);
   const bool = !note.isPinned;
   note.isPinned = bool;
+  const pinnedNote = notes.splice(noteIdx, 1);
+  console.log(`pinnedNote`, pinnedNote);
+  if (note.isPinned) {
+    console.log(`object`, note.isPinned);
+    notes.unshift(pinnedNote[0]);
+  } else {
+    const unpinnedNote = notes.findIndex((note) => {
+      return !note.isPinned;
+    });
+    notes.splice(unpinnedNote, 0, pinnedNote[0]);
+  }
   _saveNotesToStorage();
   return Promise.resolve(notes);
 }
 function changeStyleNote(note, color) {
-  console.log(`color`, color);
   note.backgroundColor = color;
+  _saveNotesToStorage();
+  return Promise.resolve(notes);
+}
+function duplicateNote(note) {
+  let duplicateNote = { ...note };
+  duplicateNote.id = utilService.makeId();
+  notes.unshift(duplicateNote);
   _saveNotesToStorage();
   return Promise.resolve(notes);
 }

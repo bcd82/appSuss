@@ -12,7 +12,8 @@ export class NoteTxt extends React.Component {
   }
 
   render() {
-    const { onDeleteNote, onTogglePin, onChangeStyleNote } = this.props;
+    const { onDeleteNote, onTogglePin, onChangeStyleNote, onDuplicateNote } =
+      this.props;
     const { note, isPlatteOpen } = this.state;
     if (!note) return <div>Loading</div>;
     return (
@@ -21,12 +22,17 @@ export class NoteTxt extends React.Component {
         style={{ backgroundColor: note.backgroundColor }}
       >
         <h3>{note.info.txt}</h3>
-        <img
-          className={note.isPinned ? 'pin-pushed' : 'pin'}
-          src='../../../../assets/icons/push-pin.png'
-          onClick={() => onTogglePin(note)}
-        />
         <div className='note-features'>
+          <img
+            className={note.isPinned ? 'pin-pushed' : 'pin'}
+            src='../../../../assets/icons/push-pin.png'
+            onClick={() => onTogglePin(note)}
+          />
+          <img
+            className='duplicate-note'
+            src='../../../../assets/icons/duplicate.png'
+            onClick={() => onDuplicateNote(note)}
+          />
           <img
             className='delete-note'
             src='../../../../assets/icons/delete.png'

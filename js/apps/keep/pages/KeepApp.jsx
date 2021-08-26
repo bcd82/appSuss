@@ -42,6 +42,12 @@ class _KeepApp extends React.Component {
     });
   }
 
+  onDuplicateNote=(note)=>{
+    keepService.duplicateNote(note).then((notes) => {
+      this.setState({ notes }, this.loadNotes);
+    });
+  }
+
   render() {
     const { notes } = this.state;
     if (!notes) return <div>Loading</div>;
@@ -52,6 +58,7 @@ class _KeepApp extends React.Component {
           <KeepFilter onSetFilter={this.onSetFilter} />
           <section className='notes-app'>
             <KeepList
+            onDuplicateNote={this.onDuplicateNote}
               onTogglePin={this.onTogglePin}
               onDeleteNote={this.onDeleteNote}
               onChangeStyleNote={this.onChangeStyleNote}

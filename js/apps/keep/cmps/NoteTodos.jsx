@@ -12,7 +12,7 @@ export class NoteTodos extends React.Component {
   }
 
   render() {
-    const { onDeleteNote, onTogglePin, onChangeStyleNote } = this.props;
+    const { onDeleteNote, onTogglePin, onChangeStyleNote,onDuplicateNote } = this.props;
     const { note, isPlatteOpen } = this.state;
     if (!note) return <div>Loading</div>;
     return (
@@ -31,6 +31,11 @@ export class NoteTodos extends React.Component {
             className={note.isPinned ? 'pin-pushed' : 'pin'}
             src='../../../../assets/icons/push-pin.png'
             onClick={() => onTogglePin(note)}
+          />
+          <img
+            className='duplicate-note'
+            src='../../../../assets/icons/duplicate.png'
+            onClick={() => onDuplicateNote(note)}
           />
           <img
             className='delete-note'

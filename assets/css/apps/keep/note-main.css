@@ -1,10 +1,14 @@
-.note {
-  width: 20rem;
-  background-color: #fff;
-  box-shadow: 0 0.875rem 5rem rgb(0 0 0 / 20%);
-  border-radius: 0.5rem;
-  padding: 1.562rem;
-  position: relative;
+.notes-header {
+  width: 95%;
+  margin: 0 auto;
 }
 
-
+.note {
+  background-color: #fff;
+  box-shadow: 0 0.875rem 2rem rgb(0 0 0 / 10%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+img {
+  border-radius: 0.5rem;
+}

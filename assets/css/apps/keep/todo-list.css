@@ -1,3 +1,7 @@
 .done {
   text-decoration: line-through;
 }
+
+.keep-list{
+  column-count: 3;
+}
