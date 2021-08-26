@@ -11,6 +11,9 @@ class _MailCompose extends React.Component {
 
   componentDidMount = () => {
     mailService.getUser().then((user) => this.setState({ from: user.email }));
+    const urlSrcPrm = new URLSearchParams(this.props.location.search);
+    if (urlSrcPrm.has('subject'))this.setState({subject:urlSrcPrm.get('subject')})
+    if (urlSrcPrm.has('body'))this.setState({body:urlSrcPrm.get('body')})
   };
 
   handleChange = (ev) => {
@@ -36,7 +39,7 @@ class _MailCompose extends React.Component {
             type="text"
             value={subject}
             onChange={this.handleChange}
-            placeholder='Subject'
+            placeholder="Subject"
             required
             autoFocus
           />

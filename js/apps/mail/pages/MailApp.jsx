@@ -13,6 +13,7 @@ export class MailApp extends React.Component {
     mails: null,
     filterBy: null,
     searchBy: "",
+    sortBy: "",
   };
 
   componentDidMount() {
@@ -86,8 +87,8 @@ export class MailApp extends React.Component {
     });
   };
 
-  onToggleRead = (mailId, isOnOpen,ev) => {
-    if(ev) ev.stopPropagation()
+  onToggleRead = (mailId, isOnOpen, ev) => {
+    if (ev) ev.stopPropagation();
     mailService.toggleRead(mailId, isOnOpen).then(() => {
       this.loadMails();
     });
@@ -126,8 +127,10 @@ export class MailApp extends React.Component {
     });
   };
 
+  onSortMail = (sortBy) => {};
+
   render() {
-    const { mails, filterBy } = this.state;
+    const { mails, filterBy ,sortBy} = this.state;
     if (!mails) return <p>Loading...</p>;
     return (
       <section className="mail-app main-layout">
@@ -160,7 +163,7 @@ export class MailApp extends React.Component {
                 onToggleStar={this.onToggleStar}
                 onClickMail={this.onGoToDetails}
                 onDeleteMail={this.onDeleteMail}
-                onToggleRead ={this.onToggleRead}
+                onToggleRead={this.onToggleRead}
               />
             </Route>
           </Switch>
