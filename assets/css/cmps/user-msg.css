@@ -32,6 +32,9 @@
 }
 .user-msg img { 
     height:50px;
+    filter:invert();
+    mix-blend-mode: color-dodge;
+
 }
 .user-msg button{ 
     background-color: rgba(255, 255, 255, 0.329);
