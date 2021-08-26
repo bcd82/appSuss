@@ -77,7 +77,10 @@
 .mail-details .not-starred:hover, .mail-details .starred:hover {
     transform: scale(1.1);
 }
+.mail-details p { 
+    white-space: pre-wrap    
 
+}
 .mail-details button {
     display: flex;
     align-items: center;
