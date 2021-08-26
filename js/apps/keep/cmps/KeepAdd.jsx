@@ -13,34 +13,38 @@ export class KeepAdd extends React.Component {
 
   render() {
     const { type } = this.state;
+
     return (
-      <section>
-        <button
-          onClick={() => {
-            this.toggleType('note-txt');
-          }}
-        >
-          Text note
-        </button>
-        <button
-          onClick={() => {
-            this.toggleType('note-img');
-          }}
-        >
-          Image note
-        </button>
-        <button
-          onClick={() => {
-            this.toggleType('note-todos');
-          }}
-        >
-          Todos-list note
-        </button>
-        <section className='modal'>
-          {type === 'note-txt' && <AddNoteTxt />}
-          {type === 'note-img' && <AddNoteImg />}
-          {type === 'note-todos' && <AddNoteTodos />}
+      <section
+        onClick={(ev) => {
+          ev.stopPropagation();
+        }}
+        className='modal'
+      >
+        <section className='add-note-btns'>
+          <img
+            src='../../../../assets/icons/text.png'
+            onClick={() => {
+              this.toggleType('note-txt');
+            }}
+          />
+
+          <img
+            src='../../../../assets/icons/image.png'
+            onClick={() => {
+              this.toggleType('note-img');
+            }}
+          />
+          <img
+            src='../../../../assets/icons/todos.png'
+            onClick={() => {
+              this.toggleType('note-todos');
+            }}
+          />
         </section>
+        {type === 'note-txt' && <AddNoteTxt />}
+        {type === 'note-img' && <AddNoteImg />}
+        {type === 'note-todos' && <AddNoteTodos />}
       </section>
     );
   }

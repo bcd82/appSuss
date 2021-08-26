@@ -29,6 +29,7 @@ class _KeepHeader extends React.Component {
             ☰
           </button>
           <button
+            className='modal-add-btn'
             onClick={() => {
               this.toggleOpenAdd();
             }}
@@ -36,7 +37,15 @@ class _KeepHeader extends React.Component {
             Add
           </button>
         </nav>
-        <section>{isAddOpen && <KeepAdd />}</section>
+
+        <section
+          className={isAddOpen ? 'modal-bg' : 'modal-bg close-modal'}
+          onClick={() => {
+            this.toggleOpenAdd();
+          }}
+        >
+          {isAddOpen && <KeepAdd />}
+        </section>
       </section>
     );
   }
