@@ -1,5 +1,6 @@
 import { AddNoteTxt } from './AddNoteTxt.jsx';
 import { AddNoteImg } from './AddNoteImg.jsx';
+import { AddNoteTodos } from './AddNoteTodos.jsx';
 
 export class KeepAdd extends React.Component {
   state = {
@@ -38,7 +39,7 @@ export class KeepAdd extends React.Component {
         <section className='modal'>
           {type === 'note-txt' && <AddNoteTxt />}
           {type === 'note-img' && <AddNoteImg />}
-          {/* {type === 'note-todos' && <AddNoteTodos note={note} />} */}
+          {type === 'note-todos' && <AddNoteTodos />}
         </section>
       </section>
     );
