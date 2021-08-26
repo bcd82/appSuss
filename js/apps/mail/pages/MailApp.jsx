@@ -29,14 +29,18 @@ export class MailApp extends React.Component {
   }
 
   getFilteredMails = (mails) => {
-    if (this.state.filterBy && this.state.filterBy !== "starred") {
+    if (
+      this.state.filterBy &&
+      this.state.filterBy !== "starred" &&
+      this.state.filterBy !== "unread"
+    ) {
       return mails.filter((mail) => mail.status === this.state.filterBy);
     } else if (this.state.filterBy === "starred") {
       return mails.filter((mail) => mail.isStarred === true);
+    } else if (this.state.filterBy === "unread") {
+      return mails.filter((mail) => mail.isRead === false);
     } else {
-      return mails.filter(
-        (mail) => mail.status === 'inbox'
-      );
+      return mails.filter((mail) => mail.status === "inbox");
     }
   };
 
@@ -58,10 +62,8 @@ export class MailApp extends React.Component {
   onToggleRead = (mailId, isOnOpen) => {
     mailService.toggleRead(mailId, isOnOpen).then(() => {
       this.loadMails();
-
     });
     return Promise.resolve();
-    
   };
 
   onDeleteMail = (mailId) => {
@@ -79,7 +81,10 @@ export class MailApp extends React.Component {
   onAddToInbox = (mailId) => {
     mailService.addToInbox(mailId).then(() => {
       this.loadMails();
-      eventBusService.emit('user-msg',{txt:'Message moved to inbox ',type:'success'})
+      eventBusService.emit("user-msg", {
+        txt: "Message moved to inbox ",
+        type: "success",
+      });
     });
   };
 
@@ -87,7 +92,7 @@ export class MailApp extends React.Component {
     ev.preventDefault();
     mailService.createMail(newMail).then(() => {
       this.loadMails();
-      eventBusService.emit('user-msg',{txt:'Mail Sent',type:'success'})
+      eventBusService.emit("user-msg", { txt: "Mail Sent", type: "success" });
       this.props.history.push("/mail/");
     });
   };
