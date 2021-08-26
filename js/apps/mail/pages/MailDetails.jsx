@@ -23,6 +23,10 @@ class _MailDetails extends React.Component {
     });
   };
 
+  onReplyMail = () => {
+    this.props.history
+    .push(`/mail/compose?subject=${this.state.mail.subject}&body=${this.state.mail.body}&to=${this.state.mail.from}`)
+  }
   render() {
     const {
       onToggleStar,
@@ -77,7 +81,7 @@ class _MailDetails extends React.Component {
               className={mail.isRead ? "unread" : "read"}
             />
           </button>
-          {/* <button> Reply</button> */}
+          <button onClick={this.onReplyMail}> Reply</button>
           <img
             src="./assets/imgs/mail/star.png"
             className={mail.isStarred ? "starred" : "not-starred"}

@@ -11,20 +11,20 @@ export  class MailTopFilters extends React.Component {
 
         const {query, sort} = this.state
         return (
-            <div className="mail-search">
+            <div className="mail-top-filters">
                 <input name="query" type="search" placeholder="Search by subject , text or email" value={query} onChange={this.handleInput}/>
                 <label htmlFor="sort">
                     Sort By 
                 </label>
-                <select value={this.props.sortVal} onChange={(ev)=>this.props.onSortMail(ev)}>
+                <select className="select-box" value={this.props.sortVal} onChange={(ev)=>this.props.onSortMail(ev)}>
                     <option value="date">
                         Date
                     </option>
                     <option value="mail">
-                        from
+                        From
                     </option>
                     <option value="subject">
-                        subject
+                        Subject
                     </option>
                 </select>
             </div>

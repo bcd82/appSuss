@@ -140,7 +140,6 @@ export class MailApp extends React.Component {
   onSortMail = (ev) => this.setState({ sortBy: ev.target.value }, this.loadMails());
   
   sortMail = (mails) => {
-    console.log(this.state.sortBy);
     if (this.state.sortBy == "date")
       return mails.sort((a, b) => b.sentAt - a.sentAt);
     if (this.state.sortBy == "subject")
@@ -155,7 +154,6 @@ export class MailApp extends React.Component {
         if (a.from > b.from) return 1;
         return 0;
       });
-    console.log(mails);
     return mails;
   };
 
