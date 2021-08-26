@@ -12,6 +12,7 @@ export class MailApp extends React.Component {
   state = {
     mails: null,
     filterBy: null,
+    searchBy: "",
   };
 
   componentDidMount() {
@@ -22,8 +23,7 @@ export class MailApp extends React.Component {
     mailService
       .getMails()
       .then((mails) => {
-        let filteredMails = this.getFilteredMails(mails);
-        return filteredMails;
+        return this.getFilteredMails(mails);
       })
       .then((mails) => this.setState({ mails }));
   }
@@ -44,6 +44,23 @@ export class MailApp extends React.Component {
     } else {
       return mails.filter((mail) => mail.status === "inbox");
     }
+  };
+
+  handleSearch = (searchBy) => {
+    if (searchBy) {
+      this.setState({ searchBy }, this.loadMails());
+      console.log(searchBy);
+    }
+  };
+
+  filterSearch = (mails) => {
+    const searchBy = this.state.searchBy;
+    if (searchBy) {
+      return mails.filter(
+        (mail) =>
+          mail.subject.search(searchBy) > 0 || mail.body.search(searchBy) > 0
+      );
+    } else return mails;
   };
 
   getUnreadCount = () => {
@@ -106,7 +123,7 @@ export class MailApp extends React.Component {
       <section className="mail-app main-layout">
         <div className="search-box">
           <p>unread emails : {this.getUnreadCount()}</p>
-          <MailSearch />
+          <MailSearch handleSearch={this.handleSearch} />
         </div>
         <section className="side-menu">
           <MailMenu filter={filterBy} setFilterBy={this.onSetFilter} />
