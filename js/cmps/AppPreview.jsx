@@ -6,8 +6,8 @@ export function AppPreview(props) {
         <div className="app-preview">
            <h2>{title}</h2>
            <p>{txt}</p>
-           <img src={imgUrl} />
-           <Link to={`/${title.toLowerCase()}/`}>Go to {title} App</Link>
+           <img src={imgUrl} className="preview-img"/>
+           <Link to={`/${title.toLowerCase()}/`}>To {title} App<img className="mail" src="./assets/imgs/cmps/arrow.png"/></Link>
         </div>
     )
 }

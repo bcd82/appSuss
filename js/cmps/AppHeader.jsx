@@ -10,7 +10,7 @@ class _AppHeader extends React.Component {
         return (
       <section className='main-layout app-header'>
         <img src="./assets/imgs/cmps/horse.png"></img>
-        <h1 onClick={() => this.props.history.goBack()} className='logo'>
+        <h1 onClick={() => this.props.history.push('/')} className='logo'>
           <span>A</span>ppsus
         </h1>
         <nav>

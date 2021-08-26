@@ -19,7 +19,15 @@ header {
     font-size: 2rem;
     padding: 20px 0;
     flex: 1;
+    cursor: pointer;
+    text-shadow: 0px 0px white;
+    transition: text-shadow .2s;
+
 }
+.app-header h1.logo:hover {
+    text-shadow: 0px 2px 1px white;
+}
+
 
 .app-header img {
     width: 50px;
