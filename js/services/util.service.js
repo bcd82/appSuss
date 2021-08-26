@@ -93,6 +93,6 @@ function getTimeToDisplay(timestamp) {
     (timeNow.getFullYear() === time.getFullYear()))) {
     return (`${time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())} today`)
   }
-    return (`${time.getDate()}.${time.getMonth() + 1}.${time.getFullYear()}`)
+    return time.toLocaleDateString()
   }
 

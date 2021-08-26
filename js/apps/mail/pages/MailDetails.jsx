@@ -34,7 +34,7 @@ class _MailDetails extends React.Component {
         </h1>
         <div className="top-row">
           <h2>
-            From: {mail.from} <span>{utilService.getTimeToDisplay(mail.sentAt)}</span>
+            From: {mail.from} <span>{(new Date(mail.sentAt)).toLocaleString()}</span>
           </h2>
           {mail.status !== "inbox" && (
             <button title="add to inbox">

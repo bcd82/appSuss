@@ -12,7 +12,7 @@ export  class MailSearch extends React.Component {
         const {query} = this.state
         return (
             <div className="mail-search">
-                <input type="search" placeholder="Search emails..." value={query} onChange={this.handleInput}/>
+                <input type="search" placeholder="Search by subject , text or email" value={query} onChange={this.handleInput}/>
             </div>
         )
     }

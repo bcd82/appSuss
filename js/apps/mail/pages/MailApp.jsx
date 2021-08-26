@@ -93,7 +93,8 @@ export class MailApp extends React.Component {
     return Promise.resolve();
   };
 
-  onDeleteMail = (mailId) => {
+  onDeleteMail = (mailId,ev) => {
+    if(ev) ev.stopPropagation()
     mailService.deleteMail(mailId).then(() => {
       this.loadMails();
       this.props.history.push("/mail/");
