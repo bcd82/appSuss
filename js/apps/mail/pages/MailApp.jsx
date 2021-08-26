@@ -4,7 +4,7 @@ import { MailMenu } from "../cmps/MailMenu.jsx";
 import { MailCompose } from "./MailCompose.jsx";
 import { MailDetails } from "./MailDetails.jsx";
 import { MailList } from "../cmps/MailList.jsx";
-import { MailSearch } from "../cmps/MailSearch.jsx";
+import { MailTopFilters } from "../cmps/MailTopFilters.jsx";
 
 const { Route, Switch } = ReactRouterDOM;
 
@@ -23,15 +23,9 @@ export class MailApp extends React.Component {
   loadMails() {
     mailService
       .getMails()
-      .then((mails) => {
-        return this.getFilteredMails(mails);
-      })
-      .then((mails) => {
-        return this.filterSearch(mails);
-      })
-      .then((mails) => {
-        return this.sortMail(mails);
-      })
+      .then((mails) => this.getFilteredMails(mails))
+      .then((mails) => this.filterSearch(mails))
+      .then((mails) => this.sortMail(mails))
       .then((mails) => this.setState({ mails }));
   }
 
@@ -58,9 +52,8 @@ export class MailApp extends React.Component {
     }
   };
 
-  handleSearch = (searchBy) => {
-    this.setState({ searchBy }, this.loadMails());
-  };
+  handleSearch = (searchBy) => this.setState({ searchBy }, this.loadMails());
+  
 
   filterSearch = (mails) => {
     const searchBy = this.state.searchBy;
@@ -74,9 +67,8 @@ export class MailApp extends React.Component {
     } else return mails;
   };
 
-  getUnreadCount = () => {
-    return this.state.mails.filter((mail) => !mail.isRead).length;
-  };
+  getUnreadCount = () =>  this.state.mails.filter((mail) => !mail.isRead).length;
+;
 
   onToggleStar = (ev, mailId) => {
     ev.stopPropagation();
@@ -145,23 +137,24 @@ export class MailApp extends React.Component {
     mailService.saveDraft(draft, id).then(() => this.loadMails());
   };
 
-  onSortMail = (ev) => {
-    this.setState({ sortBy: ev.target.value }, this.loadMails());
-  };
-
+  onSortMail = (ev) => this.setState({ sortBy: ev.target.value }, this.loadMails());
+  
   sortMail = (mails) => {
     console.log(this.state.sortBy);
-    if (this.state.sortBy == "date") return mails.sort((a, b) => b.sentAt - a.sentAt);
-    if (this.state.sortBy == "subject") return mails.sort((a, b) => {
-      if (a.subject < b.subject) return -1;
-      if(a.subject > b.subject) return 1;
-      return 0
-    })
-    if (this.state.sortBy == "mail") return mails.sort((a, b) => {
-      if (a.from < b.from) return -1;
-      if(a.from > b.from) return 1;
-      return 0
-    })
+    if (this.state.sortBy == "date")
+      return mails.sort((a, b) => b.sentAt - a.sentAt);
+    if (this.state.sortBy == "subject")
+      return mails.sort((a, b) => {
+        if (a.subject < b.subject) return -1;
+        if (a.subject > b.subject) return 1;
+        return 0;
+      });
+    if (this.state.sortBy == "mail")
+      return mails.sort((a, b) => {
+        if (a.from < b.from) return -1;
+        if (a.from > b.from) return 1;
+        return 0;
+      });
     console.log(mails);
     return mails;
   };
@@ -172,7 +165,7 @@ export class MailApp extends React.Component {
     return (
       <section className="mail-app main-layout">
         <div className="search-box">
-          <MailSearch
+          <MailTopFilters
             handleSearch={this.handleSearch}
             sortVal={sortBy}
             onSortMail={this.onSortMail}

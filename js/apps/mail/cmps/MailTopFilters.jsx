@@ -1,5 +1,5 @@
 
-export  class MailSearch extends React.Component {
+export  class MailTopFilters extends React.Component {
     
     state = {
         query:'',
