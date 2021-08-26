@@ -36,7 +36,9 @@ export class MailApp extends React.Component {
     ) {
       return mails.filter((mail) => mail.status === this.state.filterBy);
     } else if (this.state.filterBy === "starred") {
-      return mails.filter((mail) => mail.isStarred === true);
+      return mails.filter(
+        (mail) => mail.isStarred === true && mail.status !== "trash"
+      );
     } else if (this.state.filterBy === "unread") {
       return mails.filter((mail) => mail.isRead === false);
     } else {

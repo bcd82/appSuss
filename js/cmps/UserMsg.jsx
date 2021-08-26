@@ -26,16 +26,14 @@ export class UserMsg extends React.Component {
   };
 
   getDisplayImg = () => {
-    if(this.state.msg.type === 'success'){
-     return "./assets/imgs/cmps/check-animated.gif"
-    } if (this.state.msg.type === 'delete'){
-      return "./assets/imgs/cmps/trash.gif"
-  }
-  }
+    if (this.state.msg.type === "success")
+      return "./assets/imgs/cmps/check-animated.gif";
+    if (this.state.msg.type === "delete") return "./assets/imgs/cmps/trash.gif";
+  };
   render() {
     const { msg } = this.state;
     if (!msg) return <React.Fragment></React.Fragment>;
-    console.log(msg)
+    console.log(msg);
     return (
       <section className="user-msg" className={`user-msg ${msg.type}`}>
         <img src={this.getDisplayImg()} />
