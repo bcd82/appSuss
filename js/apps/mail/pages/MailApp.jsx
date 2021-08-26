@@ -66,7 +66,7 @@ export class MailApp extends React.Component {
         (mail) =>
           mail.subject.toLowerCase().includes(searchBy.toLowerCase()) ||
           mail.body.toLowerCase().includes(searchBy.toLowerCase()) ||
-          mail.from.toLowerCase().includes(searchBy.toLowerCase()) 
+          mail.from.toLowerCase().includes(searchBy.toLowerCase())
       );
     } else return mails;
   };
@@ -86,15 +86,16 @@ export class MailApp extends React.Component {
     });
   };
 
-  onToggleRead = (mailId, isOnOpen) => {
+  onToggleRead = (mailId, isOnOpen,ev) => {
+    if(ev) ev.stopPropagation()
     mailService.toggleRead(mailId, isOnOpen).then(() => {
       this.loadMails();
     });
     return Promise.resolve();
   };
 
-  onDeleteMail = (mailId,ev) => {
-    if(ev) ev.stopPropagation()
+  onDeleteMail = (mailId, ev) => {
+    if (ev) ev.stopPropagation();
     mailService.deleteMail(mailId).then(() => {
       this.loadMails();
       this.props.history.push("/mail/");
@@ -132,7 +133,10 @@ export class MailApp extends React.Component {
       <section className="mail-app main-layout">
         <div className="search-box">
           <MailSearch handleSearch={this.handleSearch} />
-          <p className="unread-count">{this.getUnreadCount()} unread emails in {filterBy ? filterBy : 'inbox'}</p>
+          <p className="unread-count">
+            {this.getUnreadCount()} unread emails in{" "}
+            {filterBy ? filterBy : "inbox"}
+          </p>
         </div>
         <section className="side-menu">
           <MailMenu filter={filterBy} setFilterBy={this.onSetFilter} />
@@ -156,6 +160,7 @@ export class MailApp extends React.Component {
                 onToggleStar={this.onToggleStar}
                 onClickMail={this.onGoToDetails}
                 onDeleteMail={this.onDeleteMail}
+                onToggleRead ={this.onToggleRead}
               />
             </Route>
           </Switch>

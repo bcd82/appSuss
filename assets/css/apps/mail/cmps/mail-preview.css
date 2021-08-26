@@ -72,30 +72,36 @@
     opacity: 0;
     pointer-events: none;
     justify-content: center;
+    align-items: center;
     width:120px;
     right:50px;
     transition: opacity .2s;
     pointer-events: none;
-    height:35px;
-    gap :5px;
-    background-color:rgba(255, 217, 0, 0.815)
+    height:100%;
+    gap :10px;
+    background-color:rgba(184, 184, 184, 0.616)
 }
 .mail-preview button {
     border:1px solid rgba(0, 0, 0, 0.219);
     border-radius:.6em;
     cursor:pointer;
+    height:80%;
     transform:scale(1);
     display: flex;
     align-items: center;
 }
 .mail-preview button:hover {
-    border:1px solid rgba(0, 0, 0, 0.219);
-    border-radius:.6em;
-    cursor:pointer;
-    transform:scale(1.03)
+
+    transform:scale(1.1);
+    background-color:gold;
 
 }
-.mail-preview .hover-actions img{
+.mail-preview .hover-actions button img{
+    padding:0;
+    height:20px;
+    width:auto;
+}
+.mail-preview .hover-actions button:hover img{
     padding:0;
     height:20px;
     width:auto;

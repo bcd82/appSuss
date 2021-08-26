@@ -1,7 +1,7 @@
 import { utilService } from "../../../services/util.service.js";
 
 export function MailPreview(props) {
-  const { mail, onToggleStar, onClickMail,onDeleteMail } = props;
+  const { mail, onToggleStar, onClickMail,onDeleteMail,onToggleRead } = props;
 
   // const getTimeToDisplay = ()=> {
   //     let time = new Date(mail.sentAt);
@@ -15,7 +15,7 @@ export function MailPreview(props) {
     >
       <div className="hover-actions">
         <button onClick={ev => onDeleteMail(mail.id,ev)}><img src="./assets/imgs/mail/delete.png"/></button>
-        <button onClick={ev => onDeleteMail(mail.id,ev)}><img src="./assets/imgs/mail/unread.png"/></button>
+        <button onClick={ev => onToggleRead(mail.id,false,ev)}><img src="./assets/imgs/mail/unread.png"/></button>
       </div>
       <img
         src="./assets/imgs/mail/star.png"
