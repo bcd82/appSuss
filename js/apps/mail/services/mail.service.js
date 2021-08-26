@@ -25,7 +25,7 @@ const staticMails = [
         subject: 'Hi there',
         body: 'What\'s up ? How Are you ? ',
         isRead: false,
-        sentAt: 1629899150635,
+        sentAt: Date.now() - 120000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: false,

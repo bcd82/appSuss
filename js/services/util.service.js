@@ -88,8 +88,11 @@ function getTime(timestamp) {
 function getTimeToDisplay(timestamp) {
   let time = new Date(timestamp);
   let timeNow = new Date(Date.now());
-  if (timeNow.getDate === time.getDate()) {
-    return (`today at${time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())} `)
+  if ((timeNow.getDate() === time.getDate() &&
+    (timeNow.getMonth() === time.getMonth()) &&
+    (timeNow.getFullYear() === time.getFullYear()))) {
+    return (`${time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())} today`)
   }
-  return (time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()) + ' ' + time.getFullYear())
-}
+    return (`${time.getDate()}.${time.getMonth() + 1}.${time.getFullYear()}`)
+  }
+
