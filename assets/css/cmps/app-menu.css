@@ -1,0 +1,76 @@
+.app-menu .app-links {
+    display: none;
+}
+
+.app-menu .app-links.menu-open {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    right: 3%;
+    top: 80px;
+    gap: 20px;
+    z-index: 5;
+}
+
+.app-menu .apps-icon {
+    cursor: pointer;
+
+}
+
+.app-menu .app-link {
+    animation: slide-in-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    opacity:0.5 !important;
+}
+.app-menu .app-link img{
+    background-color: white ;
+    height:fit-content;
+
+
+}
+
+.app-menu .app-link.active {
+    opacity:1 !important;
+}
+
+.app-menu .app-link:nth-of-type(2) {
+    animation-delay: .1s;
+}
+
+.app-menu .app-link:nth-of-type(3) {
+    animation-delay: .2s;
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width:800px) {
+    .app-menu .app-link {
+        animation: slide-in-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    .app-menu .app-links.menu-open {
+        display: flex;
+        flex-direction: row;
+        right: 8%;
+        top: 10px;
+        gap: 20px;
+    }
+    .app-menu .app-link {
+        animation: slide-in-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        opacity:0.5 !important;
+    }
+    .app-menu .app-link img{
+        background-color: transparent ;
+    }
+}
