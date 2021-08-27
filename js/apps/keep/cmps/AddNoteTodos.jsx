@@ -40,6 +40,9 @@ class _AddNoteTodos extends React.Component {
         label: label,
         todos: todos,
       },
+      style: {
+        backgroundColor: backgroundColor,
+      },
     };
     keepService.createNote(newNote).then(() => {
       this.props.history.push('/keep');

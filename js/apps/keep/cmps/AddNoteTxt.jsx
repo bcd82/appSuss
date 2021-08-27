@@ -8,7 +8,7 @@ class _AddNoteTxt extends React.Component {
     note: {
       isPinned: false,
       txt: '',
-      backgroundColor:''
+      backgroundColor: '',
     },
   };
 
@@ -23,15 +23,17 @@ class _AddNoteTxt extends React.Component {
 
   onAddNote = (ev) => {
     ev.preventDefault();
-    const { isPinned, txt,backgroundColor } = this.state.note;
+    const { isPinned, txt, backgroundColor } = this.state.note;
     if (!txt.length) return;
     const newNote = {
       id: utilService.makeId(),
       type: 'note-txt',
       isPinned: isPinned,
-      backgroundColor:backgroundColor,
       info: {
         txt: txt,
+      },
+      style: {
+        backgroundColor: backgroundColor,
       },
     };
     keepService.createNote(newNote).then(() => {
@@ -69,8 +71,8 @@ class _AddNoteTxt extends React.Component {
           <button>Add</button>
         </form>
         <div className='colors-picker'>
-            <ColorInput onChangeStyle={this.colorPicker} />
-          </div>
+          <ColorInput onChangeStyle={this.colorPicker} />
+        </div>
       </section>
     );
   }
