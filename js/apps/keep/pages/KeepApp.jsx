@@ -12,7 +12,12 @@ class _KeepApp extends React.Component {
   };
 
   componentDidMount() {
+    const urlSrcPrm = new URLSearchParams(this.props.location.search);
+    if (urlSrcPrm.has("text"))
+    // urlSrcPrm.get("text")  <-- value of url param
+      // keepService.createNote 
     this.loadNotes();
+
   }
 
   loadNotes = () => {
