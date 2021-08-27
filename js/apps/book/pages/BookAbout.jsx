@@ -35,7 +35,7 @@ export class BookAbout extends React.Component {
     return (
       <div className="book-container">
         <AppHeader/>
-      <section className="about">
+      <section className="book-about">
         <div className="about-container main-layout">
           <h1>About Us</h1>
           <img src={this.getImageToShow()} className="about-img"></img>

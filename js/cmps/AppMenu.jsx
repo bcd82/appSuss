@@ -29,7 +29,7 @@ export class AppMenu extends React.Component {
           <NavLink to="/keep" className="app-link" onClick={()=>this.toggleAppMenu(true)}>
             <img src="./assets/imgs/cmps/keep-app.png" />
           </NavLink>
-          <NavLink to="/book" className="app-link" onClick={()=>this.toggleAppMenu(true)}>
+          <NavLink to="/book/home" className="app-link" onClick={()=>this.toggleAppMenu(true)}>
             <img src="./assets/imgs/cmps/book-app.png" />
           </NavLink>
         </nav>

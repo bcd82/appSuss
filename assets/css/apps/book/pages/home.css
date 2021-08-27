@@ -15,13 +15,13 @@
     overflow-y: hidden;
 }
 
-.home a {
+.book-home a {
     width: 100%;
     color: purple;
     text-decoration-line: none;
 }
 
-.home  h1 {
+.book-home  h1 {
     font-size: 2.5rem;
     margin-top: 1px;
     padding:20px;
@@ -31,7 +31,7 @@
     text-align: center;
 }
 
-.home  h2 {
+.book-home  h2 {
     font-size: 1.5rem;
     /* margin-top: 10px; */
     color: black;
@@ -40,39 +40,34 @@
     text-align: center;
 }
 
-.home h2:last-of-type {
+.book-home h2:last-of-type {
     border-bottom: 1px solid black;
     position:relative;
 }
 
-.home {
+.book-home {
     width: 100%;
     height: 90vh;
 }
 
 
 @media screen and (min-width:800px) {
-.home {
-    width:1200px;
-}
-.home h2 {
+.book-home h2 {
     font-size: 2.25rem;
     margin-top: 0px;
 }
-.home h2:last-of-type {
+.book-home h2:last-of-type {
     font-size: 2rem;
     margin-top: 30px;
     padding-bottom:10px;
 }
-.home h1 {
+.book-home h1 {
     font-size: 3rem;
     margin-top: 70px;
 }
 
 
 .home-container {
-
     height:760px;
-
 }
 }

@@ -12,6 +12,7 @@ const { NavLink, withRouter } = ReactRouterDOM;
   render() {
     const {isMobileMenuOpen} = this.state
     return (
+      <div>
       <header className="book-header">
         <div className="main-header main-layout">
         <h1 className="logo" onClick={()=>{
@@ -26,6 +27,7 @@ const { NavLink, withRouter } = ReactRouterDOM;
           <button className="menu-btn-mobile" onClick={this.toggleMenu}><img src="./assets/imgs/cmps/hamburger.png"/></button>
         </div>
       </header>
+      </div>
     );
   };
   }

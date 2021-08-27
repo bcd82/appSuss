@@ -5,9 +5,9 @@ export const BookHome = () => {
   return (
     <div className="book-container">
       <AppHeader />
-      <section className="home main-layout">
+      <section className="book-home main-layout">
         <div className="home-container">
-        <h1>Welcome to Miss Book !</h1>
+        <h1>Welcome to Miss Books !</h1>
         <h2>
           <Link to="/book">Check Out Our Books </Link>
         </h2>

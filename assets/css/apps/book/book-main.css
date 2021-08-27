@@ -11,7 +11,7 @@
 @import './pages/book-details.css';
 @import './pages/about.css';
 
-.book-container,.book-app-container {
+.book-container,.book-app-container,.book-add,.book-about,.book-home {
     /* background-color: rgb(255, 255, 255); */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-image: url('/assets/imgs/book/bg.jpg');
