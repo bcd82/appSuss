@@ -19,7 +19,7 @@ class _AppHeader extends React.Component {
         <nav>
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/about'>About</NavLink>
-          <NavLink to='/mail'>Mail</NavLink>
+          <NavLink to='/mail?filter=inbox'>Mail</NavLink>
           <NavLink to='/keep'>Keep</NavLink>
           <NavLink to='/book'>Book</NavLink>
         </nav>
