@@ -1,6 +1,7 @@
 .mail-menu { 
     display: flex;
     flex-direction: column;
+    width:200px;
     
 }
 .mail-menu a{ 
@@ -18,7 +19,6 @@
     text-align: center;
     border-radius: 2em;
     text-decoration: none ;
-    width:90%;
 }
 .mail-menu button.compose-btn { 
     font-size:1.5rem;
@@ -28,7 +28,7 @@
     border-radius: 2em;
     border-color: rgba(0, 0, 0, 0.11);
     text-decoration: none ;
-    width:90%;
+    width:200px;
     box-shadow : 0 0 2px rgba(0, 0, 0, 0.274);
     transform: scale(1);
     transition: box-shadow .2s ease-out ,transform .2s ease-out;
