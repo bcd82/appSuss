@@ -23,7 +23,7 @@ export class NoteVideo extends React.Component {
     return (
       <article
         className={`note ${note.type}`}
-        style={{ backgroundColor: note.backgroundColor }}
+        style={{ backgroundColor: note.style.backgroundColor }}
       >
         <iframe
           width='267'

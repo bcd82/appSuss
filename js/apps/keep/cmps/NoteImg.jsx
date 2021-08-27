@@ -23,7 +23,7 @@ export class NoteImg extends React.Component {
     return (
       <article
         className={`note ${note.type}`}
-        style={{ backgroundColor: note.backgroundColor }}
+        style={{ backgroundColor: note.style.backgroundColor }}
       >
         <h3>{note.info.title}</h3>
         <img src={note.info.url} />

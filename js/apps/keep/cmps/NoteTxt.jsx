@@ -7,7 +7,6 @@ export class NoteTxt extends React.Component {
 
   componentDidMount() {
     const { note } = this.props;
-    console.log(`note.isPinned`, note.isPinned);
     this.setState({ note });
   }
 
@@ -24,7 +23,7 @@ export class NoteTxt extends React.Component {
     return (
       <article
         className={`note ${note.type}`}
-        style={{ backgroundColor: note.backgroundColor }}
+        style={{ backgroundColor: note.style.backgroundColor }}
       >
         <h3>{note.info.txt}</h3>
         <div className='note-features'>

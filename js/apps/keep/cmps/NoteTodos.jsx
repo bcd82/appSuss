@@ -24,7 +24,7 @@ export class NoteTodos extends React.Component {
     return (
       <article
         className={`note ${note.type}`}
-        style={{ backgroundColor: note.backgroundColor }}
+        style={{ backgroundColor: note.style.backgroundColor }}
       >
         <h3>{note.info.label}</h3>
         <div className='todos-list'>
