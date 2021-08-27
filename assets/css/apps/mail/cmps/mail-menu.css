@@ -1,8 +1,6 @@
 .mail-menu { 
     display: flex;
     flex-direction: column;
-    width:200px;
-    
 }
 .mail-menu a{ 
     text-decoration: none ;
