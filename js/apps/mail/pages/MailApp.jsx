@@ -210,6 +210,7 @@ export class MailApp extends React.Component {
                 onToggleRead={this.onToggleRead}
                 onDeleteMail={this.onDeleteMail}
                 onAddToInbox={this.onAddToInbox}
+                onReplyMail={this.onReplyMail}
               />
             </Route>
             <Route path="/mail">

@@ -29,6 +29,7 @@ class _MailDetails extends React.Component {
       onDeleteMail,
       onAddToInbox,
       onEditDraft,
+      onReplyMail
     } = this.props;
     const { mail } = this.state;
     if (!mail) return <p>Loading..</p>;
@@ -46,7 +47,7 @@ class _MailDetails extends React.Component {
             <span>{new Date(mail.sentAt).toLocaleString()}</span>
           </h2>
           {mail.status !== "draft" && (
-            <button onClick={this.onReplyMail}>
+            <button onClick={()=> onReplyMail(mail)}>
               <img
                 src="./assets/imgs/mail/reply.png"
                 alt="reply"

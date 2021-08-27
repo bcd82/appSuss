@@ -67,47 +67,53 @@
     
 }
 .mail-preview .hover-actions {
-    position: absolute;
-    display: flex;
-    opacity: 0;
-    pointer-events: none;
-    justify-content: center;
-    align-items: center;
-    width:150px;
-    right:50px;
-    transition: opacity .2s;
-    pointer-events: none;
-    height:100%;
-    gap :10px;
-    background-color:rgba(184, 184, 184, 0.616)
+    display: none;
 }
-.mail-preview button {
-    border:1px solid rgba(0, 0, 0, 0.219);
-    border-radius:.6em;
-    cursor:pointer;
-    height:80%;
-    transform:scale(1);
-    display: flex;
-    align-items: center;
-}
-.mail-preview button:hover {
 
-    transform:scale(1.1);
-    background-color:gold;
-
-}
-.mail-preview .hover-actions button img{
-    padding:0;
-    height:20px;
-    width:auto;
-}
-.mail-preview .hover-actions button:hover img{
-    padding:0;
-    height:20px;
-    width:auto;
-}
-.mail-preview:hover .hover-actions {
-    opacity: 1;
-    pointer-events: all;
-
+@media screen and (min-width:800px) {
+    .mail-preview .hover-actions {
+        position: absolute;
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        justify-content: center;
+        align-items: center;
+        width:150px;
+        right:50px;
+        transition: opacity .2s;
+        pointer-events: none;
+        height:100%;
+        gap :10px;
+        background-color:rgba(184, 184, 184, 0.616)
+    }
+    .mail-preview button {
+        border:1px solid rgba(0, 0, 0, 0.219);
+        border-radius:.6em;
+        cursor:pointer;
+        height:80%;
+        transform:scale(1);
+        display: flex;
+        align-items: center;
+    }
+    .mail-preview button:hover {
+    
+        transform:scale(1.1);
+        background-color:gold;
+    
+    }
+    .mail-preview .hover-actions button img{
+        padding:0;
+        height:20px;
+        width:auto;
+    }
+    .mail-preview .hover-actions button:hover img{
+        padding:0;
+        height:20px;
+        width:auto;
+    }
+    .mail-preview:hover .hover-actions {
+        opacity: 1;
+        pointer-events: all;
+    
+    }
 }
