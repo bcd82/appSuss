@@ -11,6 +11,7 @@
     background-color: transparent;
     transition:transform .2s background-color .2s;
     position: relative;
+    justify-content: space-between;
 }
 
 .mail-preview:hover {
@@ -23,8 +24,7 @@
 }
 
 .mail-preview img {
-    padding: 10px 10px;
-    width: 50px;
+    width: 25px;
     cursor: pointer;
     filter: saturate(1);
     transition: filter .2s;
@@ -47,12 +47,14 @@
 }
 
 .mail-preview .body-snippet {
+    display:none;
     overflow-y: hidden;
     flex-grow: 1;
 }
 
 .mail-preview .sent-time {
     width: 10%;
+    text-align: center;
 }
 .mail-preview.read p{ 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -67,47 +69,68 @@
     
 }
 .mail-preview .hover-actions {
-    position: absolute;
-    display: flex;
-    opacity: 0;
-    pointer-events: none;
-    justify-content: center;
-    align-items: center;
-    width:150px;
-    right:50px;
-    transition: opacity .2s;
-    pointer-events: none;
-    height:100%;
-    gap :10px;
-    background-color:rgba(184, 184, 184, 0.616)
+    display: none;
 }
-.mail-preview button {
-    border:1px solid rgba(0, 0, 0, 0.219);
-    border-radius:.6em;
-    cursor:pointer;
-    height:80%;
-    transform:scale(1);
-    display: flex;
-    align-items: center;
-}
-.mail-preview button:hover {
 
-    transform:scale(1.1);
-    background-color:gold;
+@media screen and (min-width:800px) {
+    .mail-preview {
+        justify-content: unset;
+    }
+    .mail-preview img {
+        padding: 10px 10px;
+        width: 50px;
+    }
+    
+    .mail-preview .body-snippet {
+        display:unset;
 
-}
-.mail-preview .hover-actions button img{
-    padding:0;
-    height:20px;
-    width:auto;
-}
-.mail-preview .hover-actions button:hover img{
-    padding:0;
-    height:20px;
-    width:auto;
-}
-.mail-preview:hover .hover-actions {
-    opacity: 1;
-    pointer-events: all;
-
+        overflow-y: hidden;
+        flex-grow: 1;
+    }
+    
+    .mail-preview .hover-actions {
+        position: absolute;
+        display: flex;
+        opacity: 0;
+        pointer-events: none;
+        justify-content: center;
+        align-items: center;
+        width:150px;
+        right:50px;
+        transition: opacity .2s;
+        pointer-events: none;
+        height:100%;
+        gap :10px;
+        background-color:rgba(184, 184, 184, 0.616)
+    }
+    .mail-preview button {
+        border:1px solid rgba(0, 0, 0, 0.219);
+        border-radius:.6em;
+        cursor:pointer;
+        height:80%;
+        transform:scale(1);
+        display: flex;
+        align-items: center;
+    }
+    .mail-preview button:hover {
+    
+        transform:scale(1.1);
+        background-color:gold;
+    
+    }
+    .mail-preview .hover-actions button img{
+        padding:0;
+        height:20px;
+        width:auto;
+    }
+    .mail-preview .hover-actions button:hover img{
+        padding:0;
+        height:20px;
+        width:auto;
+    }
+    .mail-preview:hover .hover-actions {
+        opacity: 1;
+        pointer-events: all;
+    
+    }
 }

@@ -3,26 +3,48 @@
     font-family: Lato-regular;
     display:flex;
     align-items: center;
+    overflow-x: hidden;
 }
 .mail-top-filters input{  
-    font-size: 1rem;
-    padding:10px 10px;
+    font-size: .8rem;
+    padding:5px 5px;
     border:1px solid rgba(0, 0, 0, 0.185);
     box-shadow:0 0 3px rgba(0, 0, 0, 0.137);
-    width:50%;
-    margin-inline-end: 20px;;
+    width:30%;
+
 }
-.select-box { 
+.mail-top-filters .select-box { 
     margin-inline-start: 10px;
     height: 70%;
     border:none;
     border-bottom:1px solid rgb(48, 47, 47);
-    font-size:1rem;
+    font-size:0.8rem;
     font-family: Lato-regular;
-
 }
-.select-box:focus { 
+.mail-top-filters label { 
+    margin-inline-start: 10px;
+}
+.mail-top-filters .select-box:focus { 
     outline:none;
+}
+
+@media screen and (min-width:800px){
+    .mail-top-filters input{  
+        font-size: 1rem;
+        padding:10px 10px;
+        width:50%;
+    }
+    .mail-top-filters .select-box { 
+        margin-inline-start: 10px;
+        height: 70%;
+
+        font-size:1rem;
+        font-family: Lato-regular;
+    
+    }
+    .mail-top-filters .select-box:focus { 
+        outline:none;
+    }
 }
 
 
