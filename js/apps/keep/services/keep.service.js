@@ -25,6 +25,9 @@ const notes = storageService.loadFromStorage(KEY)
         info: {
           txt: 'Fullstack Me Baby!',
         },
+        style: {
+          backgroundColor: '#fff',
+        },
       },
       {
         id: 'n102',
@@ -48,6 +51,9 @@ const notes = storageService.loadFromStorage(KEY)
             { txt: 'Driving liscence', doneAt: null },
             { txt: 'Coding power', doneAt: 187111111 },
           ],
+        },
+        style: {
+          backgroundColor: '#fff',
         },
       },
     ];
@@ -115,7 +121,7 @@ function togglePin(note) {
   return Promise.resolve(notes);
 }
 function changeStyleNote(note, color) {
-  note.backgroundColor = color;
+  note.style.backgroundColor = color;
   _saveNotesToStorage();
   return Promise.resolve(notes);
 }
