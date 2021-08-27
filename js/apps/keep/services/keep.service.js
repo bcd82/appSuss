@@ -167,6 +167,9 @@ function createNoteFromUrl(txt) {
     info: {
       txt,
     },
+    style: {
+      backgroundColor: '#fff',
+    },
   };
   notes.unshift(note);
   _saveNotesToStorage;
