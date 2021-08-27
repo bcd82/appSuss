@@ -54,7 +54,7 @@ const staticMails = [
          Game On!
         The Unity Team`,
         isRead: false,
-        sentAt: 1629800000635,
+        sentAt: 1594252359000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: false,
@@ -149,7 +149,7 @@ const staticMails = [
         "this man is ugly AF"
         `,
         isRead: false,
-        sentAt: Date.now() -11259000,
+        sentAt: 1494252359000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: false,
@@ -178,7 +178,7 @@ const staticMails = [
         Rocco at simmer.io
         Unsubscribe`,
         isRead: false,
-        sentAt: Date.now() -2409550,
+        sentAt: 1394252359000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: true,
