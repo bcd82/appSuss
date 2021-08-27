@@ -9,9 +9,6 @@ export class BookAdd extends React.Component {
     query: "",
   };
 
-  componentDidMount() {}
-
-  onSelectBook = (bookIdx) => {};
 
   handleChange = ({ target }) => {
     this.setState({ query: target.value });

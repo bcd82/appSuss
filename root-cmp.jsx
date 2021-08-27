@@ -28,8 +28,8 @@ export function App() {
             {/* <Route path="/keep/:keepId" component={KeepDetails} /> */}
             <Route path="/keep" component={KeepApp} />
             <Route path="/book/read/:bookId" component={BookDetails} />
-            <Route path="/book/add/" component={BookAdd} />
             <Route path="/book/about/" component={BookAbout} />
+            <Route path="/book/add/" component={BookAdd} />
             <Route path="/book/home/" component={BookHome} />
             <Route path="/book" component={BookApp} />
             <Route path="/mail" component={MailApp} />
