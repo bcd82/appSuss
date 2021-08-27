@@ -23,6 +23,7 @@
 }
 .mail-top-filters label { 
     margin-inline-start: 10px;
+    font-size:.7rem
 }
 .mail-top-filters .select-box:focus { 
     outline:none;
@@ -41,6 +42,9 @@
         font-size:1rem;
         font-family: Lato-regular;
     
+    }
+    .mail-top-filters label { 
+        font-size:unset
     }
     .mail-top-filters .select-box:focus { 
         outline:none;
