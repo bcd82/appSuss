@@ -41,7 +41,7 @@
 .mail-main {
     grid-column: 1;
     grid-row: 2;
-    width: 100%;
+    width: 95%;
 }
 .screen { 
     inset:0;
@@ -50,6 +50,7 @@
     opacity:0;
     pointer-events: none;
     z-index:4;
+    transition:opacity .2s ease-in;
 }
 .mail-app.mobile-open .screen { 
     opacity:1;
@@ -59,7 +60,7 @@
 @media screen and (min-width:800px) {
     .mail-app {
         display: grid;
-        grid-template-columns: 200px 85%;
+        grid-template-columns: 300px 85%;
         grid-template-rows: 90px 1fr;
         margin: 0 auto;
         justify-self: center;
