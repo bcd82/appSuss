@@ -137,7 +137,7 @@ function sendNoteToMail(note) {
     body =
       note.type === 'note-img'
         ? `Link: ${note.info.url}`
-        : `https://www.youtube.com/watch?v=${note.info.ur}`;
+        : `Link: https://www.youtube.com/watch?v=${note.info.ur}`;
   } else if (note.type === 'note-todos') {
     subject = note.info.label;
     const todos = note.info.todos.map((todo) => {
