@@ -1,35 +1,35 @@
-import { mailService } from "../services/mail.service.js";
-import { eventBusService } from "../../../services/event.bus.service.js";
-import { MailMenu } from "../cmps/MailMenu.jsx";
-import { MailCompose } from "./MailCompose.jsx";
-import { MailDetails } from "./MailDetails.jsx";
-import { MailList } from "../cmps/MailList.jsx";
-import { MailTopFilters } from "../cmps/MailTopFilters.jsx";
+import { mailService } from '../services/mail.service.js';
+import { eventBusService } from '../../../services/event.bus.service.js';
+import { MailMenu } from '../cmps/MailMenu.jsx';
+import { MailCompose } from './MailCompose.jsx';
+import { MailDetails } from './MailDetails.jsx';
+import { MailList } from '../cmps/MailList.jsx';
+import { MailTopFilters } from '../cmps/MailTopFilters.jsx';
 
 const { Route, Switch } = ReactRouterDOM;
 
 export class MailApp extends React.Component {
   state = {
     mails: null,
-    filterBy: "inbox",
-    searchBy: "",
-    sortBy: "date",
+    filterBy: 'inbox',
+    searchBy: '',
+    sortBy: 'date',
   };
 
   componentDidMount() {
     const urlSrcPrm = new URLSearchParams(this.props.location.search);
-    if (urlSrcPrm.has("filter"))
-      this.setState({ filterBy: urlSrcPrm.get("filter") });
+    if (urlSrcPrm.has('filter'))
+      this.setState({ filterBy: urlSrcPrm.get('filter') });
     this.loadMails();
   }
 
   componentDidUpdate() {
     const urlSrcPrm = new URLSearchParams(this.props.location.search);
     if (
-      urlSrcPrm.has("filter") &&
-      urlSrcPrm.get("filter") !== this.state.filterBy
+      urlSrcPrm.has('filter') &&
+      urlSrcPrm.get('filter') !== this.state.filterBy
     ) {
-      this.setState({ filterBy: urlSrcPrm.get("filter") }, this.loadMails());
+      this.setState({ filterBy: urlSrcPrm.get('filter') }, this.loadMails());
     }
   }
 
@@ -45,23 +45,23 @@ export class MailApp extends React.Component {
   getFilteredMails = (mails) => {
     if (
       this.state.filterBy &&
-      this.state.filterBy !== "starred" &&
-      this.state.filterBy !== "unread"
+      this.state.filterBy !== 'starred' &&
+      this.state.filterBy !== 'unread'
     ) {
       return mails.filter((mail) => mail.status === this.state.filterBy);
-    } else if (this.state.filterBy === "starred") {
+    } else if (this.state.filterBy === 'starred') {
       return mails.filter(
-        (mail) => mail.isStarred === true && mail.status !== "trash"
+        (mail) => mail.isStarred === true && mail.status !== 'trash'
       );
-    } else if (this.state.filterBy === "unread") {
+    } else if (this.state.filterBy === 'unread') {
       return mails.filter(
         (mail) =>
           mail.isRead === false &&
-          mail.status !== "trash" &&
-          mail.status !== "draft"
+          mail.status !== 'trash' &&
+          mail.status !== 'draft'
       );
     } else {
-      return mails.filter((mail) => mail.status === "inbox");
+      return mails.filter((mail) => mail.status === 'inbox');
     }
   };
 
@@ -103,7 +103,7 @@ export class MailApp extends React.Component {
     if (ev) ev.stopPropagation();
     mailService.deleteMail(mailId).then(() => {
       this.loadMails();
-      this.props.history.push("/mail/");
+      this.props.history.push('/mail/');
     });
   };
 
@@ -115,9 +115,9 @@ export class MailApp extends React.Component {
   onAddToInbox = (mailId) => {
     mailService.addToInbox(mailId).then(() => {
       this.loadMails();
-      eventBusService.emit("user-msg", {
-        txt: "Mail moved to inbox ",
-        type: "success",
+      eventBusService.emit('user-msg', {
+        txt: 'Mail moved to inbox ',
+        type: 'success',
       });
     });
   };
@@ -131,8 +131,8 @@ export class MailApp extends React.Component {
         this.loadMails();
       });
     }
-    eventBusService.emit("user-msg", { txt: "Mail Sent", type: "success" });
-    this.props.history.push("/mail/");
+    eventBusService.emit('user-msg', { txt: 'Mail Sent', type: 'success' });
+    this.props.history.push('/mail/');
   };
 
   onEditDraft = (mail, ev) => {
@@ -151,15 +151,15 @@ export class MailApp extends React.Component {
     this.setState({ sortBy: ev.target.value }, this.loadMails());
 
   sortMail = (mails) => {
-    if (this.state.sortBy == "date")
+    if (this.state.sortBy == 'date')
       return mails.sort((a, b) => b.sentAt - a.sentAt);
-    if (this.state.sortBy == "subject")
+    if (this.state.sortBy == 'subject')
       return mails.sort((a, b) => {
         if (a.subject < b.subject) return -1;
         if (a.subject > b.subject) return 1;
         return 0;
       });
-    if (this.state.sortBy == "mail")
+    if (this.state.sortBy == 'mail')
       return mails.sort((a, b) => {
         if (a.from < b.from) return -1;
         if (a.from > b.from) return 1;
@@ -180,31 +180,31 @@ export class MailApp extends React.Component {
     const { mails, filterBy, sortBy } = this.state;
     if (!mails) return <p>Loading...</p>;
     return (
-      <section className="mail-app main-layout">
-        <div className="search-box">
+      <section className='mail-app main-layout'>
+        <div className='search-box'>
           <MailTopFilters
             handleSearch={this.handleSearch}
             sortVal={sortBy}
             onSortMail={this.onSortMail}
             filterBy={filterBy}
           />
-          <p className="unread-count">
-            {this.getUnreadCount()} unread emails in{" "}
-            {filterBy ? filterBy : "inbox"}
+          <p className='unread-count'>
+            {this.getUnreadCount()} unread emails in{' '}
+            {filterBy ? filterBy : 'inbox'}
           </p>
         </div>
-        <section className="side-menu">
+        <section className='side-menu'>
           <MailMenu filter={filterBy} setFilterBy={this.onSetFilter} />
         </section>
-        <section className="mail-main">
+        <section className='mail-main'>
           <Switch>
-            <Route path="/mail/compose">
+            <Route path='/mail/compose'>
               <MailCompose
                 onSendNewMail={this.onSendNewMail}
                 onSaveDraft={this.onSaveDraft}
               />
             </Route>
-            <Route path="/mail/read/:mailId">
+            <Route path='/mail/read/:mailId'>
               <MailDetails
                 onEditDraft={this.onEditDraft}
                 onToggleStar={this.onToggleStar}
@@ -214,7 +214,7 @@ export class MailApp extends React.Component {
                 onReplyMail={this.onReplyMail}
               />
             </Route>
-            <Route path="/mail">
+            <Route path='/mail'>
               <MailList
                 mails={mails}
                 onEditDraft={this.onEditDraft}

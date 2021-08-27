@@ -5,11 +5,13 @@ export function KeepList({
   onTogglePin,
   onChangeStyleNote,
   onDuplicateNote,
+  onSendNoteToMail,
 }) {
   return (
     <div className='keep-list'>
       {notes.map((note) => (
         <KeepPreview
+          onSendNoteToMail={onSendNoteToMail}
           onDuplicateNote={onDuplicateNote}
           onChangeStyleNote={onChangeStyleNote}
           onTogglePin={onTogglePin}

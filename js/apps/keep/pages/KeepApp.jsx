@@ -47,6 +47,14 @@ class _KeepApp extends React.Component {
     });
   };
 
+  onSendNoteToMail = (note) => {
+    keepService.sendNoteToMail(note).then((noteForMail) => {
+      this.props.history.push(
+        `/mail/compose?subject=${noteForMail.subject}&body=${noteForMail.body}`
+      );
+    });
+  };
+
   render() {
     const { notes } = this.state;
     if (!notes) return <div>Loading</div>;
@@ -57,6 +65,7 @@ class _KeepApp extends React.Component {
           <KeepFilter onSetFilter={this.onSetFilter} />
           <section className='notes-app'>
             <KeepList
+              onSendNoteToMail={this.onSendNoteToMail}
               onDuplicateNote={this.onDuplicateNote}
               onTogglePin={this.onTogglePin}
               onDeleteNote={this.onDeleteNote}

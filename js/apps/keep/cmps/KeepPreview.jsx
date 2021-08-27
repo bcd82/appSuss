@@ -17,14 +17,20 @@ export class KeepPreview extends React.Component {
   }
 
   render() {
-    const { onDeleteNote, onTogglePin, onChangeStyleNote, onDuplicateNote } =
-      this.props;
+    const {
+      onDeleteNote,
+      onTogglePin,
+      onChangeStyleNote,
+      onDuplicateNote,
+      onSendNoteToMail,
+    } = this.props;
     const { note, type } = this.state;
     if (!note) return <div>Loading</div>;
     return (
       <article className='note-preview'>
         {type === 'note-txt' && (
           <NoteTxt
+            onSendNoteToMail={onSendNoteToMail}
             onDuplicateNote={onDuplicateNote}
             onChangeStyleNote={onChangeStyleNote}
             onTogglePin={onTogglePin}
@@ -35,6 +41,7 @@ export class KeepPreview extends React.Component {
         )}
         {type === 'note-img' && (
           <NoteImg
+            onSendNoteToMail={onSendNoteToMail}
             onDuplicateNote={onDuplicateNote}
             onChangeStyleNote={onChangeStyleNote}
             onTogglePin={onTogglePin}
@@ -44,6 +51,7 @@ export class KeepPreview extends React.Component {
         )}
         {type === 'note-video' && (
           <NoteVideo
+            onSendNoteToMail={onSendNoteToMail}
             onDuplicateNote={onDuplicateNote}
             onChangeStyleNote={onChangeStyleNote}
             onTogglePin={onTogglePin}
@@ -53,6 +61,7 @@ export class KeepPreview extends React.Component {
         )}
         {type === 'note-todos' && (
           <NoteTodos
+            onSendNoteToMail={onSendNoteToMail}
             onDuplicateNote={onDuplicateNote}
             onChangeStyleNote={onChangeStyleNote}
             onTogglePin={onTogglePin}
