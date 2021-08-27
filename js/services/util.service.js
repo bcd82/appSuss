@@ -94,7 +94,7 @@ function getTimeToDisplay(timestamp) {
     return (`${time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())}`)
   }
   if(timeNow.getFullYear() === time.getFullYear()) {
-    return `${time.getMonth()+1}/${time.getDate()}`
+    return `${time.getDate()}/${time.getMonth()+1}`
   }
     return time.toLocaleDateString()
   }
