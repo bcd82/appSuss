@@ -1,4 +1,3 @@
-import { utilService } from "../../../services/util.service.js";
 import { mailService } from "../services/mail.service.js";
 const { withRouter } = ReactRouterDOM;
 
@@ -16,7 +15,7 @@ class _MailDetails extends React.Component {
     const id = this.props.match.params.mailId;
     mailService.getMailById(id).then((mail) => {
       if (!mail) {
-        this.props.history.push("/mail");
+        // this.props.history.push("/mail");
         return;
       }
       this.setState({ mail });
