@@ -1,6 +1,7 @@
 import { AddNoteTxt } from './AddNoteTxt.jsx';
 import { AddNoteImg } from './AddNoteImg.jsx';
 import { AddNoteTodos } from './AddNoteTodos.jsx';
+import { AddNoteVideo } from './AddNoteVideo.jsx';
 
 export class KeepAdd extends React.Component {
   state = {
@@ -41,10 +42,17 @@ export class KeepAdd extends React.Component {
               this.toggleType('note-todos');
             }}
           />
+          <img
+            src='../../../../assets/icons/todos.png'
+            onClick={() => {
+              this.toggleType('note-video');
+            }}
+          />
         </section>
         {type === 'note-txt' && <AddNoteTxt />}
         {type === 'note-img' && <AddNoteImg />}
         {type === 'note-todos' && <AddNoteTodos />}
+        {type === 'note-video' && <AddNoteVideo />}
       </section>
     );
   }
