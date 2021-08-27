@@ -35,7 +35,7 @@ class _MailTopFilters extends React.Component {
         </select>
         <button className="mobile-menu-btn">
           <img
-            src="/assets/imgs/cmps/hamburger.png"
+            src="./assets/imgs/cmps/hamburger.png"
             onClick={this.props.onToggleMenu}
           />
         </button>
