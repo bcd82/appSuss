@@ -11,6 +11,7 @@ class _AddNoteVideo extends React.Component {
       title: '',
       backgroundColor: '',
     },
+    urlId: '',
   };
 
   handleChange = ({ target }) => {
@@ -31,13 +32,15 @@ class _AddNoteVideo extends React.Component {
 
   onAddNoteVideo = (ev) => {
     ev.preventDefault();
+    const { urlId } = this.state;
     const { url, title, backgroundColor } = this.state.note;
-    if (!url) return;
+    console.log(`url`, url);
+    if (!urlId) return;
     const newNote = {
       id: utilService.makeId(),
       type: 'note-video',
       info: {
-        url: url,
+        url: urlId,
         title: title,
       },
       style: {
@@ -52,9 +55,14 @@ class _AddNoteVideo extends React.Component {
   onGetIdFromUrl = (ev) => {
     ev.preventDefault();
     if (!this.state.note.url) return;
-    keepService.getIdFromUrl(this.state.note.url).then((urlId) => {
-      this.setState({ url: urlId }, () => this.onAddNoteVideo(event));
-    });
+    keepService
+      .getIdFromUrl(this.state.note.url)
+      .then((urlId) => {
+        this.setState({ urlId });
+      })
+      .then(() => {
+        this.onAddNoteVideo(event);
+      });
   };
 
   render() {

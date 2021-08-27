@@ -21,8 +21,8 @@ export class NoteVideo extends React.Component {
         style={{ backgroundColor: note.backgroundColor }}
       >
         <iframe
-          width='560'
-          height='315'
+          width='267'
+          height='150'
           src={`https://www.youtube.com/embed/${note.info.url}`}
           title='YouTube video player'
           frameBorder='0'

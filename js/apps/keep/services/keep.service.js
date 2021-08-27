@@ -87,11 +87,9 @@ function deleteNote(noteId) {
 }
 
 function getIdFromUrl(url) {
-  console.log(`url`, url);
   const urlSrcPrm = new URLSearchParams(url);
-  const res = urlSrcPrm.get('v');
-  console.log(`res`, res);
   for (const [key, val] of urlSrcPrm) {
+    console.log(`val`, val);
     return Promise.resolve(val);
   }
 }

@@ -43,7 +43,7 @@ export class KeepAdd extends React.Component {
             }}
           />
           <img
-            src='../../../../assets/icons/todos.png'
+            src='../../../../assets/icons/youtube.png'
             onClick={() => {
               this.toggleType('note-video');
             }}
