@@ -16,8 +16,9 @@ class _KeepApp extends React.Component {
     if (urlSrcPrm.has('text')) {
       const txt = urlSrcPrm.get('text');
       keepService.createNoteFromUrl(txt);
+    } else {
+      this.loadNotes();
     }
-    this.loadNotes();
   }
 
   loadNotes = () => {
