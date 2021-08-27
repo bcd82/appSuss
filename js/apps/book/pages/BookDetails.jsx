@@ -1,8 +1,9 @@
 import { LongText } from "../cmps/LongText.jsx";
 import { bookService } from "../services/book.service.js";
-import { utilService } from "../services/util.service.js";
+import { utilService } from "../../../services/util.service.js";
 import { ReviewAdd } from "../cmps/ReviewAdd.jsx";
 import { Review } from "../cmps/Review.jsx";
+import { AppHeader } from "../cmps/AppHeader.jsx";
 
 const { Link } = ReactRouterDOM;
 
@@ -67,7 +68,7 @@ export class BookDetails extends React.Component {
   getTextForBookYears = () => {
     const thisYear = new Date(Date.now()).getFullYear();
     let publishYear = this.state.book.publishedDate;
-    if (typeof publishYear === 'string')
+    if (typeof publishYear === "string")
       publishYear = +this.state.book.publishedDate.substring(0, 4);
 
     if (thisYear - publishYear >= 10) return "Veteran Book";
@@ -87,79 +88,81 @@ export class BookDetails extends React.Component {
     const formattedPrice = utilService.getPriceCurrency(book);
 
     return (
-      <section className="book-details main-layout">
-        <div className="top-btns">
-          <Link to={`/book/${bookService.getDiffBookId(book.id, -1)}`}>
-            <button className="back-btn">Previous Book</button>
-          </Link>
-          <button className="back-btn" onClick={this.onBack}>
-            Back
-          </button>
-          <Link to={`/book/${bookService.getDiffBookId(book.id, 1)}`}>
-            <button className="back-btn">Next Book</button>
-          </Link>
-        </div>
-        <div className="details-img">
-          {book.listPrice.isOnSale && (
-            <p className=" reading-type sale">ON-SALE</p>
-          )}
-          {!(book.pageCount > 100 && book.pageCount < 200) && (
-            <p className="reading-type">{this.getReadingType()}</p>
-          )}
-          <img src={book.thumbnail}></img>
-        </div>
-        <div className="more-details">
-          <h1 className="title">{book.title}</h1>
-          <p className="sub-title">{book.subtitle}</p>
-          <p className="author">
-            By: {!book.authors && "Unknown"}
-            {book.authors &&
-              book.authors.join()}
-          </p>
-          <p className="publish-date">
-            Published on: {book.publishedDate} {this.getTextForBookYears()}
-          </p>
-          <p className={`price ${this.getPriceClass()}`}>
-            Price: {formattedPrice}{" "}
-            {book.listPrice.isOnSale && <span className="sale">ON SALE</span>}
-          </p>
-          <p>Language: {this.getLaguage()}</p>
-          <p>Length: {book.pageCount} pages</p>
-          <div className="categories">
-            Categories :
-            {book.categories.map((category, idx) => (
-              <p className="category" key={idx}>
-                {category}
-              </p>
-            ))}
+      <div className="book-container">
+        <AppHeader />
+        <section className="book-details main-layout">
+          <div className="top-btns">
+            <Link to={`/book/read/${bookService.getDiffBookId(book.id, -1)}`}>
+              <button className="back-btn">Previous Book</button>
+            </Link>
+            <button className="back-btn" onClick={this.onBack}>
+              Back
+            </button>
+            <Link to={`/book/read/${bookService.getDiffBookId(book.id, 1)}`}>
+              <button className="back-btn">Next Book</button>
+            </Link>
           </div>
-          <LongText
-            text={book.description}
-            isLongTxtShown={this.state.isLongTxtShown}
-            onClickMore={this.onToggleTxt}
-          />
-        </div>
+          <div className="details-img">
+            {book.listPrice.isOnSale && (
+              <p className=" reading-type sale">ON-SALE</p>
+            )}
+            {!(book.pageCount > 100 && book.pageCount < 200) && (
+              <p className="reading-type">{this.getReadingType()}</p>
+            )}
+            <img src={book.thumbnail}></img>
+          </div>
+          <div className="more-details">
+            <h1 className="title">{book.title}</h1>
+            <p className="sub-title">{book.subtitle}</p>
+            <p className="author">
+              By: {!book.authors && "Unknown"}
+              {book.authors && book.authors.join()}
+            </p>
+            <p className="publish-date">
+              Published on: {book.publishedDate} {this.getTextForBookYears()}
+            </p>
+            <p className={`price ${this.getPriceClass()}`}>
+              Price: {formattedPrice}{" "}
+              {book.listPrice.isOnSale && <span className="sale">ON SALE</span>}
+            </p>
+            <p>Language: {this.getLaguage()}</p>
+            <p>Length: {book.pageCount} pages</p>
+            <div className="categories">
+              Categories :
+              {book.categories.map((category, idx) => (
+                <p className="category" key={idx}>
+                  {category}
+                </p>
+              ))}
+            </div>
+            <LongText
+              text={book.description}
+              isLongTxtShown={this.state.isLongTxtShown}
+              onClickMore={this.onToggleTxt}
+            />
+          </div>
 
-        <div className="add-review-box">
-          <ReviewAdd book={book} onSubmit={this.onAddReview} />
-        </div>
+          <div className="add-review-box">
+            <ReviewAdd book={book} onSubmit={this.onAddReview} />
+          </div>
 
-        <div className="reviews-container">
-          {!book.reviews || !book.reviews.length ? (
-            <p> No reviews yet..</p>
-          ) : (
-            book.reviews.map((review, idx) => (
-              <Review
-                review={review}
-                idx={idx}
-                key={idx}
-                bookId={book.id}
-                onDelete={this.onDeleteReview}
-              />
-            ))
-          )}
-        </div>
-      </section>
+          <div className="reviews-container">
+            {!book.reviews || !book.reviews.length ? (
+              <p> No reviews yet..</p>
+            ) : (
+              book.reviews.map((review, idx) => (
+                <Review
+                  review={review}
+                  idx={idx}
+                  key={idx}
+                  bookId={book.id}
+                  onDelete={this.onDeleteReview}
+                />
+              ))
+            )}
+          </div>
+        </section>
+      </div>
     );
   }
 }

@@ -1,6 +1,7 @@
 import { bookService } from "../services/book.service.js";
 import { googleBooksService } from "../services/google.books.service.js";
 import { eventBusService } from "../../../services/event.bus.service.js";
+import { AppHeader } from "../cmps/AppHeader.jsx";
 
 export class BookAdd extends React.Component {
   state = {
@@ -35,31 +36,36 @@ export class BookAdd extends React.Component {
     const { books, query } = this.state;
 
     return (
-      <section className="book-add main-layout">
-        <h1>Search for books </h1>
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            value={query}
-            name="search"
-            onChange={this.handleChange}
-            autoFocus
-          />
-          <button>Search</button>
-        </form>
-        <div className="search-list ">
-          <ul>
-            {!books && <p>Search for something</p>}
-            {books &&
-              books.map((book, idx) => (
-                <li key={idx}>
-                  {book.volumeInfo.title}
-                  <button onClick={() => this.onAddBook(idx)}> + </button>
-                </li>
-              ))}
-          </ul>
-        </div>
-      </section>
+      <div className="book-container">
+        <AppHeader />
+        <section className="book-add main-layout">
+          <div className="add-container">
+          <h1>Search for books </h1>
+          <form onSubmit={this.onSubmit}>
+            <input
+              type="text"
+              value={query}
+              name="search"
+              onChange={this.handleChange}
+              autoFocus
+            />
+            <button>Search</button>
+          </form>
+          <div className="search-list ">
+            <ul>
+              {!books && <p>Search for something</p>}
+              {books &&
+                books.map((book, idx) => (
+                  <li key={idx}>
+                    {book.volumeInfo.title}
+                    <button onClick={() => this.onAddBook(idx)}> + </button>
+                  </li>
+                ))}
+            </ul>
+          </div>
+          </div>
+        </section>
+      </div>
     );
   }
 }

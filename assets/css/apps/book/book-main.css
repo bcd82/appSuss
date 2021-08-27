@@ -1,5 +1,4 @@
 @import './cmps/header.css';
-@import './cmps/usr-msg.css';
 @import './cmps/book-filter.css';
 @import './cmps/book-list.css';
 @import './cmps/book-preview.css';
@@ -11,3 +10,28 @@
 @import './pages/book-app.css';
 @import './pages/book-details.css';
 @import './pages/about.css';
+
+.book-container {
+    /* background-color: rgb(255, 255, 255); */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url('/assets/imgs/book/bg.jpg');
+    background-size: cover;
+    background-position: fixed;
+    background-attachment: fixed;
+    inset:0;
+}
+.book-app.main-layout,.book-add.main-layout,.about-container.main-layout,.home.main-layout { 
+    width:95% ;
+
+}
+.book-add.main-layout { 
+    width:95% ;
+    height:120vh;
+}
+
+@media screen and (min-width:800px){
+    .book-app.main-layout,.book-add.book-app.main-layout,.about-container.main-layout,.home.main-layout { 
+        width:1200px ;
+    }
+    
+}

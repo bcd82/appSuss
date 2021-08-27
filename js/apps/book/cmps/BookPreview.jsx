@@ -1,11 +1,11 @@
-import { utilService } from "../services/util.service.js";
+import { utilService } from "../../../services/util.service.js";
 const { withRouter } = ReactRouterDOM;
 
 function _BookPreview({ book, onSelectBook, history }) {
   const formattedPrice = utilService.getPriceCurrency(book);
 
   const goToBook = () => {
-    history.push(`/book/${book.id}`);
+    history.push(`/book/read/${book.id}`);
   };
 
   return (
