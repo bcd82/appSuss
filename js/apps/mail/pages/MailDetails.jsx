@@ -21,7 +21,7 @@ class _MailDetails extends React.Component {
   };
 
   sendToKeep = () =>{
-    this.props.history.push(`/keep/?text=Subject: ${this.state.mail.subject}.
+    this.props.history.push(`/keep/?text=${this.state.mail.subject}/
       ${this.state.mail.body}
     `)
   }

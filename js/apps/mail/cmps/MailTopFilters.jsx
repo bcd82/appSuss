@@ -33,27 +33,11 @@ class _MailTopFilters extends React.Component {
           <option value="mail">From</option>
           <option value="subject">Subject</option>
         </select>
-        {/* <label>Folder
-                <select className="select-box mobile" value={this.props.filterBy} onChange={this.handleFolderChange}>
-                    <option value="inbox">
-                        Inbox
-                    </option>
-                    <option value="unread">
-                        Unread
-                    </option>
-                    <option value="starred">
-                        Starred
-                    </option>
-                    <option value="draft">
-                        Drafts
-                    </option>
-                    <option value="trash">
-                        Trash
-                    </option>
-                </select>
-                </label> */}
         <button className="mobile-menu-btn">
-          <img src="/assets/imgs/cmps/hamburger.png" />
+          <img
+            src="/assets/imgs/cmps/hamburger.png"
+            onClick={this.props.onToggleMenu}
+          />
         </button>
       </div>
     );

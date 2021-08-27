@@ -28,7 +28,11 @@
 
 .side-menu {
     position: fixed;
-    transform: translateX(-130%)
+    transform: translateX(-130%);
+}
+.side-menu.mobile-menu {
+    position: fixed;
+    transform: translateX(0%)
 }
 
 .mail-main {
