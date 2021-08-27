@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     padding: 0px 20px;
+    /* width:500px; */
 }
 
 .mail-details h1 {
@@ -23,13 +24,13 @@
 
 .mail-details .top-row {
     display: flex;
-    margin-bottom: 0px;
     align-items: center;
     flex-wrap: wrap;
 }
 .mail-details .top-row .btns{
     display: flex;
-    margin-bottom: 0px;
+    position:relative;
+    left:-30px;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -39,7 +40,7 @@
 }
 .mail-details h2.date {
     font-size: 0.9rem;
-    margin-bottom: 0px;
+    margin-bottom:10px;
     
 }
 .mail-details h3 {
@@ -134,9 +135,12 @@
         margin-bottom: 20px;    
     }
     .mail-details h2 {
-        /* flex: 1; */
-        font-size: 2rem;
-        
+        margin-bottom:5px;
+    }
+    .mail-details h2.date {
+        font-size: 1.2rem;
+        color:rgb(104, 104, 104);
+        margin-bottom:30px;
 
     }
 
