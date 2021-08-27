@@ -81,6 +81,7 @@ export class MailApp extends React.Component {
   };
 
   getUnreadCount = () => this.state.mails.filter((mail) => !mail.isRead).length;
+
   onToggleStar = (ev, mailId) => {
     ev.stopPropagation();
     mailService.toggleStar(mailId).then(this.loadMails());
@@ -110,7 +111,7 @@ export class MailApp extends React.Component {
 
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, this.loadMails());
-    // this.props.history.push("/mail/");
+
   };
 
   onAddToInbox = (mailId) => {

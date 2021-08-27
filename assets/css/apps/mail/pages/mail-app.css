@@ -46,7 +46,7 @@
 .screen { 
     inset:0;
     position:fixed;
-    background-color:rgba(141, 115, 29, 0.822);
+    background-color:rgba(184, 173, 139, 0.507);
     opacity:0;
     pointer-events: none;
     z-index:4;
