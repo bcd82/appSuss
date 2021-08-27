@@ -41,7 +41,9 @@ class _MailCompose extends React.Component {
             value={subject}
             onChange={this.handleChange}
             placeholder="Subject"
+            onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault()}}
             required
+            
             autoFocus
           />
           <input
@@ -51,6 +53,8 @@ class _MailCompose extends React.Component {
             onChange={this.handleChange}
             placeholder="email@email.com"
             required
+            onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault()}}
+
           />
           <textarea
             name="body"
