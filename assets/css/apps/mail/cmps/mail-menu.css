@@ -1,6 +1,8 @@
-.mail-menu { 
+.mail-menu nav{ 
     display: flex;
     flex-direction: column;
+    background-color: white;
+
 }
 .mail-menu a{ 
     text-decoration: none ;

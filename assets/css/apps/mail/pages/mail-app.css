@@ -29,16 +29,32 @@
 .side-menu {
     position: fixed;
     transform: translateX(-130%);
+    z-index:5;
+    background-color: white;
+    transition: transform .2s ease-out;
 }
-.side-menu.mobile-menu {
+
+.mail-app.mobile-open .side-menu {
     position: fixed;
-    transform: translateX(0%)
+    transform: translateX(-4%)
 }
 
 .mail-main {
     grid-column: 1;
     grid-row: 2;
     width: 100%;
+}
+.screen { 
+    inset:0;
+    position:fixed;
+    background-color:rgba(128, 128, 128, 0.562);
+    opacity:0;
+    pointer-events: none;
+    z-index:4;
+}
+.mail-app.mobile-open .screen { 
+    opacity:1;
+    pointer-events: all;
 }
 
 @media screen and (min-width:800px) {

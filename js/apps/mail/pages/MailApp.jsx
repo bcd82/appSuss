@@ -185,8 +185,13 @@ export class MailApp extends React.Component {
     const { mails, filterBy, sortBy, isMobileMenuOpen } = this.state;
     if (!mails) return <p>Loading...</p>;
     return (
-      <section className="mail-app main-layout">
+      <section
+        className={`${"mail-app main-layout"} ${
+          isMobileMenuOpen ? "mobile-open" : ""
+        }`}
+      >
         <div className="search-box">
+          <div className="screen" onClick={this.onToggleMobileMenu}></div>
           <MailTopFilters
             handleSearch={this.handleSearch}
             sortVal={sortBy}
@@ -198,11 +203,8 @@ export class MailApp extends React.Component {
             {filterBy ? filterBy : "inbox"}
           </p>
         </div>
-        <section className={`side-menu ${isMobileMenuOpen ? 'mobile-menu' : ''}`}>
-          <MailMenu
-            filter={filterBy}
-            setFilterBy={this.onSetFilter}
-          />
+        <section className="side-menu">
+          <MailMenu filter={filterBy} setFilterBy={this.onSetFilter} />
         </section>
         <section className="mail-main">
           <Switch>
