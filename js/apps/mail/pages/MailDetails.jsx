@@ -1,4 +1,3 @@
-import { utilService } from "../../../services/util.service.js";
 import { mailService } from "../services/mail.service.js";
 const { withRouter } = ReactRouterDOM;
 
@@ -16,22 +15,13 @@ class _MailDetails extends React.Component {
     const id = this.props.match.params.mailId;
     mailService.getMailById(id).then((mail) => {
       if (!mail) {
-        this.props.history.push("/mail");
+        // this.props.history.push("/mail");
         return;
       }
       this.setState({ mail });
     });
   };
 
-  onReplyMail = () => {
-    this.props.history.push(`/mail/compose?subject=re:${
-      this.state.mail.subject
-    }&body=on ${new Date(this.state.mail.sentAt)} <${
-      this.state.mail.from
-    }> wrote : 
-    
-    ${this.state.mail.body}&to=${this.state.mail.from}`);
-  };
   render() {
     const {
       onToggleStar,
@@ -55,6 +45,15 @@ class _MailDetails extends React.Component {
             From: {mail.from}{" "}
             <span>{new Date(mail.sentAt).toLocaleString()}</span>
           </h2>
+          {mail.status !== "draft" && (
+            <button onClick={this.onReplyMail}>
+              <img
+                src="./assets/imgs/mail/reply.png"
+                alt="reply"
+                title="reply"
+              />
+            </button>
+          )}
           {mail.status === "draft" && (
             <button title="edit" onClick={() => onEditDraft(mail)}>
               <img src="./assets/imgs/mail/edit.png" alt="edit" />
@@ -77,15 +76,6 @@ class _MailDetails extends React.Component {
               className={mail.isRead ? "unread" : "read"}
             />
           </button>
-          {mail.status !== "draft" && (
-            <button onClick={this.onReplyMail}>
-              <img
-                src="./assets/imgs/mail/reply.png"
-                alt="reply"
-                title="reply"
-              />
-            </button>
-          )}
           <img
             src="./assets/imgs/mail/star.png"
             className={mail.isStarred ? "starred" : "not-starred"}

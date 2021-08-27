@@ -9,6 +9,9 @@ class _AppHeader extends React.Component {
     render() {
         return (
       <section className='main-layout app-header'>
+        <div>
+          
+        </div>
         <img src="./assets/imgs/cmps/horse.png"></img>
         <h1 onClick={() => this.props.history.push('/')} className='logo'>
           <span>A</span>ppsus
@@ -16,7 +19,7 @@ class _AppHeader extends React.Component {
         <nav>
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/about'>About</NavLink>
-          <NavLink to='/mail'>Mail</NavLink>
+          <NavLink to='/mail?filter=inbox'>Mail</NavLink>
           <NavLink to='/keep'>Keep</NavLink>
           <NavLink to='/book'>Book</NavLink>
         </nav>

@@ -224,7 +224,7 @@ const staticMails = [
         status: 'inbox',
         isStarred: true,
         from: 'feedback@slack.com',
-    },
+    }
 ]
 
 let gMails = storageService.loadFromStorage(DB_KEY) || staticMails;

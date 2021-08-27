@@ -1,6 +1,7 @@
 .mail-menu { 
     display: flex;
     flex-direction: column;
+    width:200px;
     
 }
 .mail-menu a{ 
@@ -18,7 +19,6 @@
     text-align: center;
     border-radius: 2em;
     text-decoration: none ;
-    width:90%;
 }
 .mail-menu button.compose-btn { 
     font-size:1.5rem;
@@ -28,11 +28,33 @@
     border-radius: 2em;
     border-color: rgba(0, 0, 0, 0.11);
     text-decoration: none ;
-    width:90%;
+    width:200px;
     box-shadow : 0 0 2px rgba(0, 0, 0, 0.274);
     transform: scale(1);
     transition: box-shadow .2s ease-out ,transform .2s ease-out;
+    cursor: pointer;
 }
+.mail-menu button.compose-btn::before { 
+    content:'+';
+    margin-inline-end: 10px;
+    top:6px;
+    left:12.5px;
+    font-size:3rem;
+    color:rgba(0, 0, 0, 0.459);
+    position: absolute;
+}
+.mail-menu button.compose-btn:hover::before { 
+	animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+@keyframes rotate-90-cw {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(90deg);
+    }
+  }
 .mail-menu button.compose-btn:hover { 
     transform: scale(1.03);
     box-shadow : 0 0 5px rgba(0, 0, 0, 0.274);
@@ -50,9 +72,12 @@
     padding-inline-start: 10px;
     background-color:transparent;
     transition: background-color .1s ease-in;
+    border-radius: 4em 0px 0px 4em;
+
 }
 .mail-menu li.active{ 
     background-color:rgba(255, 242, 170, 0.664);
+
 }
 .mail-menu li:hover { 
     background-color:rgb(255, 251, 230);

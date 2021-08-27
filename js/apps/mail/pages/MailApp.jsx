@@ -11,13 +11,26 @@ const { Route, Switch } = ReactRouterDOM;
 export class MailApp extends React.Component {
   state = {
     mails: null,
-    filterBy: null,
+    filterBy: "inbox",
     searchBy: "",
     sortBy: "date",
   };
 
   componentDidMount() {
+    const urlSrcPrm = new URLSearchParams(this.props.location.search);
+    if (urlSrcPrm.has("filter"))
+      this.setState({ filterBy: urlSrcPrm.get("filter") });
     this.loadMails();
+  }
+
+  componentDidUpdate() {
+    const urlSrcPrm = new URLSearchParams(this.props.location.search);
+    if (
+      urlSrcPrm.has("filter") &&
+      urlSrcPrm.get("filter") !== this.state.filterBy
+    ) {
+      this.setState({ filterBy: urlSrcPrm.get("filter") }, this.loadMails());
+    }
   }
 
   loadMails() {
@@ -53,7 +66,6 @@ export class MailApp extends React.Component {
   };
 
   handleSearch = (searchBy) => this.setState({ searchBy }, this.loadMails());
-  
 
   filterSearch = (mails) => {
     const searchBy = this.state.searchBy;
@@ -67,9 +79,7 @@ export class MailApp extends React.Component {
     } else return mails;
   };
 
-  getUnreadCount = () =>  this.state.mails.filter((mail) => !mail.isRead).length;
-;
-
+  getUnreadCount = () => this.state.mails.filter((mail) => !mail.isRead).length;
   onToggleStar = (ev, mailId) => {
     ev.stopPropagation();
     mailService.toggleStar(mailId).then(this.loadMails());
@@ -77,7 +87,7 @@ export class MailApp extends React.Component {
 
   onGoToDetails = (mailId) => {
     this.onToggleRead(mailId, true).then(() => {
-      this.props.history.push(`/mail/${mailId}`);
+      this.props.history.push(`/mail/read/${mailId}`);
     });
   };
 
@@ -99,7 +109,7 @@ export class MailApp extends React.Component {
 
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, this.loadMails());
-    this.props.history.push("/mail/");
+    // this.props.history.push("/mail/");
   };
 
   onAddToInbox = (mailId) => {
@@ -137,8 +147,9 @@ export class MailApp extends React.Component {
     mailService.saveDraft(draft, id).then(() => this.loadMails());
   };
 
-  onSortMail = (ev) => this.setState({ sortBy: ev.target.value }, this.loadMails());
-  
+  onSortMail = (ev) =>
+    this.setState({ sortBy: ev.target.value }, this.loadMails());
+
   sortMail = (mails) => {
     if (this.state.sortBy == "date")
       return mails.sort((a, b) => b.sentAt - a.sentAt);
@@ -155,6 +166,14 @@ export class MailApp extends React.Component {
         return 0;
       });
     return mails;
+  };
+
+  onReplyMail = (mail,ev) => {
+    if(ev) ev.stopPropagation()
+    this.props.history.push(`/mail/compose?subject=re:${
+      mail.subject
+    }&body=on ${new Date(mail.sentAt)} <${mail.from}> wrote : 
+     ${mail.body}&to=${mail.from}`);
   };
 
   render() {
@@ -184,7 +203,7 @@ export class MailApp extends React.Component {
                 onSaveDraft={this.onSaveDraft}
               />
             </Route>
-            <Route path="/mail/:mailId">
+            <Route path="/mail/read/:mailId">
               <MailDetails
                 onEditDraft={this.onEditDraft}
                 onToggleStar={this.onToggleStar}
@@ -193,7 +212,7 @@ export class MailApp extends React.Component {
                 onAddToInbox={this.onAddToInbox}
               />
             </Route>
-            <Route path="/mail/">
+            <Route path="/mail">
               <MailList
                 mails={mails}
                 onEditDraft={this.onEditDraft}
@@ -201,6 +220,7 @@ export class MailApp extends React.Component {
                 onClickMail={this.onGoToDetails}
                 onDeleteMail={this.onDeleteMail}
                 onToggleRead={this.onToggleRead}
+                onReplyMail={this.onReplyMail}
               />
             </Route>
           </Switch>

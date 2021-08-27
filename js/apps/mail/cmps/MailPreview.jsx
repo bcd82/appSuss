@@ -8,6 +8,7 @@ export function MailPreview(props) {
     onDeleteMail,
     onToggleRead,
     onEditDraft,
+    onReplyMail
   } = props;
 
   return (
@@ -19,6 +20,11 @@ export function MailPreview(props) {
         {mail.status === "draft" && (
           <button onClick={(ev) => onEditDraft(mail, ev)}>
             <img src="./assets/imgs/mail/edit.png" />
+          </button>
+        )}
+        {mail.status !== "draft" && (
+          <button onClick={(ev) => onReplyMail(mail, ev)}>
+            <img src="./assets/imgs/mail/reply.png" />
           </button>
         )}
         <button onClick={(ev) => onDeleteMail(mail.id, ev)}>
