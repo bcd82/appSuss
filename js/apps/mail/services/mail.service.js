@@ -312,7 +312,10 @@ function createMail({ subject, to, body, from }) {
 
 function moveDraftToSent(mailId) {
     getMailById(mailId)
-        .then(mail => mail.status = 'sent')
+        .then(mail => {
+            mail.status = 'sent'
+            mail.sentAt = Date.now()
+        })
     return Promise.resolve()
 }
 

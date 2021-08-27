@@ -1,4 +1,6 @@
 import { mailService } from "../services/mail.service.js";
+import { eventBusService } from "../../../services/event.bus.service.js";
+
 const { withRouter } = ReactRouterDOM;
 
 class _MailDetails extends React.Component {
@@ -24,6 +26,7 @@ class _MailDetails extends React.Component {
     this.props.history.push(`/keep/?text=${this.state.mail.subject}/
       ${this.state.mail.body}
     `)
+    eventBusService.emit('user-msg',{txt:'Note Created',type:'success'})
   }
 
   render() {
