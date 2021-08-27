@@ -11,6 +11,7 @@ export const keepService = {
   duplicateNote,
   getIdFromUrl,
   sendNoteToMail,
+  createNoteFromUrl,
 };
 
 const KEY = 'notesDB';
@@ -150,6 +151,19 @@ function sendNoteToMail(note) {
   }
 
   return Promise.resolve({ subject, body });
+}
+
+function createNoteFromUrl(txt) {
+  const note = {
+    id: utilService.makeId(),
+    type: 'note-txt',
+    isPinned: false,
+    info: {
+      txt,
+    },
+  };
+  notes.unshift(note);
+  _saveNotesToStorage;
 }
 
 function _saveNotesToStorage() {
