@@ -11,7 +11,7 @@ const { Route, Switch } = ReactRouterDOM;
 export class MailApp extends React.Component {
   state = {
     mails: null,
-    filterBy: 'inbox',
+    filterBy: "inbox",
     searchBy: "",
     sortBy: "date",
   };
@@ -25,8 +25,11 @@ export class MailApp extends React.Component {
 
   componentDidUpdate() {
     const urlSrcPrm = new URLSearchParams(this.props.location.search);
-    if (urlSrcPrm.has("filter") && urlSrcPrm.get('filter') !== this.state.filterBy) {
-      this.setState({ filterBy: urlSrcPrm.get("filter") },this.loadMails());
+    if (
+      urlSrcPrm.has("filter") &&
+      urlSrcPrm.get("filter") !== this.state.filterBy
+    ) {
+      this.setState({ filterBy: urlSrcPrm.get("filter") }, this.loadMails());
     }
   }
 
@@ -165,6 +168,14 @@ export class MailApp extends React.Component {
     return mails;
   };
 
+  onReplyMail = (mail,ev) => {
+    if(ev) ev.stopPropagation()
+    this.props.history.push(`/mail/compose?subject=re:${
+      mail.subject
+    }&body=on ${new Date(mail.sentAt)} <${mail.from}> wrote : 
+     ${mail.body}&to=${mail.from}`);
+  };
+
   render() {
     const { mails, filterBy, sortBy } = this.state;
     if (!mails) return <p>Loading...</p>;
@@ -209,6 +220,7 @@ export class MailApp extends React.Component {
                 onClickMail={this.onGoToDetails}
                 onDeleteMail={this.onDeleteMail}
                 onToggleRead={this.onToggleRead}
+                onReplyMail={this.onReplyMail}
               />
             </Route>
           </Switch>

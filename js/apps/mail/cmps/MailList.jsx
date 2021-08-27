@@ -6,7 +6,8 @@ export function MailList({
   onClickMail,
   onDeleteMail,
   onToggleRead,
-  onEditDraft
+  onEditDraft,
+  onReplyMail
 }) {
   return (
     <div>
@@ -20,6 +21,7 @@ export function MailList({
             onDeleteMail={onDeleteMail}
             onToggleRead={onToggleRead}
             onEditDraft={onEditDraft}
+            onReplyMail={onReplyMail}
           />
         ))}
     </div>
