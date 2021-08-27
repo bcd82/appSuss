@@ -1,6 +1,6 @@
 import { bookService } from "../services/book.service.js";
 import { googleBooksService } from "../services/google.books.service.js";
-import { eventBusService } from "../services/event.bus.service.js";
+import { eventBusService } from "../../../services/event.bus.service.js";
 
 export class BookAdd extends React.Component {
   state = {

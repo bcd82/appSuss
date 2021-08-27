@@ -19,13 +19,11 @@
 
 .app-menu .app-link {
     animation: slide-in-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    opacity:0.5 !important;
+    opacity:0.8 !important;
 }
 .app-menu .app-link img{
     background-color: white ;
     height:fit-content;
-
-
 }
 
 .app-menu .app-link.active {

@@ -3,7 +3,8 @@ export const utilService = {
   makeLorem,
   getRandomIntInclusive,
   getTime,
-  getTimeToDisplay
+  getTimeToDisplay,
+  getPriceCurrency
 };
 
 function makeId(length = 4) {
@@ -99,3 +100,19 @@ function getTimeToDisplay(timestamp) {
     return time.toLocaleDateString()
   }
 
+  function getPriceCurrency (book) {
+    let formattedPrice;
+    switch (book.listPrice.currencyCode) {
+        case "ILS":
+          formattedPrice = ` ${book.listPrice.amount}₪`;
+          break;
+        case "EUR":
+          formattedPrice = `€${book.listPrice.amount}`;
+          break;
+        default:
+          formattedPrice = `$${book.listPrice.amount}`;
+          break;
+      }
+      return formattedPrice
+
+}
