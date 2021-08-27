@@ -20,10 +20,7 @@
     background-attachment: fixed;
     inset:0;
 }
-.book-app.main-layout,.book-add.main-layout,.about-container.main-layout,.home.main-layout { 
-    width:95% ;
 
-}
 .book-add.main-layout { 
     width:95% ;
     height:120vh;
