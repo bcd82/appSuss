@@ -19,7 +19,7 @@ class _MailTopFilters extends React.Component {
         <input
           name="query"
           type="search"
-          placeholder="Search by subject , text or email"
+          placeholder="Search"
           value={query}
           onChange={this.handleInput}
         />

@@ -60,7 +60,7 @@
 @media screen and (min-width:800px) {
     .mail-app {
         display: grid;
-        grid-template-columns: 300px 85%;
+        grid-template-columns: 20% 80%;
         grid-template-rows: 90px 1fr;
         margin: 0 auto;
         justify-self: center;
