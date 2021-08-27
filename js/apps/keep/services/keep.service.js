@@ -10,6 +10,7 @@ export const keepService = {
   changeStyleNote,
   duplicateNote,
   getIdFromUrl,
+  sendNoteToMail,
 };
 
 const KEY = 'notesDB';
@@ -123,6 +124,32 @@ function duplicateNote(note) {
   notes.unshift(duplicateNote);
   _saveNotesToStorage();
   return Promise.resolve(notes);
+}
+
+function sendNoteToMail(note) {
+  let subject;
+  let body;
+  if (note.type === 'note-txt') {
+    subject = 'no-subject';
+    body = note.info.txt;
+  } else if (note.type === 'note-img' || note.type === 'note-video') {
+    subject = note.info.title;
+    body =
+      note.type === 'note-img'
+        ? `Link: ${note.info.url}`
+        : `https://www.youtube.com/watch?v=${note.info.ur}`;
+  } else if (note.type === 'note-todos') {
+    subject = note.info.label;
+    const todos = note.info.todos.map((todo) => {
+      let isDone;
+      if (todo.doneAt) isDone = 'DONE';
+      else isDone = 'UNDONE';
+      return `${todo.txt} - ${isDone}\n`;
+    });
+    body = `TODOs list: ${todos}`;
+  }
+
+  return Promise.resolve({ subject, body });
 }
 
 function _saveNotesToStorage() {

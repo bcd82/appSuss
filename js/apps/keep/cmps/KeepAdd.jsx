@@ -24,26 +24,26 @@ export class KeepAdd extends React.Component {
       >
         <section className='add-note-btns'>
           <img
-            src='../../../../assets/icons/text.png'
+            src='./assets/icons/text.png'
             onClick={() => {
               this.toggleType('note-txt');
             }}
           />
 
           <img
-            src='../../../../assets/icons/image.png'
+            src='./assets/icons/image.png'
             onClick={() => {
               this.toggleType('note-img');
             }}
           />
           <img
-            src='../../../../assets/icons/todos.png'
+            src='./assets/icons/todos.png'
             onClick={() => {
               this.toggleType('note-todos');
             }}
           />
           <img
-            src='../../../../assets/icons/youtube.png'
+            src='./assets/icons/youtube.png'
             onClick={() => {
               this.toggleType('note-video');
             }}

@@ -11,7 +11,13 @@ export class NoteImg extends React.Component {
   }
 
   render() {
-    const { onDeleteNote, onTogglePin, onChangeStyleNote,onDuplicateNote } = this.props;
+    const {
+      onDeleteNote,
+      onTogglePin,
+      onChangeStyleNote,
+      onDuplicateNote,
+      onSendNoteToMail,
+    } = this.props;
     const { note, isPlatteOpen } = this.state;
     if (!note) return <div>Loading</div>;
     return (
@@ -24,22 +30,27 @@ export class NoteImg extends React.Component {
         <div className='note-features'>
           <img
             className={note.isPinned ? 'pin-pushed' : 'pin'}
-            src='../../../../assets/icons/push-pin.png'
+            src='./assets/icons/push-pin.png'
             onClick={() => onTogglePin(note)}
           />
           <img
             className='duplicate-note'
-            src='../../../../assets/icons/duplicate.png'
+            src='./assets/icons/duplicate.png'
             onClick={() => onDuplicateNote(note)}
           />
           <img
             className='delete-note'
-            src='../../../../assets/icons/delete.png'
+            src='./assets/icons/delete.png'
             onClick={() => onDeleteNote(note)}
           />
           <img
+            className='send-to-mail'
+            src='./assets/icons/send-to-mail.png'
+            onClick={() => onSendNoteToMail(note)}
+          />
+          <img
             className='color-note'
-            src='../../../../assets/icons/palette.png'
+            src='./assets/icons/palette.png'
             onClick={() => {
               this.setState({ isPlatteOpen: !isPlatteOpen });
             }}
