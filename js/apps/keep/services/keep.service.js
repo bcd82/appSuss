@@ -9,6 +9,7 @@ export const keepService = {
   togglePin,
   changeStyleNote,
   duplicateNote,
+  getIdFromUrl,
 };
 
 const KEY = 'notesDB';
@@ -83,6 +84,16 @@ function deleteNote(noteId) {
   notes.splice(noteIdx, 1);
   _saveNotesToStorage();
   return Promise.resolve();
+}
+
+function getIdFromUrl(url) {
+  console.log(`url`, url);
+  const urlSrcPrm = new URLSearchParams(url);
+  const res = urlSrcPrm.get('v');
+  console.log(`res`, res);
+  for (const [key, val] of urlSrcPrm) {
+    return Promise.resolve(val);
+  }
 }
 
 function togglePin(note) {

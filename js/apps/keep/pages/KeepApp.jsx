@@ -26,7 +26,6 @@ class _KeepApp extends React.Component {
   };
 
   onDeleteNote = (note) => {
-    console.log(`note`, note);
     keepService
       .deleteNote(note.id)
       .then(() => this.props.history.push(`/keep`));
@@ -36,17 +35,17 @@ class _KeepApp extends React.Component {
       this.setState({ notes }, this.loadNotes);
     });
   };
-  onChangeStyleNote=(note,color)=>{
-    keepService.changeStyleNote(note,color).then((notes) => {
+  onChangeStyleNote = (note, color) => {
+    keepService.changeStyleNote(note, color).then((notes) => {
       this.setState({ notes }, this.loadNotes);
     });
-  }
+  };
 
-  onDuplicateNote=(note)=>{
+  onDuplicateNote = (note) => {
     keepService.duplicateNote(note).then((notes) => {
       this.setState({ notes }, this.loadNotes);
     });
-  }
+  };
 
   render() {
     const { notes } = this.state;
@@ -58,7 +57,7 @@ class _KeepApp extends React.Component {
           <KeepFilter onSetFilter={this.onSetFilter} />
           <section className='notes-app'>
             <KeepList
-            onDuplicateNote={this.onDuplicateNote}
+              onDuplicateNote={this.onDuplicateNote}
               onTogglePin={this.onTogglePin}
               onDeleteNote={this.onDeleteNote}
               onChangeStyleNote={this.onChangeStyleNote}
