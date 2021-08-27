@@ -186,6 +186,7 @@ export class MailApp extends React.Component {
             handleSearch={this.handleSearch}
             sortVal={sortBy}
             onSortMail={this.onSortMail}
+            filterBy={filterBy}
           />
           <p className='unread-count'>
             {this.getUnreadCount()} unread emails in{' '}
