@@ -1,3 +1,6 @@
+.book-app-container { 
+    height:100%;
+}
 .book-app {
     display: flex;
     flex-direction: column;

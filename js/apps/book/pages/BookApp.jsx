@@ -31,7 +31,7 @@ export class BookApp extends React.Component {
     const { books } = this.state;
     if (!books) return <div>Loading...</div>;
     return (
-      <div className="book-container">
+      <div className="book-app-container">
         <AppHeader/>
       <section className="book-app main-layout ">
         <BookFilter onSetFilter={this.onSetFilter} />
