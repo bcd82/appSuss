@@ -7,7 +7,6 @@ class _MailDetails extends React.Component {
   };
 
   componentDidMount() {
-    const urlSrcPrm = new URLSearchParams(this.props.location.search);
     this.loadMail();
   }
 
@@ -15,12 +14,17 @@ class _MailDetails extends React.Component {
     const id = this.props.match.params.mailId;
     mailService.getMailById(id).then((mail) => {
       if (!mail) {
-        // this.props.history.push("/mail");
         return;
       }
       this.setState({ mail });
     });
   };
+
+  sendToKeep = () =>{
+    this.props.history.push(`/keep/?text=Subject: ${this.state.mail.subject}.
+      ${this.state.mail.body}
+    `)
+  }
 
   render() {
     const {
@@ -29,7 +33,7 @@ class _MailDetails extends React.Component {
       onDeleteMail,
       onAddToInbox,
       onEditDraft,
-      onReplyMail
+      onReplyMail,
     } = this.props;
     const { mail } = this.state;
     if (!mail) return <p>Loading..</p>;
@@ -47,7 +51,7 @@ class _MailDetails extends React.Component {
             <span>{new Date(mail.sentAt).toLocaleString()}</span>
           </h2>
           {mail.status !== "draft" && (
-            <button onClick={()=> onReplyMail(mail)}>
+            <button onClick={() => onReplyMail(mail)}>
               <img
                 src="./assets/imgs/mail/reply.png"
                 alt="reply"
@@ -76,6 +80,9 @@ class _MailDetails extends React.Component {
               src="./assets/imgs/mail/unread.png"
               className={mail.isRead ? "unread" : "read"}
             />
+          </button>
+          <button title="send to keep" onClick={this.sendToKeep}>
+            <img src="./assets/imgs/mail/keep.png" alt="send to keep" />
           </button>
           <img
             src="./assets/imgs/mail/star.png"
