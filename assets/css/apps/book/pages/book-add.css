@@ -1,4 +1,7 @@
 .book-add { 
+    height:100%;
+}
+.add-container { 
     background-color: rgba(0, 0, 0, 0.753);
     color:white;
     padding:20px;
