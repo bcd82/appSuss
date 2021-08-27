@@ -34,7 +34,7 @@
                     </option>
                 </select>
                 <label>Folder
-                <select className="select-box mobile" value={this.props.sortVal} onChange={this.handleFolderChange}>
+                <select className="select-box mobile" value={this.props.filterBy} onChange={this.handleFolderChange}>
                     <option value="inbox">
                         Inbox
                     </option>

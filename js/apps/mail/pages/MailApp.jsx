@@ -137,7 +137,9 @@ export class MailApp extends React.Component {
 
   onEditDraft = (mail, ev) => {
     if (ev) ev.stopPropagation();
-    this.props.history.push(`/mail/compose?subject=${mail.subject}&body=${mail.body}&id=${mail.id}&to=${mail.to}`);
+    this.props.history.push(
+      `/mail/compose?subject=${mail.subject}&body=${mail.body}&id=${mail.id}&to=${mail.to}`
+    );
   };
 
   onSaveDraft = (ev, draft, id) => {
@@ -166,8 +168,8 @@ export class MailApp extends React.Component {
     return mails;
   };
 
-  onReplyMail = (mail,ev) => {
-    if(ev) ev.stopPropagation()
+  onReplyMail = (mail, ev) => {
+    if (ev) ev.stopPropagation();
     this.props.history.push(`/mail/compose?subject=re:${
       mail.subject
     }&body=on ${new Date(mail.sentAt)} <${mail.from}> wrote : 
@@ -184,6 +186,7 @@ export class MailApp extends React.Component {
             handleSearch={this.handleSearch}
             sortVal={sortBy}
             onSortMail={this.onSortMail}
+            filterBy={filterBy}
           />
           <p className="unread-count">
             {this.getUnreadCount()} unread emails in{" "}
