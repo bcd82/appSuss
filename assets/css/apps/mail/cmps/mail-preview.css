@@ -1,5 +1,4 @@
 .mail-preview {
-    height: 50px;
     display: flex;
     border-bottom: 1px solid rgb(255, 235, 181);
     width: 100%;
@@ -12,13 +11,12 @@
     transition:transform .2s background-color .2s;
     position: relative;
     justify-content: space-between;
+    flex-direction: ro;
+    flex-wrap: wrap;
+    padding:10px 0;
 }
 
-.mail-preview:hover {
-    transform: scale(1.007);
-    box-shadow:0 0 5px rgba(0, 0, 0, 0.209);
-    background-color:rgba(255, 249, 212, 0.664);
-}
+
 .mail-preview:first-of-type {
     border-top: 1px solid rgb(255, 235, 181);
 }
@@ -28,6 +26,7 @@
     cursor: pointer;
     filter: saturate(1);
     transition: filter .2s;
+    display:none;
 }
 .mail-preview img.not-starred:hover {
     filter: saturate(.5)
@@ -38,12 +37,16 @@
 }
 
 .mail-preview .from {
-    font-size: 1rem;
-    width: 25%;
+    font-size: .8rem;
+    width: 70%;
+}
+.mail-preview .from::before {
+   content:'from: '
 }
 
 .mail-preview .subject {
-    width: 30%;
+    width: 100%;
+    text-align: center;
 }
 
 .mail-preview .body-snippet {
@@ -55,6 +58,7 @@
 .mail-preview .sent-time {
     width: 10%;
     text-align: center;
+    order:-1
 }
 .mail-preview.read p{ 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -75,19 +79,42 @@
 @media screen and (min-width:800px) {
     .mail-preview {
         justify-content: unset;
+        flex-wrap: nowrap;
+        height: 50px;
+        padding:unset;
+    }
+    .mail-preview:hover {
+        transform: scale(1.007);
+        box-shadow:0 0 5px rgba(0, 0, 0, 0.209);
+        background-color:rgba(255, 249, 212, 0.664);
     }
     .mail-preview img {
         padding: 10px 10px;
         width: 50px;
     }
-    
+    .mail-preview .from {
+        font-size: 1rem;
+        width: 25%;
+    }
+    .mail-preview .from::before {
+        content:none
+     }
+    .mail-preview .subject {
+        width: 30%;
+        text-align: left;
+    }
+    .mail-preview .sent-time {
+
+        order:unset
+    }
     .mail-preview .body-snippet {
         display:unset;
-
         overflow-y: hidden;
         flex-grow: 1;
     }
-    
+    .mail-preview img {
+        display:unset;
+    }
     .mail-preview .hover-actions {
         position: absolute;
         display: flex;

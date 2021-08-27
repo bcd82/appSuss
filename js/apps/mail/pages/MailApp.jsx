@@ -137,9 +137,7 @@ export class MailApp extends React.Component {
 
   onEditDraft = (mail, ev) => {
     if (ev) ev.stopPropagation();
-    this.props.history.push(
-      `/mail/compose?subject=${mail.subject}&body=${mail.body}&id=${mail.id}&to=${mail.to}`
-    );
+    this.props.history.push(`/mail/compose?subject=${mail.subject}&body=${mail.body}&id=${mail.id}&to=${mail.to}`);
   };
 
   onSaveDraft = (ev, draft, id) => {

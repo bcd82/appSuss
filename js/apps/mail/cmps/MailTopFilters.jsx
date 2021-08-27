@@ -1,11 +1,17 @@
 
-export  class MailTopFilters extends React.Component {
+  const { withRouter } = ReactRouterDOM;
+
+  
+  class _MailTopFilters extends React.Component {
     
     state = {
         query:'',
     }
     handleInput = ({target}) =>{
         this.setState({query:target.value},()=>this.props.handleSearch(target.value))
+    }
+    handleFolderChange = ({target}) => {
+        this.props.history.push(`/mail?filter=${target.value}`)
     }
     render() {
 
@@ -27,8 +33,29 @@ export  class MailTopFilters extends React.Component {
                         Subject
                     </option>
                 </select>
+                <label>Folder
+                <select className="select-box mobile" value={this.props.sortVal} onChange={this.handleFolderChange}>
+                    <option value="inbox">
+                        Inbox
+                    </option>
+                    <option value="unread">
+                        Unread
+                    </option>
+                    <option value="starred">
+                        Starred
+                    </option>
+                    <option value="draft">
+                        Drafts
+                    </option>
+                    <option value="trash">
+                        Trash
+                    </option>
+                </select>
+                </label>
             </div>
         )
     }
 }
+
+export const MailTopFilters = withRouter(_MailTopFilters)
 
