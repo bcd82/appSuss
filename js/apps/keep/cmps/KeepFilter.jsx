@@ -3,6 +3,7 @@ export class KeepFilter extends React.Component {
     filterBy: {
       category: '',
     },
+    isActivate: false,
   };
 
   handleChange = (ev) => {
@@ -24,18 +25,31 @@ export class KeepFilter extends React.Component {
   };
 
   render() {
+    const { isActivate } = this.state;
     const { category } = this.state.filterBy;
+    console.log(`isActive`, isActivate);
+    console.log(`category`, category);
     return (
-      <form className='note-filter' onSubmit={this.onFilter}>
-        <label htmlFor='by-category'>By category</label>
-        <input
-          name='category'
-          id='by-category'
-          type='text'
-          placeholder='Category'
-          value={category}
-          onChange={this.handleChange}
-        />
+      <form
+        className={isActivate ? 'note-filter activate' : 'note-filter'}
+        onSubmit={this.onFilter}
+      >
+        <div
+          className='icon-filter'
+          onClick={() => {
+            this.setState({ isActivate: !isActivate });
+          }}
+        ></div>
+        <div className='input-filter'>
+          <input
+            name='category'
+            id='by-category'
+            type='text'
+            placeholder='Search your notes...'
+            value={category}
+            onChange={this.handleChange}
+          />
+        </div>
       </form>
     );
   }
