@@ -12,51 +12,58 @@ export const keepService = {
   getIdFromUrl,
   sendNoteToMail,
   createNoteFromUrl,
+  updateNote,
 };
 
 const KEY = 'notesDB';
-const notes = storageService.loadFromStorage(KEY)
-  ? storageService.loadFromStorage(KEY)
-  : [
-      {
-        id: 'n101',
-        type: 'note-txt',
-        isPinned: true,
-        info: {
-          txt: 'Fullstack Me Baby!',
+let notes;
+_createNotes();
+
+function _createNotes() {
+  notes = storageService.loadFromStorage(KEY)
+    ? storageService.loadFromStorage(KEY)
+    : [
+        {
+          id: 'n101',
+          type: 'note-txt',
+          isPinned: true,
+          info: {
+            txt: 'Fullstack Me Baby!',
+          },
+          style: {
+            backgroundColor: '#fff',
+          },
         },
-        style: {
-          backgroundColor: '#fff',
+        {
+          id: 'n102',
+          type: 'note-img',
+          isPinned: false,
+          info: {
+            url: 'https://mascotas100.com/wp-content/uploads/2020/03/329004501_1.jpg',
+            title: 'I Love Bobi',
+          },
+          style: {
+            backgroundColor: '#00d',
+          },
         },
-      },
-      {
-        id: 'n102',
-        type: 'note-img',
-        isPinned: false,
-        info: {
-          url: 'https://mascotas100.com/wp-content/uploads/2020/03/329004501_1.jpg',
-          title: 'I Love Bobi',
+        {
+          id: 'n103',
+          type: 'note-todos',
+          isPinned: true,
+          info: {
+            label: 'Get my stuff together',
+            todos: [
+              { txt: 'Driving liscence', doneAt: null },
+              { txt: 'Coding power', doneAt: 187111111 },
+            ],
+          },
+          style: {
+            backgroundColor: '#fff',
+          },
         },
-        style: {
-          backgroundColor: '#00d',
-        },
-      },
-      {
-        id: 'n103',
-        type: 'note-todos',
-        isPinned: true,
-        info: {
-          label: 'Get my stuff together',
-          todos: [
-            { txt: 'Driving liscence', doneAt: null },
-            { txt: 'Coding power', doneAt: 187111111 },
-          ],
-        },
-        style: {
-          backgroundColor: '#fff',
-        },
-      },
-    ];
+      ];
+  _saveNotesToStorage();
+}
 
 function query(filterBy) {
   if (filterBy) {
@@ -74,7 +81,7 @@ function createNote(newNote) {
 }
 
 function getNoteById(noteId) {
-  var note = gNotes.find(function (note) {
+  var note = notes.find(function (note) {
     return noteId === note.id;
   });
   return Promise.resolve(note);
@@ -173,6 +180,15 @@ function createNoteFromUrl(txt) {
   };
   notes.unshift(note);
   _saveNotesToStorage;
+}
+
+function updateNote(note) {
+  const noteIdx = getNoteIdx(note.id);
+  console.log(`noteIdx`, noteIdx);
+  notes[noteIdx] = note;
+  _saveNotesToStorage();
+
+  return Promise.resolve(notes);
 }
 
 function _saveNotesToStorage() {

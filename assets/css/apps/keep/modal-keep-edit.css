@@ -1,0 +1,16 @@
+.note-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  top: 50%;
+  right: 50%;
+  border-radius: 8px;
+  z-index: 2;
+  position: absolute;
+  transform: translate(50%, -50%);
+  background-color: #fff;
+  width: 50%;
+  height: 50%;
+  padding: 10px;
+}

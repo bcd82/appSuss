@@ -19,13 +19,13 @@
 @import './apps/keep/modal-keep-add.css';
 @import './apps/keep/note-filter.css';
 @import './apps/keep/note-video.css';
+@import './apps/keep/modal-keep-edit.css';
 
-.app { 
-    display: flex;
-    min-height:100vh;
-    flex-direction: column;
-    margin:0;
-    padding:0;
-    position:relative;
-
+.app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }

@@ -1,9 +1,11 @@
+const { Route, withRouter } = ReactRouterDOM;
 import { NoteTxt } from './NoteTxt.jsx';
 import { NoteImg } from './NoteImg.jsx';
 import { NoteVideo } from './NoteVideo.jsx';
 import { NoteTodos } from './NoteTodos.jsx';
+import { NoteEdit } from './NoteEdit.jsx';
 
-export class KeepPreview extends React.Component {
+class _KeepPreview extends React.Component {
   state = {
     note: null,
     type: null,
@@ -23,21 +25,26 @@ export class KeepPreview extends React.Component {
       onChangeStyleNote,
       onDuplicateNote,
       onSendNoteToMail,
+      onEditNote,
     } = this.props;
     const { note, type } = this.state;
     if (!note) return <div>Loading</div>;
     return (
       <article className='note-preview'>
         {type === 'note-txt' && (
-          <NoteTxt
-            onSendNoteToMail={onSendNoteToMail}
-            onDuplicateNote={onDuplicateNote}
-            onChangeStyleNote={onChangeStyleNote}
-            onTogglePin={onTogglePin}
-            onDeleteNote={onDeleteNote}
-            key={note.id}
-            note={note}
-          />
+          <React.Fragment>
+            <NoteTxt
+              onSendNoteToMail={onSendNoteToMail}
+              onDuplicateNote={onDuplicateNote}
+              onChangeStyleNote={onChangeStyleNote}
+              onTogglePin={onTogglePin}
+              onDeleteNote={onDeleteNote}
+              onEditNote={onEditNote}
+              key={note.id}
+              note={note}
+            />
+            <Route path='/keep/:id' component={NoteEdit} />
+          </React.Fragment>
         )}
         {type === 'note-img' && (
           <NoteImg
@@ -74,3 +81,5 @@ export class KeepPreview extends React.Component {
     );
   }
 }
+
+export const KeepPreview = withRouter(_KeepPreview);

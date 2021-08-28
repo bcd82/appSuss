@@ -61,6 +61,9 @@ class _KeepApp extends React.Component {
       );
     });
   };
+  onEditNote = (note) => {
+    this.props.history.push(`/keep/${note.id}`);
+  };
 
   render() {
     const { notes } = this.state;
@@ -77,6 +80,7 @@ class _KeepApp extends React.Component {
               onTogglePin={this.onTogglePin}
               onDeleteNote={this.onDeleteNote}
               onChangeStyleNote={this.onChangeStyleNote}
+              onEditNote={this.onEditNote}
               notes={notes}
             />
           </section>

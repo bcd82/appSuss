@@ -17,6 +17,7 @@ export class NoteTxt extends React.Component {
       onChangeStyleNote,
       onDuplicateNote,
       onSendNoteToMail,
+      onEditNote,
     } = this.props;
     const { note, isPlatteOpen } = this.state;
     if (!note) return <div>Loading</div>;
@@ -54,6 +55,7 @@ export class NoteTxt extends React.Component {
               this.setState({ isPlatteOpen: !isPlatteOpen });
             }}
           />
+          <button onClick={() => onEditNote(note)}>edit</button>
           <div className='palette'>
             {isPlatteOpen && (
               <ColorInput onChangeStyleNote={onChangeStyleNote} note={note} />
