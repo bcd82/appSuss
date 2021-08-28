@@ -89,7 +89,7 @@ export class MailApp extends React.Component {
 
   onGoToDetails = (mailId) => {
     this.onToggleRead(mailId, true).then(() => {
-      this.props.history.push(`/mail/read/${mailId}`);
+      this.props.history.push(`/mail/read/${mailId}#top`);
     });
   };
 

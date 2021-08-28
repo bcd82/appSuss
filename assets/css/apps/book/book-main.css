@@ -19,6 +19,8 @@
     background-position: fixed;
     background-attachment: fixed;
     inset:0;
+    height:100%;
+    min-height:90vh;
 }
 
 .book-add.main-layout { 

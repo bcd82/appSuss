@@ -10,6 +10,7 @@ class _MailDetails extends React.Component {
 
   componentDidMount() {
     this.loadMail();
+    window.scrollTo(0, 0);
   }
 
   loadMail = () => {
@@ -41,7 +42,7 @@ class _MailDetails extends React.Component {
     const { mail } = this.state;
     if (!mail) return <p>Loading..</p>;
     return (
-      <section className="mail-details">
+      <section className="mail-details" >
         <h1>
           {mail.subject} {mail.status === "draft" && <span> ( draft )</span>}{" "}
           {mail.status !== "draft" && (

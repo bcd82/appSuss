@@ -1,5 +1,5 @@
 .book-container { 
-    height:100vh;
+    /* min-height:100vh; */
 }
 .book-details {
     display: flex;
@@ -13,7 +13,7 @@
     box-shadow: 0 .2em 1em rgba(0, 0, 0, 0.637);
     margin-bottom: 50px;
     position:relative;
-    top:-60px;
+    /* top:-60px; */
 }
 .book-details button { 
     

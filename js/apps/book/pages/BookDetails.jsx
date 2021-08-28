@@ -14,6 +14,7 @@ export class BookDetails extends React.Component {
   };
 
   componentDidMount = () => {
+    window.scrollTo(0, 0);
     this.loadBook();
   };
 
@@ -88,10 +89,10 @@ export class BookDetails extends React.Component {
     const formattedPrice = utilService.getPriceCurrency(book);
 
     return (
-      <div className="book-container">
-        <AppHeader />
-        <section className="book-details main-layout">
-          <div className="top-btns">
+      <div className="book-container" >
+        <AppHeader/>
+        <section className="book-details main-layout" >
+          <div className="top-btns" >
             <Link to={`/book/read/${bookService.getDiffBookId(book.id, -1)}`}>
               <button className="back-btn">Previous Book</button>
             </Link>
