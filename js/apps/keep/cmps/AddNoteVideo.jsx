@@ -17,11 +17,9 @@ class _AddNoteVideo extends React.Component {
   handleChange = ({ target }) => {
     const field = target.name;
     let value = target.value;
-    console.log(`value`, value);
     this.setState((prevState) => ({
       note: { ...prevState.note, [field]: value },
     }));
-    console.log(`this.state.note`, this.state.note);
   };
 
   colorPicker = (color) => {
@@ -34,7 +32,6 @@ class _AddNoteVideo extends React.Component {
     ev.preventDefault();
     const { urlId } = this.state;
     const { url, title, backgroundColor } = this.state.note;
-    console.log(`url`, url);
     if (!urlId) return;
     const newNote = {
       id: utilService.makeId(),

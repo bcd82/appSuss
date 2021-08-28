@@ -15,7 +15,6 @@ class _AddNoteTodos extends React.Component {
 
   handleChange = ({ target }) => {
     const field = target.name;
-    console.log(`field`, field);
     let value = target.value;
     if (field !== 'label') {
       const newTodos = [...this.state.todos];
@@ -94,7 +93,6 @@ class _AddNoteTodos extends React.Component {
   render() {
     const { extraTodoAddCount, todos } = this.state;
     const { label } = this.state.note;
-    console.log(`todos`, todos);
     return (
       <section className='note-txt-add'>
         <form onSubmit={this.onAddNoteTodos}>

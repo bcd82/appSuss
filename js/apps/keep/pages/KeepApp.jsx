@@ -2,9 +2,9 @@ const { withRouter } = ReactRouterDOM;
 
 import { KeepList } from '../cmps/KeepList.jsx';
 import { keepService } from '../services/keep.service.js';
-// import { KeepAdd } from '../cmps/KeepAdd.jsx';
 import { KeepFilter } from '../cmps/KeepFilter.jsx';
 import { KeepHeader } from '../cmps/KeepHeader.jsx';
+import { eventBusService } from '../../../../js/services/event.bus.service.js';
 class _KeepApp extends React.Component {
   state = {
     notes: [],
@@ -12,6 +12,9 @@ class _KeepApp extends React.Component {
   };
 
   componentDidMount() {
+    eventBusService.on('update-notes', (notes) => {
+      this.setState({ notes });
+    });
     const urlSrcPrm = new URLSearchParams(this.props.location.search);
     if (urlSrcPrm.has('text')) {
       const txt = urlSrcPrm.get('text');

@@ -18,13 +18,17 @@
 
 .modal {
   background-color: #fff;
-  width: 50%;
-  height: 50%;
+
+  width: 250px;
+  height: 250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   z-index: 5;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  padding: 10px;
+  border-radius: 8px;
 }
 .add-note-btns {
   margin-top: 20px;
@@ -44,4 +48,11 @@
 .note-txt-add {
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 820px) {
+  .modal {
+    width: 500px;
+    height: 500px;
+  }
 }

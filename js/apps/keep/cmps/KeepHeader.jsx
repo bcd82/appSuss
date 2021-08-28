@@ -22,13 +22,6 @@ class _KeepHeader extends React.Component {
         </h1>
         <nav>
           <button
-            onClick={() => {
-              <ToggleKeepMenu />;
-            }}
-          >
-            ☰
-          </button>
-          <button
             className='modal-add-btn'
             onClick={() => {
               this.toggleOpenAdd();

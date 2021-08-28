@@ -82,7 +82,7 @@ function createNote(newNote) {
 
 function getNoteById(noteId) {
   var note = notes.find(function (note) {
-    return noteId === note.id;
+    noteId === note.id;
   });
   return Promise.resolve(note);
 }
@@ -104,7 +104,6 @@ function deleteNote(noteId) {
 function getIdFromUrl(url) {
   const urlSrcPrm = new URLSearchParams(url);
   for (const [key, val] of urlSrcPrm) {
-    console.log(`val`, val);
     return Promise.resolve(val);
   }
 }
@@ -114,9 +113,7 @@ function togglePin(note) {
   const bool = !note.isPinned;
   note.isPinned = bool;
   const pinnedNote = notes.splice(noteIdx, 1);
-  console.log(`pinnedNote`, pinnedNote);
   if (note.isPinned) {
-    console.log(`object`, note.isPinned);
     notes.unshift(pinnedNote[0]);
   } else {
     const unpinnedNote = notes.findIndex((note) => {
@@ -184,7 +181,7 @@ function createNoteFromUrl(txt) {
 
 function updateNote(note) {
   const noteIdx = getNoteIdx(note.id);
-  console.log(`noteIdx`, noteIdx);
+
   notes[noteIdx] = note;
   _saveNotesToStorage();
 

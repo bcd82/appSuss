@@ -7,7 +7,6 @@ export class KeepFilter extends React.Component {
   };
 
   handleChange = (ev) => {
-    console.log(`ev.target`, ev.target);
     const field = ev.target.name;
     if (!field) return;
     const value = ev.target.value;
@@ -27,8 +26,6 @@ export class KeepFilter extends React.Component {
   render() {
     const { isActivate } = this.state;
     const { category } = this.state.filterBy;
-    console.log(`isActive`, isActivate);
-    console.log(`category`, category);
     return (
       <form
         className={isActivate ? 'note-filter activate' : 'note-filter'}

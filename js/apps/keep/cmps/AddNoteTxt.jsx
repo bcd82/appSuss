@@ -15,7 +15,6 @@ class _AddNoteTxt extends React.Component {
   handleChange = ({ target }) => {
     const field = target.name;
     let value = field === 'isPinned' ? target.checked : target.value;
-    console.log(`value`, value);
     this.setState((prevState) => ({
       note: { ...prevState.note, [field]: value },
     }));

@@ -38,6 +38,7 @@ export function KeepList({
               onChangeStyleNote={onChangeStyleNote}
               onTogglePin={onTogglePin}
               onDeleteNote={onDeleteNote}
+              onEditNote={onEditNote}
               key={note.id}
               note={note}
             />
@@ -46,47 +47,3 @@ export function KeepList({
     </div>
   );
 }
-// export class KeepList extends React.Component {
-//   state = {
-//     isPinned: null,
-//     notes:this.[]
-//   };
-
-//   onIsPinned = (isPinned) => {
-//     this.setState({ isPinned: isPinned });
-//   };
-
-//   render() {
-//     const {
-//       notes,
-//       onDeleteNote,
-//       onTogglePin,
-//       onChangeStyleNote,
-//       onDuplicateNote,
-//       onSendNoteToMail,
-//     } = this.props;
-//     const { isPinned } = this.state;
-//     return (
-//       <div className='keep-list'>
-//         <div className='pinned'>
-//           {notes.map((note) => {
-//             if (note.isPinned) {
-//               this.onIsPinned(note.isPinned);
-//             }
-//           })}
-//         </div>
-//         {notes.map((note) => (
-//           <KeepPreview
-//             onSendNoteToMail={onSendNoteToMail}
-//             onDuplicateNote={onDuplicateNote}
-//             onChangeStyleNote={onChangeStyleNote}
-//             onTogglePin={onTogglePin}
-//             onDeleteNote={onDeleteNote}
-//             key={note.id}
-//             note={note}
-//           />
-//         ))}
-//       </div>
-//     );
-//   }
-// }

@@ -1,22 +1,29 @@
 import { keepService } from '../services/keep.service.js';
+import { eventBusService } from '../../../../js/services/event.bus.service.js';
 
 export class NoteEdit extends React.Component {
   state = {
     note: null,
+    notes: [],
   };
 
   componentDidMount() {
     const noteId = this.props.match.params.id;
-    console.log(`noteId`, noteId);
     keepService.getNoteById(noteId).then((note) => {
-      this.setState({ note });
+      this.setState({ note: note });
     });
   }
+  onSaveNote = () => {
+    keepService.updateNote({ note }).then((notes) => {
+      this.setState({ notes });
+      this.props.history.push('/keep');
+    });
+    eventBusService.emit('update-notes', notes);
+  };
 
   handleChange = ({ target }) => {
     const field = target.name;
     let value = field === 'isPinned' ? target.checked : target.value;
-    console.log(`value`, value);
     this.setState((prevState) => ({
       note: {
         ...prevState.note,
@@ -29,21 +36,14 @@ export class NoteEdit extends React.Component {
     this.props.history.push('/keep');
   };
 
-  saveNote = () => {
-    keepService.updateNote(this.state.note);
-    this.props.history.push('/keep');
-  };
-
   render() {
     const { note } = this.state;
     if (!note) return <div>Loading</div>;
-    console.log(`hi`);
-
     return (
       <React.Fragment>
         <div className='modal-bg' onClick={this.onCloseModal}></div>
         <div className='note-edit'>
-          <form className='note-txt-add' onSubmit={this.onAddNote}>
+          <form className='note-txt-add' onSubmit={this.onSaveNote}>
             <label htmlFor='txt'>Text:</label>
             <input
               type='text'
@@ -60,9 +60,7 @@ export class NoteEdit extends React.Component {
               value={note.isPinned}
               onChange={this.handleChange}
             />
-            <button className='note-save-btn' onClick={this.saveNote}>
-              Save
-            </button>
+            <button className='note-save-btn'>Save</button>
           </form>
         </div>
       </React.Fragment>
