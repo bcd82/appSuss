@@ -1,3 +1,4 @@
+import { LongTxt } from "../../../cmps/LongTxt.jsx";
 import { utilService } from "../../../services/util.service.js";
 
 export function MailPreview(props) {
@@ -13,7 +14,7 @@ export function MailPreview(props) {
 
   return (
     <article
-      className={`mail-preview ${mail.isRead && "read"}`}
+      className={`mail-preview ${mail.isRead ? "read" :""}`}
       onClick={() => onClickMail(mail.id)}
     >
       <div className="hover-actions">
@@ -41,7 +42,7 @@ export function MailPreview(props) {
       />
       <p className="from">{mail.from}</p>
       <p className="subject">{mail.subject}</p>
-      <p className="body-snippet">{mail.body.substring(0, 40)}...</p>
+      <p className="body-snippet">{<LongTxt text ={mail.body}/>}</p>
       <p className="sent-time">{utilService.getTimeToDisplay(mail.sentAt)}</p>
     </article>
   );

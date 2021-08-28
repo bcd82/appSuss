@@ -1,7 +1,7 @@
 import { utilService } from "../../../services/util.service.js";
 const { withRouter } = ReactRouterDOM;
 
-function _BookPreview({ book, onSelectBook, history }) {
+function _BookPreview({ book, history }) {
   const formattedPrice = utilService.getPriceCurrency(book);
 
   const goToBook = () => {

@@ -54,8 +54,9 @@ class _MailDetails extends React.Component {
           <h2>
             From: {mail.from}{" "}
           </h2>
-            <h2 className="date">On {new Date(mail.sentAt).toLocaleString()}</h2>
+          <h3>To: {mail.to}</h3>
 
+            <h2 className="date">On {new Date(mail.sentAt).toLocaleString()}</h2>
           </div>
           <div className="btns">
             {mail.status !== "draft" && (
@@ -105,7 +106,6 @@ class _MailDetails extends React.Component {
             />
           </div>
         </div>
-        <h3>To: {mail.to}</h3>
         <p className="mail-body">{mail.body}</p>
       </section>
     );
