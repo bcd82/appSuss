@@ -30,7 +30,9 @@
     cursor: pointer;
     filter: saturate(1);
     transition: filter .2s;
-    display: none;
+    position:absolute;
+    right:10px;
+    top:5px;
 }
 
 .mail-preview img.not-starred:hover {
@@ -44,13 +46,15 @@
 .mail-preview .from {
     font-size: .8rem;
     width: 70%;
+    position:relative;
+    left:-20px;
 }
 
 .mail-preview .from::before {
     content: 'from: '
 }
 
-.mail-preview .subject {
+.mail-preview p.subject {
     width: 100%;
     text-align: center;
 }
@@ -101,10 +105,14 @@
     .mail-preview img {
         padding: 10px 10px;
         width: 50px;
+        position:relative;
+        right:0px;
+        top:0px;
     }
     .mail-preview .from {
         font-size: 1rem;
         width: 20%;
+        position:unset;
     }
     .mail-preview .from::before {
         content: none
