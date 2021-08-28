@@ -7,9 +7,8 @@ const { NavLink, withRouter } = ReactRouterDOM;
   }
   
   toggleMenu = (ev) =>{
-    console.log('what')
-    document.body.style.overflow = 'hidden';
-
+    if(!this.state.isMobileMenuOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset'
     this.setState({isMobileMenuOpen:!this.state.isMobileMenuOpen})
   }
   render() {

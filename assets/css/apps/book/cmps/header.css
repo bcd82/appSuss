@@ -16,7 +16,7 @@
 .book-header nav {
     display: flex;
     gap: 10px;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
     background-color: rgb(62, 62, 158);
     top: 72px;
