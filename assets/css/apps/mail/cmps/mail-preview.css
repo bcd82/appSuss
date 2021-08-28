@@ -2,6 +2,7 @@
     display: flex;
     border-bottom: 1px solid rgb(255, 195, 31);
     width: 100%;
+    height: auto;
     align-items: center;
     gap: 5px;
     font-family: lato-regular;
@@ -29,7 +30,9 @@
     cursor: pointer;
     filter: saturate(1);
     transition: filter .2s;
-    display: none;
+    position:absolute;
+    right:10px;
+    top:5px;
 }
 
 .mail-preview img.not-starred:hover {
@@ -43,21 +46,26 @@
 .mail-preview .from {
     font-size: .8rem;
     width: 70%;
+    position:relative;
+    pointer-events: none;
+    left:-20px;
 }
 
 .mail-preview .from::before {
     content: 'from: '
 }
 
-.mail-preview .subject {
+.mail-preview p.subject {
     width: 100%;
     text-align: center;
 }
 
 .mail-preview .body-snippet {
     display: none;
-    overflow-y: hidden;
     flex-grow: 1;
+    max-width:30%;
+    position:relative;
+    height:auto;
 }
 
 .mail-preview .sent-time {
@@ -86,9 +94,9 @@
     .mail-preview {
         justify-content: unset;
         flex-wrap: nowrap;
-        height: 50px;
         padding: unset;
         border-bottom: 1px solid rgb(255, 235, 181);
+
     }
     .mail-preview:hover {
         transform: scale(1.007);
@@ -98,17 +106,22 @@
     .mail-preview img {
         padding: 10px 10px;
         width: 50px;
+        position:relative;
+        right:0px;
+        top:0px;
     }
     .mail-preview .from {
         font-size: 1rem;
         width: 25%;
+        position:unset;
     }
     .mail-preview .from::before {
         content: none
     }
-    .mail-preview .subject {
-        width: 30%;
+    .mail-preview p.subject {
+        width: 35%;
         text-align: left;
+        align-self: flex-start;
     }
     .mail-preview .sent-time {
         order: unset
@@ -129,7 +142,7 @@
         justify-content: center;
         align-items: center;
         width: 150px;
-        right: 50px;
+        right: 0px;
         transition: opacity .2s;
         pointer-events: none;
         height: 100%;
@@ -140,7 +153,8 @@
         border: 1px solid rgba(0, 0, 0, 0.219);
         border-radius: .6em;
         cursor: pointer;
-        height: 80%;
+        height:40px;
+
         transform: scale(1);
         display: flex;
         align-items: center;
@@ -163,4 +177,5 @@
         opacity: 1;
         pointer-events: all;
     }
+    
 }

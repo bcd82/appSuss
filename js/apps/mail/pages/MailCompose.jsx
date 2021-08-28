@@ -34,6 +34,7 @@ class _MailCompose extends React.Component {
     const { subject, to, body, from } = this.state;
     return (
       <section className="mail-compose">
+        {/* <label htmlFor="autosave">autosave</label><input type="radio" value={this.state.isAutoSaveOn}/>  */}
         <form className="compose-form">
           <input disabled placeholder={`From: ${from}`}></input>
           <input

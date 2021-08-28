@@ -7,7 +7,7 @@
 }
 
 .mail-details h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -34,30 +34,31 @@
     display: flex;
     position: absolute;
     align-items: center;
-    
     flex-wrap: wrap;
     top: 180px;
 }
 
 .mail-details .from {
     flex: 1;
+    font-size: .8rem;
+}
+
+.mail-details .from h2{
+margin-bottom:5px;
 }
 
 .mail-details h2.date {
     font-size: 0.9rem;
     margin-bottom: 10px;
+    font-family: Lato-regular;
+    color: rgb(107, 107, 107);
+    margin-bottom: 30px;
+    font-weight:400;
 }
 
 .mail-details h3 {
     margin-bottom: 25px;
-}
-
-.mail-details img {
-    padding: 10px 10px;
-    height: 50px;
-    cursor: pointer;
-    filter: saturate(1);
-    transition: filter .2s;
+    font-size: .8rem
 }
 
 .mail-details img {
@@ -131,16 +132,18 @@
         flex-wrap: unset;
     }
     .mail-details h1 {
-        font-size: 2rem;
+        font-size: 2.3rem;
         margin-bottom: 20px;
     }
     .mail-details h2 {
         margin-bottom: 5px;
     }
+    .mail-details .from {
+        font-size: 1rem;
+    }
     .mail-details h2.date {
         font-size: 1.2rem;
         color: rgb(104, 104, 104);
-        margin-bottom: 30px;
     }
     .mail-details .top-row .btns {
         position: relative;
@@ -148,6 +151,7 @@
     }
     .mail-details .mail-body {
         width: 80%;
+        font-size:1.3rem;
     }
     .mail-details button:hover {
         transform: scale(1.05);
@@ -157,5 +161,9 @@
     }
     .mail-details button:hover {
         background-color: gold
+    }
+    .mail-details h3 {
+        margin-bottom: 25px;
+        font-size: 1rem
     }
 }

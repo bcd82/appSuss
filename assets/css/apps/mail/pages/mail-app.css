@@ -41,7 +41,8 @@
 .mail-main {
     grid-column: 1;
     grid-row: 2;
-    width:100%;
+    width:103%;
+    min-height:70vh;
 }
 .screen { 
     inset:0;
