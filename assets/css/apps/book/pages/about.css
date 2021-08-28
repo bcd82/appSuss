@@ -15,10 +15,14 @@
 }
 
 .about-container h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     width: 100%;
     
     text-align: center;
+}
+.about-container h2 {
+    font-size: 1rem;
+
 }
 
 .about-img {
@@ -37,7 +41,7 @@
 }
 
 .text-container p {
-    font-size: 1.5rem;
+    font-size: 0.8rem;
 }
 
 @media screen and (min-width:800px) {
@@ -60,5 +64,13 @@
     .text-container {
         width: 45%;
         gap: 50px;
+    }
+    .about-container h2 {
+        font-size: 2rem;
+    
+    }
+    
+    .text-container p {
+        font-size: 1.5rem;
     }
 }
