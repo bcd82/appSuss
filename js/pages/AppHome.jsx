@@ -26,9 +26,11 @@ export function AppHome() {
           url="/book/"
         />
       </div>
+          <h1>Crafted By:</h1>
       <section className="about">
         <HomeProfile
           imgUrl="./assets/imgs/cmps/barak-sidi.jpg"
+          name="Barak Sidi"
           title="Full Stack Ninja"
           fbUrl="https://www.facebook.com/barak.sidi/"
           ghUrl="https://github.com/bcd82"
@@ -36,6 +38,7 @@ export function AppHome() {
         />
         <HomeProfile
           imgUrl="./assets/imgs/cmps/ron-buchris.jpeg"
+          name="Ron Buchris"
           title="Coding Academy Student"
           fbUrl="https://www.facebook.com/RonBuchris"
           ghUrl="https://github.com/ronbuchris"

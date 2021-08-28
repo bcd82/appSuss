@@ -8,8 +8,6 @@ import { BookAdd } from "./js/apps/book/pages/BookAdd.jsx";
 import { BookHome } from "./js/apps/book/pages/BookHome.jsx";
 import { BookAbout } from "./js/apps/book/pages/BookAbout.jsx";
 import { MailApp } from "./js/apps/mail/pages/MailApp.jsx";
-
-// import { About } from "./js/pages/AppAbout.jsx";
 import { AppFooter } from "./js/cmps/AppFooter.jsx";
 import { AppHeader } from "./js/cmps/AppHeader.jsx";
 import { AppHome } from "./js/pages/AppHome.jsx";
@@ -33,7 +31,6 @@ export function App() {
             <Route path="/book/home/" component={BookHome} />
             <Route path="/book" component={BookApp} />
             <Route path="/mail" component={MailApp} />
-            {/* <Route path="/about" component={About} /> */}
             <Route path="/" component={AppHome} />
           </Switch>
         </main>

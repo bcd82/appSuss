@@ -53,7 +53,7 @@ const staticMails = [
         
          Game On!
         The Unity Team`,
-        isRead: false,
+        isRead: true,
         sentAt: 1594252359000,
         to: loggedInUser.email,
         status: 'inbox',
@@ -67,8 +67,8 @@ const staticMails = [
         התאם להנחיות משרד הבריאות, אנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף הקורונה.
 
         בשבועות האחרונים אנו עדים לעלייה בתחלואה, ומטרת מנת החיסון הנוספת היא חיזוק ההגנה החיסונית שלך נגד נגיף הקורונה.`,
-        isRead: true,
-        sentAt: 1625700000635,
+        isRead:false,
+        sentAt: Date.now() - 10000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: true,
@@ -134,7 +134,7 @@ const staticMails = [
         
         If you would like more information, visit our Help Center.`,
         isRead: false,
-        sentAt: Date.now() - 220000,
+        sentAt: Date.now() - 2150000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: false,
@@ -233,7 +233,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`,
     },
     {
@@ -244,7 +244,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     },
     {
@@ -255,7 +255,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     },
     {
@@ -266,7 +266,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     },
     {
@@ -277,7 +277,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     },
     {
@@ -288,7 +288,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     },
     {
@@ -299,7 +299,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     },
     {
@@ -310,7 +310,7 @@ const staticMails = [
         sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
         to: loggedInUser.email,
         status: 'inbox',
-        isStarred: Math.random() > .2 ? true : false,
+        isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     },
 
