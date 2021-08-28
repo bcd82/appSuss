@@ -34,6 +34,10 @@ export class MailApp extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    document.body.style.overflow = "unset";
+
+  }
   loadMails() {
     mailService
       .getMails()
@@ -111,7 +115,7 @@ export class MailApp extends React.Component {
 
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, this.loadMails());
-    this.onToggleMobileMenu(true)
+    this.onToggleMobileMenu(true);
   };
 
   onAddToInbox = (mailId) => {
@@ -181,8 +185,12 @@ export class MailApp extends React.Component {
   onToggleMobileMenu = (isClosing) => {
     if (isClosing === true) {
       this.setState({ isMobileMenuOpen: false });
-    } else{
-      this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
+      document.body.style.overflow = "unset";
+    } else {
+      this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen }, () => {
+        if (this.state.isMobileMenuOpen)
+          document.body.style.overflow = "hidden";
+      });
     }
   };
 
