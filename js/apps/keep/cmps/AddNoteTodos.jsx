@@ -7,18 +7,25 @@ class _AddNoteTodos extends React.Component {
   state = {
     note: {
       label: '',
-      txt: '',
       backgroundColor: '',
     },
-    todos: [],
+    todos: [''],
+    extraTodoAddCount: 1,
   };
 
   handleChange = ({ target }) => {
     const field = target.name;
+    console.log(`field`, field);
     let value = target.value;
-    this.setState((prevState) => ({
-      note: { ...prevState.note, [field]: value },
-    }));
+    if (field !== 'label') {
+      const newTodos = [...this.state.todos];
+      newTodos[field] = value;
+      this.setState({ todos: newTodos });
+    } else {
+      this.setState((prevState) => ({
+        note: { ...prevState.note, [field]: value },
+      }));
+    }
   };
 
   colorPicker = (color) => {
@@ -32,13 +39,20 @@ class _AddNoteTodos extends React.Component {
     const { todos } = this.state;
     const { label, backgroundColor } = this.state.note;
     if (!todos.length) return;
+    const todosForInfo = [];
+    todos.map((todo) => {
+      todosForInfo.push({
+        txt: todo,
+        doneAt: null,
+      });
+    });
     const newNote = {
       id: utilService.makeId(),
       type: 'note-todos',
       backgroundColor: backgroundColor,
       info: {
         label: label,
-        todos: todos,
+        todos: todosForInfo,
       },
       style: {
         backgroundColor: backgroundColor,
@@ -47,26 +61,58 @@ class _AddNoteTodos extends React.Component {
     keepService.createNote(newNote).then(() => {
       this.props.history.push('/keep');
     });
-    this.setState({ note: { label: '', txt: '' }, todos: [] });
+    this.setState({
+      note: {
+        label: '',
+        backgroundColor: '',
+      },
+      todos: [''],
+      extraTodoAddCount: 1,
+    });
   };
 
-  onAddTodos = (ev) => {
+  // onAddTodos = (ev) => {
+  //   ev.preventDefault();
+  //   const { todos } = this.state;
+  //   todos.map((todo) => {
+  //     console.log(`todo`, todo);
+  //   });
+  //   const todo = {
+  //     txt: txt,
+  //     doneAt: null,
+  //   };
+  //   this.setState((prevState) => ({
+  //     todos: [...prevState.todos, todo],
+  //   }));
+  //   this.setState((prevState) => ({
+  //     note: { ...prevState.note, ['txt']: '' },
+  //   }));
+  // };
+
+  onAddTodo = () => {
+    this.setState((prevState) => ({
+      extraTodoAddCount: prevState.extraTodoAddCount + 1,
+    }));
+    this.setState((prevState) => ({
+      todos: [...prevState.todos, ''],
+    }));
+  };
+  onDeleteTodo = (ev, idx) => {
     ev.preventDefault();
-    const { txt } = this.state.note;
-    const todo = {
-      txt: txt,
-      doneAt: null,
-    };
+    const { extraTodoAddCount } = this.state;
+    if (extraTodoAddCount === 1) return;
     this.setState((prevState) => ({
-      todos: [...prevState.todos, todo],
+      extraTodoAddCount: prevState.extraTodoAddCount - 1,
     }));
-    this.setState((prevState) => ({
-      note: { ...prevState.note, ['txt']: '' },
-    }));
+    const newTodos = [...this.state.todos];
+    newTodos.splice(idx, 1);
+    this.setState({ todos: newTodos });
   };
 
   render() {
-    const { label, txt } = this.state.note;
+    const { extraTodoAddCount, todos } = this.state;
+    const { label } = this.state.note;
+    console.log(`todos`, todos);
     return (
       <section>
         <form className='note-txt-add' onSubmit={this.onAddNoteTodos}>
@@ -80,19 +126,29 @@ class _AddNoteTodos extends React.Component {
           />
           <button>Add</button>
         </form>
-        <div className='newTodo'>
-          <form className='note-txt-add' onSubmit={this.onAddTodos}>
-            <label htmlFor='txt'>My Todo</label>
-            <input
-              type='text'
-              id='txt'
-              name='txt'
-              value={txt}
-              onChange={this.handleChange}
-            />
-            <button>√</button>
-          </form>
-        </div>
+        {new Array(extraTodoAddCount).fill(0).map((value, idx) => (
+          <div key={idx} className={`newTodo newTodo-${idx}`}>
+            <form className='note-txt-add' onSubmit={this.onAddTodos}>
+              <label htmlFor='txt'>My Todo</label>
+              <input
+                type='text'
+                id='txt'
+                name={idx}
+                value={todos[idx]}
+                onChange={this.handleChange}
+              />
+              <button
+                onClick={() => {
+                  this.onDeleteTodo(event, idx);
+                }}
+              >
+                X
+              </button>
+            </form>
+          </div>
+        ))}
+
+        <button onClick={this.onAddTodo}>more</button>
         <div className='colors-picker'>
           <ColorInput onChangeStyle={this.colorPicker} />
         </div>
