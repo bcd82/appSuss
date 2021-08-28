@@ -10,14 +10,14 @@ import { BookAbout } from "./js/apps/book/pages/BookAbout.jsx";
 import { MailApp } from "./js/apps/mail/pages/MailApp.jsx";
 
 // import { About } from "./js/pages/AppAbout.jsx";
-// import { AppFooter } from "./js/cmps/AppFooter.jsx";
+import { AppFooter } from "./js/cmps/AppFooter.jsx";
 import { AppHeader } from "./js/cmps/AppHeader.jsx";
 import { AppHome } from "./js/pages/AppHome.jsx";
 import { UserMsg } from "./js/cmps/UserMsg.jsx";
 
 export function App() {
   return (
-    <section>
+    <section className="app">
       <Router>
         <header>
           <AppHeader />
@@ -37,7 +37,7 @@ export function App() {
             <Route path="/" component={AppHome} />
           </Switch>
         </main>
-        <footer>{/* <AppFooter /> */}</footer>
+        <footer><AppFooter /></footer>
         <UserMsg />
       </Router>
     </section>
