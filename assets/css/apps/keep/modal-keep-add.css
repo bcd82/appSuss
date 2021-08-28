@@ -16,11 +16,11 @@
   visibility: hidden;
 }
 
-.modal {
+.modal-bg .modal {
   background-color: #fff;
+  width: 50%;
+  height: 50%;
 
-  width: 250px;
-  height: 250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,11 +48,4 @@
 .note-txt-add {
   display: flex;
   flex-direction: column;
-}
-
-@media (min-width: 820px) {
-  .modal {
-    width: 500px;
-    height: 500px;
-  }
 }

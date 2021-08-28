@@ -55,7 +55,7 @@ export class NoteTxt extends React.Component {
               this.setState({ isPlatteOpen: !isPlatteOpen });
             }}
           />
-          <button onClick={() => onEditNote(note)}>edit</button>
+          {/* <button onClick={() => onEditNote(note)}>edit</button> */}
           <div className='palette'>
             {isPlatteOpen && (
               <ColorInput onChangeStyleNote={onChangeStyleNote} note={note} />
