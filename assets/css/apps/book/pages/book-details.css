@@ -1,3 +1,6 @@
+.book-container { 
+    height:100vh;
+}
 .book-details {
     display: flex;
     gap: 20px;
@@ -9,6 +12,28 @@
     background-color: rgba(255, 255, 255, 0.959);
     box-shadow: 0 .2em 1em rgba(0, 0, 0, 0.637);
     margin-bottom: 50px;
+    position:relative;
+    top:-60px;
+}
+.book-details button { 
+    
+    filter:brightness(1);
+    transform:translateY(0);
+    transition: filter .2s ease-out, transform .2s ease-out;
+    border: none;
+    background-color: rgb(62, 62, 158);
+    border:1px solid rgba(255, 255, 255, 0.397);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: .5em;
+    box-shadow: 0 0em .2em rgba(0, 0, 0, 0.637);
+
+}
+.book-details button:hover { 
+    filter:brightness(1.2);
+    transform:translateY(-2px)
+
 }
 
 .book-details .details-img {
@@ -120,6 +145,8 @@
     .book-details {
         padding: 40px;
         gap: 30px 80px;
+        top:0px;
+        width:1200px;
     }
     .book-details .more-details {
         width: 30%;

@@ -81,6 +81,7 @@ export class MailApp extends React.Component {
   };
 
   getUnreadCount = () => this.state.mails.filter((mail) => !mail.isRead).length;
+
   onToggleStar = (ev, mailId) => {
     ev.stopPropagation();
     mailService.toggleStar(mailId).then(this.loadMails());
@@ -110,7 +111,7 @@ export class MailApp extends React.Component {
 
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, this.loadMails());
-    // this.props.history.push("/mail/");
+    this.onToggleMobileMenu(true)
   };
 
   onAddToInbox = (mailId) => {
@@ -177,8 +178,12 @@ export class MailApp extends React.Component {
      ${mail.body}&to=${mail.from}`);
   };
 
-  onToggleMobileMenu = () => {
-    this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
+  onToggleMobileMenu = (isClosing) => {
+    if (isClosing === true) {
+      this.setState({ isMobileMenuOpen: false });
+    } else{
+      this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen });
+    }
   };
 
   render() {
@@ -204,7 +209,11 @@ export class MailApp extends React.Component {
           </p>
         </div>
         <section className="side-menu">
-          <MailMenu filter={filterBy} setFilterBy={this.onSetFilter} />
+          <MailMenu
+            filter={filterBy}
+            setFilterBy={this.onSetFilter}
+            onToggleMenu={this.onToggleMobileMenu}
+          />
         </section>
         <section className="mail-main">
           <Switch>

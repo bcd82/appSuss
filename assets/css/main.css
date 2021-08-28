@@ -4,8 +4,11 @@
 @import './cmps/app-header.css';
 @import './pages/app-home.css';
 @import './cmps/app-preview.css';
+@import './cmps/app-footer.css';
+@import './cmps/app-menu.css';
+@import './cmps/home-profile.css';
 @import './cmps/user-msg.css';
-/* @import './apps/book/book-main.css'; */
+@import './apps/book/book-main.css';
 @import './apps//mail/mail-main.css';
 @import './apps/keep/todo-list.css';
 @import './apps/keep/note-txt.css';
@@ -16,3 +19,13 @@
 @import './apps/keep/modal-keep-add.css';
 @import './apps/keep/note-filter.css';
 @import './apps/keep/note-video.css';
+
+.app { 
+    display: flex;
+    min-height:100vh;
+    flex-direction: column;
+    margin:0;
+    padding:0;
+    position:relative;
+
+}

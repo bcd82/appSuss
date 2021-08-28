@@ -1,12 +1,14 @@
-export class About extends React.Component {
+import { AppHeader } from "../cmps/AppHeader.jsx";
+
+export class BookAbout extends React.Component {
   state = {
     shownImg: 0,
   };
 
   imgUrls = [
-    "./assets/img/books-about.jpeg",
-    "./assets/img/books-about-2.jpg",
-    "./assets/img/books-about3.jpeg",
+    "./assets/imgs/book/books-about.jpeg",
+    "./assets/imgs/book/books-about-2.jpg",
+    "./assets/imgs/book/books-about3.jpeg",
   ];
 
   changeShownImg = () => {
@@ -22,7 +24,7 @@ export class About extends React.Component {
   };
 
   componentDidMount() {
-    this.interval = setInterval(this.changeShownImg, 5000);
+    this.interval = setInterval(this.changeShownImg, 3000);
   }
 
   componentWillUnmount() {
@@ -31,7 +33,9 @@ export class About extends React.Component {
 
   render() {
     return (
-      <section className="about">
+      <div className="book-container">
+        <AppHeader/>
+      <section className="book-about">
         <div className="about-container main-layout">
           <h1>About Us</h1>
           <img src={this.getImageToShow()} className="about-img"></img>
@@ -49,6 +53,7 @@ export class About extends React.Component {
           </div>
         </div>
       </section>
+      </div>
     );
   }
 }

@@ -1,4 +1,6 @@
 import { mailService } from "../services/mail.service.js";
+import { eventBusService } from "../../../services/event.bus.service.js";
+
 const { withRouter } = ReactRouterDOM;
 
 class _MailDetails extends React.Component {
@@ -20,11 +22,12 @@ class _MailDetails extends React.Component {
     });
   };
 
-  sendToKeep = () =>{
+  sendToKeep = () => {
     this.props.history.push(`/keep/?text=${this.state.mail.subject}/
       ${this.state.mail.body}
-    `)
-  }
+    `);
+    eventBusService.emit("user-msg", { txt: "Note Created", type: "success" });
+  };
 
   render() {
     const {
@@ -46,49 +49,60 @@ class _MailDetails extends React.Component {
           )}
         </h1>
         <div className="top-row">
+          <div className="from">
           <h2>
             From: {mail.from}{" "}
-            <span>{new Date(mail.sentAt).toLocaleString()}</span>
           </h2>
-          {mail.status !== "draft" && (
-            <button onClick={() => onReplyMail(mail)}>
+            <h2 className="date">On {new Date(mail.sentAt).toLocaleString()}</h2>
+
+          </div>
+          <div className="btns">
+            {mail.status !== "draft" && (
+              <button onClick={() => onReplyMail(mail)}>
+                <img
+                  src="./assets/imgs/mail/reply.png"
+                  alt="reply"
+                  title="reply"
+                />
+              </button>
+            )}
+            {mail.status === "draft" && (
+              <button title="edit" onClick={() => onEditDraft(mail)}>
+                <img src="./assets/imgs/mail/edit.png" alt="edit" />
+              </button>
+            )}
+            {mail.status !== "inbox" && (
+              <button
+                title="add to inbox"
+                onClick={() => onAddToInbox(mail.id)}
+              >
+                <img
+                  src="./assets/imgs/mail/add-to-inbox.png"
+                  alt="add to inbox"
+                />
+              </button>
+            )}
+            <button title="delete" onClick={() => onDeleteMail(mail.id)}>
+              <img src="./assets/imgs/mail/delete.png" alt="trash" />
+            </button>
+            <button
+              onClick={() => onToggleRead(mail.id)}
+              title="mark as unread"
+            >
               <img
-                src="./assets/imgs/mail/reply.png"
-                alt="reply"
-                title="reply"
+                src="./assets/imgs/mail/unread.png"
+                className={mail.isRead ? "unread" : "read"}
               />
             </button>
-          )}
-          {mail.status === "draft" && (
-            <button title="edit" onClick={() => onEditDraft(mail)}>
-              <img src="./assets/imgs/mail/edit.png" alt="edit" />
+            <button title="send to keep" onClick={this.sendToKeep}>
+              <img src="./assets/imgs/mail/keep.png" alt="send to keep" />
             </button>
-          )}
-          {mail.status !== "inbox" && (
-            <button title="add to inbox" onClick={() => onAddToInbox(mail.id)}>
-              <img
-                src="./assets/imgs/mail/add-to-inbox.png"
-                alt="add to inbox"
-              />
-            </button>
-          )}
-          <button title="delete" onClick={() => onDeleteMail(mail.id)}>
-            <img src="./assets/imgs/mail/delete.png" alt="trash" />
-          </button>
-          <button onClick={() => onToggleRead(mail.id)} title="mark as unread">
             <img
-              src="./assets/imgs/mail/unread.png"
-              className={mail.isRead ? "unread" : "read"}
+              src="./assets/imgs/mail/star.png"
+              className={mail.isStarred ? "starred" : "not-starred"}
+              onClick={(ev) => onToggleStar(ev, mail.id)}
             />
-          </button>
-          <button title="send to keep" onClick={this.sendToKeep}>
-            <img src="./assets/imgs/mail/keep.png" alt="send to keep" />
-          </button>
-          <img
-            src="./assets/imgs/mail/star.png"
-            className={mail.isStarred ? "starred" : "not-starred"}
-            onClick={(ev) => onToggleStar(ev, mail.id)}
-          />
+          </div>
         </div>
         <h3>To: {mail.to}</h3>
         <p className="mail-body">{mail.body}</p>

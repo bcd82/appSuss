@@ -1,6 +1,7 @@
 .app-home {
     margin:0 auto;
     align-items:   center;
+    max-width:1200px;
     display: flex;
     flex-direction: column;
 }
@@ -24,6 +25,7 @@
     gap:20px;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom:80px;
 }
 .app-home a{
     text-decoration: none;

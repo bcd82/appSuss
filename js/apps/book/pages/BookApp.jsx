@@ -1,7 +1,7 @@
 import { bookService } from "../services/book.service.js";
 import { BookList } from "../cmps/BookList.jsx";
 import { BookFilter } from "../cmps/BookFilter.jsx";
-import { googleBooksService } from "../services/google.books.service.js";
+import { AppHeader } from "../cmps/AppHeader.jsx";
 
 export class BookApp extends React.Component {
   state = {
@@ -31,10 +31,13 @@ export class BookApp extends React.Component {
     const { books } = this.state;
     if (!books) return <div>Loading...</div>;
     return (
-      <section className="book-app main-layout">
+      <div className="book-app-container">
+        <AppHeader/>
+      <section className="book-app main-layout ">
         <BookFilter onSetFilter={this.onSetFilter} />
         <BookList books={books} onSelectBook={this.onSelectBook} />
       </section>
+      </div>
     );
   }
 }

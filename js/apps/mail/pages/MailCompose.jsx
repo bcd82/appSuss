@@ -28,6 +28,7 @@ class _MailCompose extends React.Component {
     this.setState({ [field]: value });
   };
 
+
   render() {
     const { onSendNewMail, onSaveDraft } = this.props;
     const { subject, to, body, from } = this.state;
