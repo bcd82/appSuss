@@ -1,6 +1,7 @@
 .app-home {
     margin:0 auto;
     align-items:   center;
+    max-width:1200px;
     display: flex;
     flex-direction: column;
 }

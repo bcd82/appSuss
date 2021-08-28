@@ -1,4 +1,5 @@
 import {AppPreview} from '../cmps/AppPreview.jsx'
+import { HomeProfile } from '../cmps/HomeProfile.jsx'
 
 
 export  function AppHome() {
@@ -11,6 +12,10 @@ export  function AppHome() {
                 <AppPreview title='Mail' txt="Keep in Touch With Friends and Enemies" imgUrl="./assets/imgs/cmps/mailbox.jpg" url="/mail?filter=inbox"/>
                 <AppPreview title='Book' txt="Need a Book? We've Got You Covered!" imgUrl="./assets/imgs/cmps/books.png" url="/book/"/>
             </div>
+            <section className="about">
+                <HomeProfile imgUrl='./assets/imgs/cmps/barak-sidi.jpg' title='Full Stack Ninja' />
+                <HomeProfile imgUrl='./assets/imgs/cmps/ron-buchris.jpeg' title='Coding Academy Student'/>
+            </section>
         </section>
     )
 }
