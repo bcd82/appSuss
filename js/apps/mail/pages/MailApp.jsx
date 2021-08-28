@@ -130,7 +130,7 @@ export class MailApp extends React.Component {
 
   onSendNewMail = (ev, newMail, mailId) => {
     ev.preventDefault();
-    if (mailId) {
+    if (mailService) {
       mailService.moveDraftToSent(mailId).then(() => this.loadMails());
     } else {
       mailService.createMail(newMail).then(() => {
