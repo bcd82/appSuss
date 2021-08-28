@@ -26,7 +26,7 @@ export function AppHome() {
           url="/book/"
         />
       </div>
-          <h1>Crafted By:</h1>
+          <h1>Crafted By</h1>
       <section className="about">
         <HomeProfile
           imgUrl="./assets/imgs/cmps/barak-sidi.jpg"

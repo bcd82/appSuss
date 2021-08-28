@@ -28,7 +28,6 @@ class _MailCompose extends React.Component {
     this.setState({ [field]: value });
   };
 
-
   render() {
     const { onSendNewMail, onSaveDraft } = this.props;
     const { subject, to, body, from } = this.state;
@@ -42,9 +41,10 @@ class _MailCompose extends React.Component {
             value={subject}
             onChange={this.handleChange}
             placeholder="Subject"
-            onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault()}}
+            onKeyPress={(e) => {
+              e.key === "Enter" && e.preventDefault();
+            }}
             required
-            
             autoFocus
           />
           <input
@@ -54,8 +54,9 @@ class _MailCompose extends React.Component {
             onChange={this.handleChange}
             placeholder="email@email.com"
             required
-            onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault()}}
-
+            onKeyPress={(e) => {
+              e.key === "Enter" && e.preventDefault();
+            }}
           />
           <textarea
             name="body"

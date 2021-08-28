@@ -111,15 +111,16 @@
     }
     .mail-preview .from {
         font-size: 1rem;
-        width: 20%;
+        width: 25%;
         position:unset;
     }
     .mail-preview .from::before {
         content: none
     }
-    .mail-preview .subject {
-        width: 30%;
+    .mail-preview p.subject {
+        width: 35%;
         text-align: left;
+        align-self: flex-start;
     }
     .mail-preview .sent-time {
         order: unset
