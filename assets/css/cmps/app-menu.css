@@ -1,15 +1,21 @@
 .app-menu .app-links {
     display: none;
+    overflow-x: hidden;
+    opacity:0;
+    transition: opacity .2s;
 }
 
 .app-menu .app-links.menu-open {
     display: flex;
     position: absolute;
-    flex-direction: column;
-    right: 3%;
-    top: 80px;
-    gap: 20px;
+    top: 70px;
+    left: 0;
+    width:100%;
+    justify-content: space-around;
     z-index: 5;
+    background-color:rgba(255, 255, 255, 0.767);
+    padding:20px;
+    opacity:1;
 }
 
 .app-menu .apps-icon {
@@ -22,8 +28,10 @@
     opacity:0.8 !important;
 }
 .app-menu .app-link img{
-    background-color: white ;
+    background-color: gold ;
+    border-radius:.5em;
     height:fit-content;
+    padding:5px;
 }
 
 .app-menu .app-link.active {
@@ -59,10 +67,16 @@
 
     .app-menu .app-links.menu-open {
         display: flex;
-        flex-direction: row;
         right: 8%;
         top: 10px;
         gap: 20px;
+        width:200px;
+        left: unset;
+        padding:unset;
+        background-color: transparent;
+
+
+
     }
     .app-menu .app-link {
         animation: slide-in-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

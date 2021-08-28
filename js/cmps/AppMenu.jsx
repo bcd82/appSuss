@@ -2,7 +2,7 @@ const { NavLink } = ReactRouterDOM;
 
 export class AppMenu extends React.Component {
   state = {
-    isMobileMenuOpen: false,
+    isMobileMenuOpen: true,
   };
 
   toggleAppMenu = (isClosing) => {

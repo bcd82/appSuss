@@ -17,7 +17,7 @@ const { NavLink, withRouter } = ReactRouterDOM;
         <div className="main-header main-layout">
         <h1 className="logo" onClick={()=>{
           this.props.history.push('/book/home/')
-        }}>Miss Book</h1>
+        }}>BookSus</h1>
         <nav className={isMobileMenuOpen ? 'mobile': ''}>
           <NavLink to='/book/home' exact onClick={isMobileMenuOpen && this.toggleMenu}>Home</NavLink>
           <NavLink to="/book/about" onClick={isMobileMenuOpen && this.toggleMenu}>About</NavLink>
