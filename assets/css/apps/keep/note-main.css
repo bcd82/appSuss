@@ -8,10 +8,15 @@
   box-shadow: 0 0.875rem 2rem rgb(0 0 0 / 10%);
   border-radius: 0.5rem;
   padding: 1rem;
+  gap: 20px;
 }
 /* img {
   border-radius: 0.5rem;
 } */
 .note img {
   border-radius: 0.5rem;
+}
+.note-features img {
+  width: 25px;
+  height: 25px;
 }

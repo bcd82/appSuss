@@ -43,7 +43,7 @@ function _createNotes() {
             title: 'I Love Bobi',
           },
           style: {
-            backgroundColor: '#00d',
+            backgroundColor: '#A0E7E5',
           },
         },
         {
@@ -60,6 +60,13 @@ function _createNotes() {
           style: {
             backgroundColor: '#fff',
           },
+        },
+        {
+          id: 'FBNc',
+          type: 'note-video',
+          isPinned: true,
+          info: { url: 'yJyClObyUOs', title: 'music' },
+          style: { backgroundColor: '#A0E7E5' },
         },
       ];
   _saveNotesToStorage();
