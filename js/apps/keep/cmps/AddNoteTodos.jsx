@@ -71,24 +71,6 @@ class _AddNoteTodos extends React.Component {
     });
   };
 
-  // onAddTodos = (ev) => {
-  //   ev.preventDefault();
-  //   const { todos } = this.state;
-  //   todos.map((todo) => {
-  //     console.log(`todo`, todo);
-  //   });
-  //   const todo = {
-  //     txt: txt,
-  //     doneAt: null,
-  //   };
-  //   this.setState((prevState) => ({
-  //     todos: [...prevState.todos, todo],
-  //   }));
-  //   this.setState((prevState) => ({
-  //     note: { ...prevState.note, ['txt']: '' },
-  //   }));
-  // };
-
   onAddTodo = () => {
     this.setState((prevState) => ({
       extraTodoAddCount: prevState.extraTodoAddCount + 1,
@@ -114,14 +96,15 @@ class _AddNoteTodos extends React.Component {
     const { label } = this.state.note;
     console.log(`todos`, todos);
     return (
-      <section>
-        <form className='note-txt-add' onSubmit={this.onAddNoteTodos}>
-          <label htmlFor='label'>Todos Title</label>
+      <section className='note-txt-add'>
+        <form onSubmit={this.onAddNoteTodos}>
+          <label htmlFor='label'></label>
           <input
             type='text'
             id='label'
             name='label'
             value={label}
+            placeholder='Title'
             onChange={this.handleChange}
           />
           <button>Add</button>
@@ -129,12 +112,13 @@ class _AddNoteTodos extends React.Component {
         {new Array(extraTodoAddCount).fill(0).map((value, idx) => (
           <div key={idx} className={`newTodo newTodo-${idx}`}>
             <form className='note-txt-add' onSubmit={this.onAddTodos}>
-              <label htmlFor='txt'>My Todo</label>
+              <label htmlFor='txt'></label>
               <input
                 type='text'
                 id='txt'
                 name={idx}
                 value={todos[idx]}
+                placeholder='Add todo...'
                 onChange={this.handleChange}
               />
               <button
