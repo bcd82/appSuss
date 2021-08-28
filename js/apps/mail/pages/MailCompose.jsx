@@ -1,3 +1,4 @@
+import { utilService } from "../../../services/util.service.js";
 import { mailService } from "../services/mail.service.js";
 const { withRouter } = ReactRouterDOM;
 
@@ -11,6 +12,14 @@ class _MailCompose extends React.Component {
 
   id = "";
 
+  tempDraft = {
+    id:utilService.makeId(),
+    body:'',
+    subject:'',
+    to:'',
+  }
+
+  autoSaveInterval
   componentDidMount = () => {
     mailService.getUser().then((user) => this.setState({ from: user.email }));
     const urlSrcPrm = new URLSearchParams(this.props.location.search);

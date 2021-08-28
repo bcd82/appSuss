@@ -55,7 +55,6 @@ class _MailDetails extends React.Component {
             From: {mail.from}{" "}
           </h2>
           <h3>To: {mail.to}</h3>
-
             <h2 className="date">On {new Date(mail.sentAt).toLocaleString()}</h2>
           </div>
           <div className="btns">
