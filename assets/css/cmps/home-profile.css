@@ -6,6 +6,11 @@
     gap: 20px;
 }
 
+.home-profile:nth-of-type(2) {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .home-profile .profile-details {
     display: flex;
     flex-direction: column;
@@ -22,9 +27,9 @@
 }
 
 .home-profile .profile-details p {
-    margin-bottom:20px;
+    margin-bottom: 5px;
     font-family: Lato-bold;
-    font-size:1.2rem;
+    font-size: 1.2rem;
 }
 
 .home-profile .profile-details .links {
@@ -32,6 +37,12 @@
 }
 
 .home-profile .profile-details .links img {
+    transform: scale(1);
+    width: 40px;
+    transition:transform .2s ease-out
+}
+.home-profile .profile-details .links img:hover {
+    transform: scale(1.1);
     width: 40px;
 }
 
@@ -42,9 +53,5 @@
 .home-profile .profile-text p {
     position: relative;
     top: 25%;
-}
-
-.home-profile:nth-of-type(2) {
-    display: flex;
-    flex-direction: row-reverse;
+    text-align: center;
 }
