@@ -66,7 +66,7 @@ const staticMails = [
         subject: 'אנחנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף קורונה!',
         body:
             `
-        התאם להנחיות משרד הבריאות, אנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף הקורונה.
+        בהתאם להנחיות משרד הבריאות, אנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף הקורונה.
         בשבועות האחרונים אנו עדים לעלייה בתחלואה, 
         ומטרת מנת החיסון הנוספת היא חיזוק ההגנה החיסונית שלך נגד נגיף הקורונה.`,
         isRead: false,
@@ -152,7 +152,7 @@ Through exclusive footage and interviews from all sides of the case, this series
         id: utilService.makeId(),
         subject: 'Changes to YouTube’s Terms of Service',
         body:
-        `
+            `
         You’re receiving this email because we’re updating the YouTube Terms of Service (“Terms”) 
         to clarify our terms and provide transparency to our users. 
         The Terms were similarly updated in the United States in November 2020. 
@@ -232,7 +232,7 @@ Through exclusive footage and interviews from all sides of the case, this series
         id: utilService.makeId(),
         subject: 'היי :)',
         body:
-        `
+            `
         היי, מה שלומך?
 
         נעים מאוד 😊 דנית מחברת TechJob.
@@ -255,6 +255,30 @@ Through exclusive footage and interviews from all sides of the case, this series
         status: 'inbox',
         isStarred: true,
         from: 'Danit@tech-job.co.il',
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'ברק סידי, פירוט החיובים לכרטיסי לאומי והודעות החודש מוכנים לצפייה.',
+        body:
+            `
+        שלום ברק סידי ,
+ 
+        פירוט החיובים החודשי של כרטיס האשראי שלך
+        .למועד חיוב 02/08/21 מוכן עבורך באתר
+        לצורך מניעת זיוף הודעות דוא"ל,
+        כל הודעות הדוא"ל המגיעות מהחברה המתפעלת max מבית לאומי קארד 
+        יגיעו בצירוף חתימה דיגיטלית של  בית לאומי קארד.
+        במידה ובחרת במילת זיהוי אישית בעת ההצטרפות לשרות,
+        הודעות אלה יכללו בשורת הנושא את מילת הזיהוי שבחרת.
+        להסרה משירות חיובים במייל על מנת לקבלם 
+        בדואר רגיל יש להיכנס לאזור האישי באתר max. להסרה מהשירות לחצו כאן >
+        `,
+        isRead: false,
+        sentAt: 1627938363,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: true,
+        from: 'info@max.max-finance.co.il',
     },
     {
         id: utilService.makeId(),
@@ -359,7 +383,7 @@ Through exclusive footage and interviews from all sides of the case, this series
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
-    },{
+    }, {
         id: utilService.makeId(),
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
@@ -370,7 +394,7 @@ Through exclusive footage and interviews from all sides of the case, this series
         isStarred: Math.random() > .7 ? true : false,
         from: loggedInUser.email
     }
-    ,{
+    , {
         id: utilService.makeId(),
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
@@ -381,7 +405,7 @@ Through exclusive footage and interviews from all sides of the case, this series
         isStarred: Math.random() > .7 ? true : false,
         from: loggedInUser.email
     }
-    ,{
+    , {
         id: utilService.makeId(),
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
@@ -392,7 +416,7 @@ Through exclusive footage and interviews from all sides of the case, this series
         isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     }
-    ,{
+    , {
         id: utilService.makeId(),
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
@@ -403,7 +427,7 @@ Through exclusive footage and interviews from all sides of the case, this series
         isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
     }
-    ,{
+    , {
         id: utilService.makeId(),
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
