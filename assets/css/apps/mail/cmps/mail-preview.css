@@ -121,7 +121,7 @@
     .mail-preview p.subject {
         width: 35%;
         text-align: left;
-        align-self: flex-start;
+        align-self: center;
     }
     .mail-preview .sent-time {
         order: unset

@@ -67,12 +67,51 @@ const staticMails = [
         התאם להנחיות משרד הבריאות, אנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף הקורונה.
 
         בשבועות האחרונים אנו עדים לעלייה בתחלואה, ומטרת מנת החיסון הנוספת היא חיזוק ההגנה החיסונית שלך נגד נגיף הקורונה.`,
-        isRead:false,
+        isRead: false,
         sentAt: Date.now() - 10000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: true,
         from: 'do-not-reply@info.maccabi4u.co.il'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'barak, we just added a docuseries you might like',
+        body:
+            `
+         John of God: The Crimes of a Spiritual Healer
+         dolized medium João Teixeira de Faria rises to international fame before horrifying abuse is revealed by survivors,
+          prosecutors and the press.   More Info
+          Through exclusive footage and interviews from all sides of the case, this series dives deep into the "John of God" scandal.
+          `,
+        isRead: false,
+        sentAt: Date.now() - 890000,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: false,
+        from: 'info@mailer.netflix.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'You’re invited to a Secret Sale, barak!',
+        body:
+            `
+        We Wished You Were Here,
+        barak...
+        And the Wish Came True!
+
+        Now let’s make your wishes come true,
+        starting with our Secret Sale!
+        
+        Why a Secret Sale? Because We Missed You!
+        Get a taste of who’s coming to the party
+          `,
+        isRead: false,
+        sentAt: Date.now() - 8490000,
+        to: loggedInUser.email,
+        status: 'trash',
+        isStarred: false,
+        from: 'ebay@reply5.ebay.com'
     },
     {
         id: utilService.makeId(),
@@ -230,7 +269,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
@@ -241,7 +280,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
@@ -252,7 +291,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
@@ -263,7 +302,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
@@ -274,7 +313,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
@@ -285,7 +324,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
@@ -296,7 +335,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
@@ -307,7 +346,7 @@ const staticMails = [
         subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
         body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
         isRead: Math.random() > .5 ? true : false,
-        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550,191209550),
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
