@@ -134,7 +134,7 @@ const staticMails = [
         
         If you would like more information, visit our Help Center.`,
         isRead: false,
-        sentAt: Date.now() -220000,
+        sentAt: Date.now() - 220000,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: false,
@@ -158,9 +158,9 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'Attn: There’s a Birthday Surprise waiting for You',
-        body:utilService.makeLorem(190),
+        body: utilService.makeLorem(190),
         isRead: false,
-        sentAt: Date.now() -2296000,
+        sentAt: Date.now() - 2296000,
         to: loggedInUser.email,
         status: 'trash',
         isStarred: false,
@@ -169,7 +169,7 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'what is the hardest part of game development?',
-        body:`
+        body: `
         Hey,
 
         I'm compiling a list of what people think is the hardest part of game development! Shoot me a reply and let me know!
@@ -187,7 +187,7 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'היי :)',
-        body:`
+        body: `
         היי, מה שלומך?
 
         נעים מאוד 😊 דנית מחברת TechJob.
@@ -204,7 +204,7 @@ const staticMails = [
         שבוע מעולה,
         דנית`,
         isRead: true,
-        sentAt: Date.now() -11209550,
+        sentAt: Date.now() - 11209550,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: true,
@@ -213,18 +213,183 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'Your notifications are now mobile',
-        body:`
+        body: `
         Your notifications are now mobile!
         You’ve enabled push notifications on your mobile device for the Coding Academy - Jul 21 workspace, 
         so we’ve disabled email notifications for you.
         That way you won’t get notified twice. It’s easy to re-enable email notifications, if you’d prefer.`,
         isRead: true,
-        sentAt: Date.now() -1121209550,
+        sentAt: Date.now() - 1121209550,
         to: loggedInUser.email,
         status: 'inbox',
         isStarred: true,
         from: 'feedback@slack.com',
-    }
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`,
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
+    {
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - 1121209550,
+        to: loggedInUser.email,
+        status: 'inbox',
+        isStarred: Math.random() > .2 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    },
 ]
 
 let gMails = storageService.loadFromStorage(DB_KEY) || staticMails;

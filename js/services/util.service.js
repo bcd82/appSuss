@@ -21,36 +21,42 @@ function makeId(length = 4) {
 
 function makeLorem(size = 100) {
   var words = [
-    'The sky',
+    'sky',
     'above',
-    'the port',
+    'port',
     'was',
-    'the color of television',
+    'television',
+    'color',
     'tuned',
     'to',
-    'a dead channel',
-    '.',
+    'dead',
     'All',
-    'this happened',
-    'more or less',
-    '.',
-    'I',
+    'this',
+    'more',
     'had',
-    'the story',
-    'bit by bit',
-    'from various people',
+    'the',
+    'bit',
+    'boring',
+    'string',
+    'from',
     'and',
-    'as generally',
+    '1000',
+    'as',
+    'generally',
     'happens',
-    'in such cases',
-    'each time',
+    'in ', 
+    'such',
+     'cases',
+    'each',
+    'time',
     'it',
     'was',
-    'a different story',
-    '.',
+    'different',
+    'man',
+    'story',
     'It',
     'was',
-    'a pleasure',
+    'pleasure',
     'to',
     'burn',
   ];
@@ -94,25 +100,25 @@ function getTimeToDisplay(timestamp) {
     (timeNow.getFullYear() === time.getFullYear()))) {
     return (`${time.getHours() + ':' + (time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes())}`)
   }
-  if(timeNow.getFullYear() === time.getFullYear()) {
-    return `${time.getDate()}/${time.getMonth()+1}`
+  if (timeNow.getFullYear() === time.getFullYear()) {
+    return `${time.getDate()}/${time.getMonth() + 1}`
   }
-    return time.toLocaleDateString()
-  }
+  return time.toLocaleDateString()
+}
 
-  function getPriceCurrency (book) {
-    let formattedPrice;
-    switch (book.listPrice.currencyCode) {
-        case "ILS":
-          formattedPrice = ` ${book.listPrice.amount}₪`;
-          break;
-        case "EUR":
-          formattedPrice = `€${book.listPrice.amount}`;
-          break;
-        default:
-          formattedPrice = `$${book.listPrice.amount}`;
-          break;
-      }
-      return formattedPrice
+function getPriceCurrency(book) {
+  let formattedPrice;
+  switch (book.listPrice.currencyCode) {
+    case "ILS":
+      formattedPrice = ` ${book.listPrice.amount}₪`;
+      break;
+    case "EUR":
+      formattedPrice = `€${book.listPrice.amount}`;
+      break;
+    default:
+      formattedPrice = `$${book.listPrice.amount}`;
+      break;
+  }
+  return formattedPrice
 
 }

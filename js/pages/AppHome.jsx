@@ -30,16 +30,16 @@ export function AppHome() {
         <HomeProfile
           imgUrl="./assets/imgs/cmps/barak-sidi.jpg"
           title="Full Stack Ninja"
-          fbUrl ='https://www.facebook.com/barak.sidi/'
-          ghUrl ='https://github.com/bcd82'
-          liUrl ='https://www.linkedin.com/in/barak-sidi-4632003a/'
+          fbUrl="https://www.facebook.com/barak.sidi/"
+          ghUrl="https://github.com/bcd82"
+          liUrl="https://www.linkedin.com/in/barak-sidi-4632003a/"
         />
         <HomeProfile
           imgUrl="./assets/imgs/cmps/ron-buchris.jpeg"
           title="Coding Academy Student"
-          fbUrl ='https://www.facebook.com/RonBuchris'
-          ghUrl ='https://github.com/ronbuchris'
-          liUrl ='https://www.linkedin.com/in/ron-buchris-03b5a2219/'
+          fbUrl="https://www.facebook.com/RonBuchris"
+          ghUrl="https://github.com/ronbuchris"
+          liUrl="https://www.linkedin.com/in/ron-buchris-03b5a2219/"
         />
       </section>
     </section>
