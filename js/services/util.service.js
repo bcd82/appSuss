@@ -44,7 +44,7 @@ function makeLorem(size = 100) {
     'as',
     'generally',
     'happens',
-    'in ', 
+    'in', 
     'such',
      'cases',
     'each',

@@ -36,7 +36,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'How Unity can help keep your game development on track',
-        body: `
+        body:
+            `
         Hi Barak , 
         
         Unity’s Integrated Success Services (ISS) team helps developers avoid obstacles and 
@@ -63,10 +64,11 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'אנחנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף קורונה!',
-        body: `
+        body:
+            `
         התאם להנחיות משרד הבריאות, אנו מזמינים אותך להתחסן במנה 3 של חיסון נגד נגיף הקורונה.
-
-        בשבועות האחרונים אנו עדים לעלייה בתחלואה, ומטרת מנת החיסון הנוספת היא חיזוק ההגנה החיסונית שלך נגד נגיף הקורונה.`,
+        בשבועות האחרונים אנו עדים לעלייה בתחלואה, 
+        ומטרת מנת החיסון הנוספת היא חיזוק ההגנה החיסונית שלך נגד נגיף הקורונה.`,
         isRead: false,
         sentAt: Date.now() - 10000,
         to: loggedInUser.email,
@@ -79,10 +81,10 @@ const staticMails = [
         subject: 'barak, we just added a docuseries you might like',
         body:
             `
-         John of God: The Crimes of a Spiritual Healer
-         dolized medium João Teixeira de Faria rises to international fame before horrifying abuse is revealed by survivors,
-          prosecutors and the press.   More Info
-          Through exclusive footage and interviews from all sides of the case, this series dives deep into the "John of God" scandal.
+John of God: The Crimes of a Spiritual Healer
+dolized medium João Teixeira de Faria rises to international fame before horrifying abuse is revealed by survivors,
+prosecutors and the press.   More Info
+Through exclusive footage and interviews from all sides of the case, this series dives deep into the "John of God" scandal.
           `,
         isRead: false,
         sentAt: Date.now() - 890000,
@@ -149,7 +151,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'Changes to YouTube’s Terms of Service',
-        body: `
+        body:
+        `
         You’re receiving this email because we’re updating the YouTube Terms of Service (“Terms”) 
         to clarify our terms and provide transparency to our users. 
         The Terms were similarly updated in the United States in November 2020. 
@@ -172,7 +175,7 @@ const staticMails = [
         behalf of your child as well.
         
         If you would like more information, visit our Help Center.`,
-        isRead: false,
+        isRead: true,
         sentAt: Date.now() - 2150000,
         to: loggedInUser.email,
         status: 'inbox',
@@ -182,7 +185,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'You received a new comment on Superstition - animated short',
-        body: `
+        body:
+            `
         Hi Superstition Animation, 
         Silas Syhler 6U Katrinedalskolen commented on your video Superstition - animated short:
         "this man is ugly AF"
@@ -208,7 +212,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'what is the hardest part of game development?',
-        body: `
+        body:
+            `
         Hey,
 
         I'm compiling a list of what people think is the hardest part of game development! Shoot me a reply and let me know!
@@ -226,11 +231,13 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'היי :)',
-        body: `
+        body:
+        `
         היי, מה שלומך?
 
         נעים מאוד 😊 דנית מחברת TechJob.
-        כחלק ממאמצי החיפוש שלי אחר טאלנטים מובילים עבור חברה מדהימה שאני עובדת איתה, חשבתי שאולי אוכל לעניין אותך :)
+        כחלק ממאמצי החיפוש שלי אחר טאלנטים מובילים עבור חברה מדהימה שאני עובדת איתה,
+        חשבתי שאולי אוכל לעניין אותך :)
         מדובר בחברה בתל אביב, שעובדת במודל עבודה היברידי, אנשים מדהימים !
         
         אשמח לבדוק התאמה ולעניין אותך במשרה.
@@ -242,7 +249,7 @@ const staticMails = [
         
         שבוע מעולה,
         דנית`,
-        isRead: true,
+        isRead: false,
         sentAt: Date.now() - 11209550,
         to: loggedInUser.email,
         status: 'inbox',
@@ -252,7 +259,8 @@ const staticMails = [
     {
         id: utilService.makeId(),
         subject: 'Your notifications are now mobile',
-        body: `
+        body:
+            `
         Your notifications are now mobile!
         You’ve enabled push notifications on your mobile device for the Coding Academy - Jul 21 workspace, 
         so we’ve disabled email notifications for you.
@@ -351,7 +359,61 @@ const staticMails = [
         status: 'inbox',
         isStarred: Math.random() > .7 ? true : false,
         from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
-    },
+    },{
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
+        to: loggedInUser.email,
+        status: 'draft',
+        isStarred: Math.random() > .7 ? true : false,
+        from: loggedInUser.email
+    }
+    ,{
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
+        to: loggedInUser.email,
+        status: 'draft',
+        isStarred: Math.random() > .7 ? true : false,
+        from: loggedInUser.email
+    }
+    ,{
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
+        to: loggedInUser.email,
+        status: 'trash',
+        isStarred: Math.random() > .7 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    }
+    ,{
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
+        to: loggedInUser.email,
+        status: 'trash',
+        isStarred: Math.random() > .7 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    }
+    ,{
+        id: utilService.makeId(),
+        subject: utilService.makeLorem(utilService.getRandomIntInclusive(5, 10)),
+        body: utilService.makeLorem(utilService.getRandomIntInclusive(15, 120)),
+        isRead: Math.random() > .5 ? true : false,
+        sentAt: Date.now() - utilService.getRandomIntInclusive(1121209550, 191209550),
+        to: loggedInUser.email,
+        status: 'trash',
+        isStarred: Math.random() > .7 ? true : false,
+        from: `${utilService.makeLorem(1).replace(' ', '')}@${utilService.makeLorem(1).replace(' ', '')}.com`
+    }
 
 ]
 
