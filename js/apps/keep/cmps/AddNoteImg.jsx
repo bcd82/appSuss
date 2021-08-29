@@ -20,7 +20,7 @@ class _AddNoteImg extends React.Component {
       note: { ...prevState.note, [field]: value },
     }));
   };
-  
+
   colorPicker = (color) => {
     this.setState((prevState) => ({
       note: { ...prevState.note, ['backgroundColor']: color },
@@ -52,21 +52,23 @@ class _AddNoteImg extends React.Component {
     return (
       <section>
         <form className='note-txt-add' onSubmit={this.onAddNoteImg}>
-          <label htmlFor='title'>Image Title</label>
+          <label htmlFor='title'></label>
           <input
             type='text'
             id='title'
             name='title'
             value={title}
+            placeholder='Title'
             onChange={this.handleChange}
           />
 
-          <label htmlFor='url'>URL Image</label>
+          <label htmlFor='url'></label>
           <input
             type='url'
             id='url'
             name='url'
             value={url}
+            placeholder='URL'
             onChange={this.handleChange}
           />
           <div className='colors-picker'>

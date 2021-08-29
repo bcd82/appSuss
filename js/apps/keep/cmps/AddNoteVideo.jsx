@@ -67,27 +67,25 @@ class _AddNoteVideo extends React.Component {
     return (
       <section>
         <form className='note-txt-add'>
-          <label htmlFor='title'>Video Title</label>
+          <label htmlFor='title'></label>
           <input
             type='text'
             id='title'
             name='title'
             value={title}
+            placeholder='Title'
             onChange={this.handleChange}
           />
 
-          <label htmlFor='url'>URL</label>
+          <label htmlFor='url'></label>
           <input
             type='text'
             id='url'
             name='url'
             value={url}
+            placeholder='URL'
             onChange={this.handleChange}
           />
-          <div className='colors-picker'>
-            <ColorInput onChangeStyle={this.colorPicker} />
-          </div>
-
           <button
             onClick={() => {
               this.onGetIdFromUrl(event);
@@ -95,6 +93,9 @@ class _AddNoteVideo extends React.Component {
           >
             Add
           </button>
+          <div className='colors-picker'>
+            <ColorInput onChangeStyle={this.colorPicker} />
+          </div>
         </form>
       </section>
     );

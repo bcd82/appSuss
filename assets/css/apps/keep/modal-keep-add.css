@@ -49,3 +49,26 @@
   display: flex;
   flex-direction: column;
 }
+
+.modal input {
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+.modal button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  background: none;
+}
+.modal button:hover {
+  background-color: rgba(95, 99, 104, 0.039);
+}
+.note-txt-add {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.note-txt-add button {
+  width: 30px;
+}

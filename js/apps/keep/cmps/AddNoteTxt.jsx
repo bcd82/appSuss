@@ -51,12 +51,13 @@ class _AddNoteTxt extends React.Component {
     return (
       <section>
         <form className='note-txt-add' onSubmit={this.onAddNote}>
-          <label htmlFor='txt'>Text:</label>
+          <label htmlFor='txt'></label>
           <input
             type='text'
             id='txt'
             name='txt'
             value={txt}
+            placeholder='Text'
             onChange={this.handleChange}
           />
           <label htmlFor='isPinned'>Important ?</label>
