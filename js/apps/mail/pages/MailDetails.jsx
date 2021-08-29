@@ -105,7 +105,7 @@ class _MailDetails extends React.Component {
             />
           </div>
         </div>
-        <p className="mail-body">{mail.body}</p>
+        <p className={`mail-body ${mail.body.includes('א') ? 'rtl' : ''}`}>{mail.body}</p>
       </section>
     );
   }
